@@ -2,6 +2,7 @@
 import csv
 import hashlib
 import json
+import os
 from pathlib import Path
 import random
 import time
@@ -12,17 +13,24 @@ from prepare_data import SOURCE, VISUAL, EXCLUDE, article
 
 def main():
     code = Path(__file__).resolve().parent
-    root = code/"runs/gate_pool_20261107_v1"
+    action = os.environ.get("PREPARE_ACTION_PROBE") == "1"
+    root = code/("runs/action_gate_20261107_v1" if action else "runs/gate_pool_20261107_v1")
+    n = 200 if action else 1600
+    seed = 2026110715 if action else 2026110708
+    execution_seed = 2026110716 if action else 2026110709
+    budget = 4*3600 if action else 20*3600
     (root/"inputs/images").mkdir(parents=True, exist_ok=False)
     start = time.time()
     (root/"started.json").write_text(json.dumps({"started_epoch": start,
-        "deadline_epoch": start+20*3600, "total_budget_seconds": 72000}, indent=2))
+        "deadline_epoch": start+budget, "total_budget_seconds": budget}, indent=2))
     test_groups = set()
     for name in ["test.csv", "test_clean.csv", "test_2.csv"]:
         with (SOURCE/name).open(newline="") as f:
             test_groups.update(article(r["Figure_path"]) for r in csv.DictReader(f))
     old_groups, old_pixels = set(), set()
-    for name in ["e0_20261107_v2", "e0_interface_20261107_v1"]:
+    old_runs = ["e0_20261107_v2", "e0_interface_20261107_v1"]
+    if action: old_runs.append("gate_pool_20261107_v1")
+    for name in old_runs:
         rows = [json.loads(x) for x in (code/"runs"/name/"inputs/manifest.jsonl").read_text().splitlines()]
         old_groups.update(r["group_id"] for r in rows)
         old_pixels.update(r["image_sha256"] for r in rows)
@@ -34,7 +42,7 @@ def main():
                 # Source-label syntax, not correctness/model outcomes, is checked before sampling.
                 if row["Answer_label"].strip() in ["A", "B", "C", "D"]:
                     candidates.append((i, row))
-    random.Random(2026110708).shuffle(candidates)
+    random.Random(seed).shuffle(candidates)
     infer, labels, groups, pixels = [], [], set(), set(old_pixels)
     with zipfile.ZipFile(SOURCE/"images.zip") as archive:
         for i, row in candidates:
@@ -47,31 +55,31 @@ def main():
             if fingerprint in pixels:
                 continue
             pixels.add(fingerprint); groups.add(group)
-            cid = "g"+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
+            cid = ("h" if action else "g")+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
             (root/"inputs"/image).write_bytes(data)
             infer.append({"case_id": cid, "group_id": group, "question": row["Question"].strip(),
                 "choices": {x: row["Choice "+x].strip() for x in "ABCD"},
                 "image": image, "image_sha256": fingerprint})
             labels.append({"case_id": cid, "group_id": group, "reference_letter": row["Answer_label"].strip(),
                 "source_row": i, "source_image": row["Figure_path"]})
-            if len(infer) == 1600:
+            if len(infer) == n:
                 break
-    if len(infer) != 1600:
+    if len(infer) != n:
         raise RuntimeError("Insufficient eligible groups; no label-based replenishment")
     # Independently shuffle selected groups, without answer/outcome stratification.
-    ordered = sorted(groups); random.Random(2026110708).shuffle(ordered)
-    splits = {g: s for s, subset in [("train", ordered[:1000]), ("dev", ordered[1000:1200]),
+    ordered = sorted(groups); random.Random(seed).shuffle(ordered)
+    splits = {g: "diagnostic_eval" for g in ordered} if action else {g: s for s, subset in [("train", ordered[:1000]), ("dev", ordered[1000:1200]),
              ("calibration", ordered[1200:1400]), ("diagnostic_eval", ordered[1400:])]
               for g in subset}
     # Random case interleaving avoids a hard stop preferentially retaining train cases.
-    random.Random(2026110709).shuffle(infer)
+    random.Random(execution_seed).shuffle(infer)
     for name, rows in [("manifest.jsonl", infer), ("labels.private.jsonl", labels)]:
         (root/"inputs"/name).write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows)+"\n")
     (root/"inputs/splits.private.json").write_text(json.dumps(splits))
-    summary = {"n": 1600, "unique_articles": len(groups), "official_test_article_overlap": len(groups&test_groups),
+    summary = {"n": n, "unique_articles": len(groups), "official_test_article_overlap": len(groups&test_groups),
         "old_article_overlap": len(groups&old_groups), "old_exact_encoded_image_overlap": 0,
         "split_cases": {s: list(splits.values()).count(s) for s in ["train", "dev", "calibration", "diagnostic_eval"]},
-        "sample_split_seed": 2026110708, "execution_seed": 2026110709,
+        "sample_split_seed": seed, "execution_seed": execution_seed,
         "selection_uses_model_outcomes": False, "near_duplicate_or_patient_independence_claimed": False,
         "eligible_rows_before_group_sampling": len(candidates)}
     (root/"selection.json").write_text(json.dumps(summary, indent=2)); print(json.dumps(summary))
