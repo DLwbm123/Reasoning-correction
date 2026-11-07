@@ -1,7 +1,7 @@
 # Reasoning-correction mechanism pilot
 
 Development-only medical VQA context-reconstruction experiment, requested for GPU 6.
-See the active [v2 frozen protocol](runs/e0_20261107_v2/PREREG.md).
+See the completed [v2 frozen protocol](runs/e0_20261107_v2/PREREG.md).
 
 E0 and the [32-case evidence-interface feasibility diagnosis](runs/e0_interface_20261107_v1/REPORT_ZH.md) are complete.
 D1 registered 42/42 observations with zero initial-format failures, but Selective/Reset/Summary/Random-drop
@@ -14,7 +14,9 @@ The [training-data feasibility audit](runs/data_audit_20261107_v1/REPORT_ZH.md) 
 ClinHallu image mapping was validated, known held-out image groups were excluded, and a private
 16-case packet was reviewed preliminarily. Original SLAKE masks provide a limited multi-label source;
 these annotations and model-generated traces are not new expert adjudications.
-Next is [substantive multi-fact state-mechanism design](NEXT_METHOD_SCOPE.md), not more modality-task repetitions.
+The [multi-fact state design](STATE_REVISION_DESIGN.md) now has a small declared-support CPU prototype:
+six checks pass, including 256 evidence-state transitions. This is not model-performance evidence;
+novelty and independent clinical verification gates remain unmet. No GPU jobs are active.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
@@ -25,7 +27,7 @@ paired bootstrap; detached supervisor with deadline and storage guards.
 
 Executed locally: 15 permission/state/format/execution-binding/outcome-accounting unit tests and Python compilation. E0 manifest: 200 unique
 source articles, no article overlap with the three excluded official test metadata files.
-Remote launch: jiangsuiyang/zmic44 physical GPU 6, active experiment `e0_20261107_v2`.
+Historical launch: jiangsuiyang/zmic44 physical GPU 6, experiment `e0_20261107_v2` (completed).
 The first v1 interface attempt was stopped after the first trace exposed non-neutral observation
 questions. Its two completed cases / 33 calls and raw failures are preserved; no accuracy labels were
 opened and it is not scientific effectiveness evidence. V2 uses program-owned neutral questions and
