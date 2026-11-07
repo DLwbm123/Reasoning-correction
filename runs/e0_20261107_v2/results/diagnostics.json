@@ -1,0 +1,240 @@
+{
+  "n": 200,
+  "initial_claim_count": {
+    "1": 31,
+    "5": 43,
+    "3": 29,
+    "6": 25,
+    "0": 47,
+    "4": 24,
+    "2": 1
+  },
+  "retained_fact_count": {
+    "1": 56,
+    "0": 109,
+    "3": 13,
+    "6": 1,
+    "2": 17,
+    "4": 3,
+    "5": 1
+  },
+  "n_claims": 581,
+  "n_claims_with_parents": 417,
+  "initial_claim_kind": {
+    "visual": 321,
+    "reasoning": 133,
+    "knowledge": 114,
+    "context": 13
+  },
+  "binding_status": {
+    "SUPPORTED": 273,
+    "UNRESOLVED": 296,
+    "CONTRADICTED": 9
+  },
+  "observations_assessability": {
+    "adequate": 153
+  },
+  "cases_no_tests": 44,
+  "cases_no_evidence": 48,
+  "plan_attribute": {
+    "modality": 116,
+    "appearance": 22,
+    "laterality": 46,
+    "anatomy": 80,
+    "relation": 19,
+    "not_image_verifiable": 11,
+    "count": 6,
+    "color": 1,
+    "presence": 1,
+    "null": 1
+  },
+  "role_calls": {
+    "initial": 221,
+    "plan": 200,
+    "observe": 190,
+    "bind": 153,
+    "summarize": 93,
+    "repair": 605
+  },
+  "role_failed_calls": {
+    "initial": 33,
+    "observe": 38,
+    "summarize": 4
+  },
+  "format_retry_calls": 57,
+  "successful_candidate_schema_warnings": 0,
+  "identical_selective_reset_answer": 196,
+  "selective_reset_different_cases": 4,
+  "all_candidates_same_answer": 163,
+  "one_of_repair_candidates_correct": 102,
+  "initial_or_candidate_correct": 107,
+  "K_empty": {
+    "n": 109,
+    "initial_correct": 40,
+    "branches": {
+      "raw": {
+        "correct": 48,
+        "WC": 13,
+        "CW": 5
+      },
+      "selective": {
+        "correct": 47,
+        "WC": 19,
+        "CW": 12
+      },
+      "reset": {
+        "correct": 47,
+        "WC": 19,
+        "CW": 12
+      },
+      "random_drop": {
+        "correct": 47,
+        "WC": 19,
+        "CW": 12
+      },
+      "evidence_summary": {
+        "correct": 47,
+        "WC": 19,
+        "CW": 12
+      }
+    }
+  },
+  "K_nonempty": {
+    "n": 91,
+    "initial_correct": 42,
+    "branches": {
+      "raw": {
+        "correct": 42,
+        "WC": 0,
+        "CW": 0
+      },
+      "selective": {
+        "correct": 43,
+        "WC": 4,
+        "CW": 3
+      },
+      "reset": {
+        "correct": 43,
+        "WC": 5,
+        "CW": 4
+      },
+      "random_drop": {
+        "correct": 41,
+        "WC": 0,
+        "CW": 1
+      },
+      "evidence_summary": {
+        "correct": 45,
+        "WC": 5,
+        "CW": 2
+      }
+    }
+  },
+  "trigger": {
+    "n": 6,
+    "initial_correct": 2,
+    "branches": {
+      "raw": {
+        "correct": 2,
+        "WC": 0,
+        "CW": 0
+      },
+      "selective": {
+        "correct": 3,
+        "WC": 1,
+        "CW": 0
+      },
+      "reset": {
+        "correct": 3,
+        "WC": 1,
+        "CW": 0
+      },
+      "random_drop": {
+        "correct": 2,
+        "WC": 1,
+        "CW": 1
+      },
+      "evidence_summary": {
+        "correct": 3,
+        "WC": 1,
+        "CW": 0
+      }
+    }
+  },
+  "permission_audit": {
+    "unexpected_payload_keys": 0,
+    "noncanonical_observer_questions": 0
+  },
+  "new_facts_in_repair_claims_not_independently_audited": true,
+  "claimed_process_quality": "not established",
+  "initial_format_failed": {
+    "n": 12,
+    "initial_correct": 0,
+    "branches": {
+      "raw": {
+        "correct": 6,
+        "WC": 6,
+        "CW": 0
+      },
+      "selective": {
+        "correct": 6,
+        "WC": 6,
+        "CW": 0
+      },
+      "reset": {
+        "correct": 6,
+        "WC": 6,
+        "CW": 0
+      },
+      "random_drop": {
+        "correct": 6,
+        "WC": 6,
+        "CW": 0
+      },
+      "evidence_summary": {
+        "correct": 6,
+        "WC": 6,
+        "CW": 0
+      }
+    }
+  },
+  "initial_format_valid": {
+    "n": 188,
+    "initial_correct": 82,
+    "branches": {
+      "raw": {
+        "correct": 84,
+        "WC": 7,
+        "CW": 5
+      },
+      "selective": {
+        "correct": 84,
+        "WC": 17,
+        "CW": 15
+      },
+      "reset": {
+        "correct": 84,
+        "WC": 18,
+        "CW": 16
+      },
+      "random_drop": {
+        "correct": 82,
+        "WC": 13,
+        "CW": 13
+      },
+      "evidence_summary": {
+        "correct": 86,
+        "WC": 18,
+        "CW": 14
+      }
+    }
+  },
+  "public_test_count": {
+    "1": 73,
+    "2": 83,
+    "0": 44
+  },
+  "planned_public_tests": 239,
+  "observed_distinct_public_tests": 153,
+  "cases_with_missing_test_observation": 84
+}

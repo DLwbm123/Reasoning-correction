@@ -16,8 +16,11 @@ questions. Its two completed cases / 33 calls and raw failures are preserved; no
 opened and it is not scientific effectiveness evidence. V2 uses program-owned neutral questions and
 separates valid answer letters from explanation schema failures. It shares the original sample,
 weights, overall time deadline and storage budget, without overwriting v1.
-V2 model generation is confirmed: first complete five-branch trace passed interface checks;
-two of 200 cases had completed at the launch-verification snapshot. Medical evaluation is pending.
+V2 completed 200/200 cases and offline evaluation successfully. Initial accuracy was 41%;
+Raw/Selective/Reset reached 45%, random-drop 44%, evidence-summary 46%. No additional Selective
+benefit was established. Graph closure changed K in zero cases and K was empty in 109/200.
+See the [full result and limitations](runs/e0_20261107_v2/REPORT_ZH.md).
+Twelve initial-format failures materially confound apparent improvement; primary results are preserved.
 Runtime progress and results are under the experiment's NAS outputs, not implied by unit tests.
 
 Not implemented/run: learned gate, expert oracle observations, crop tools, independent expert process audit,

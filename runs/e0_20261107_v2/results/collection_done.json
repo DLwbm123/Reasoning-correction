@@ -1,0 +1,8 @@
+{
+  "status": "completed",
+  "finished_epoch": 1794033908.2649298,
+  "completed_cases": 200,
+  "planned_cases": 200,
+  "calls": 1462,
+  "inference_seconds": 4112.954691410065
+}
