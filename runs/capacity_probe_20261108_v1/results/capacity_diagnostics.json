@@ -1,0 +1,569 @@
+{
+  "status": "completed",
+  "finished_epoch": 1794074992.4238958,
+  "seconds": 10.025073766708374,
+  "new_heads_trained": 6,
+  "frozen_controls": 6,
+  "models": [
+    {
+      "config": "ce",
+      "seed": 2026110711,
+      "linear_parameters": 21508,
+      "epochs": 20,
+      "best_epoch": 5,
+      "temperature": 1.5,
+      "linear_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 0.9837319254875183,
+          "temperature_nll": 0.9058295488357544,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.36363636363636365
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0183758735656738,
+          "temperature_nll": 0.9351999759674072,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.5065359477124183
+        }
+      },
+      "linear_policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.01,
+          "acceptance_coverage": 0.015
+        }
+      },
+      "frozen_mlp_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.198452115058899,
+          "temperature_nll": 0.9593260884284973,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.45580808080808083
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0634922981262207,
+          "temperature_nll": 0.9189105033874512,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.7124183006535948
+        }
+      },
+      "frozen_mlp_policy": {
+        "lambda": 2,
+        "delta": 0.1,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.03,
+          "acceptance_coverage": 0.08
+        }
+      },
+      "frozen_mlp_calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 95,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.475,
+        "delta_accuracy": 0.01,
+        "WC": 2,
+        "CW": 0,
+        "repair_rate": 0.018691588785046728,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.03,
+        "acceptance_coverage": 0.08
+      }
+    },
+    {
+      "config": "ce",
+      "seed": 2026110712,
+      "linear_parameters": 21508,
+      "epochs": 17,
+      "best_epoch": 2,
+      "temperature": 1.5,
+      "linear_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 0.9889261722564697,
+          "temperature_nll": 0.9785462021827698,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.6957070707070707
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0238291025161743,
+          "temperature_nll": 1.0047255754470825,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.5228758169934641
+        }
+      },
+      "linear_policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 93,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.465,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "frozen_mlp_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0620702505111694,
+          "temperature_nll": 0.921420156955719,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.7449494949494949
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0260437726974487,
+          "temperature_nll": 0.8878450989723206,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.6274509803921569
+        }
+      },
+      "frozen_mlp_policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 97,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.485,
+          "delta_accuracy": 0.02,
+          "WC": 4,
+          "CW": 0,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.035,
+          "acceptance_coverage": 0.045
+        }
+      },
+      "frozen_mlp_calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 97,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.485,
+        "delta_accuracy": 0.02,
+        "WC": 4,
+        "CW": 0,
+        "repair_rate": 0.037383177570093455,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.035,
+        "acceptance_coverage": 0.045
+      }
+    },
+    {
+      "config": "ce",
+      "seed": 2026110713,
+      "linear_parameters": 21508,
+      "epochs": 18,
+      "best_epoch": 3,
+      "temperature": 1.5,
+      "linear_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0082107782363892,
+          "temperature_nll": 0.9533371925354004,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.43308080808080807
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0047328472137451,
+          "temperature_nll": 0.959948718547821,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.6339869281045751
+        }
+      },
+      "linear_policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 97,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.485,
+          "delta_accuracy": 0.02,
+          "WC": 4,
+          "CW": 0,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.03,
+          "acceptance_coverage": 0.035
+        }
+      },
+      "frozen_mlp_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.111189603805542,
+          "temperature_nll": 0.9542399644851685,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.4898989898989899
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0800758600234985,
+          "temperature_nll": 0.9379653930664062,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.46078431372549017
+        }
+      },
+      "frozen_mlp_policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.015
+        }
+      },
+      "frozen_mlp_calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 94,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.47,
+        "delta_accuracy": 0.005,
+        "WC": 1,
+        "CW": 0,
+        "repair_rate": 0.009345794392523364,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.005,
+        "acceptance_coverage": 0.015
+      }
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110711,
+      "linear_parameters": 21508,
+      "epochs": 20,
+      "best_epoch": 5,
+      "temperature": 1.5,
+      "linear_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0124353170394897,
+          "temperature_nll": 0.9249255657196045,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.3573232323232323
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0196152925491333,
+          "temperature_nll": 0.9367403388023376,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.5065359477124183
+        }
+      },
+      "linear_policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.02,
+          "acceptance_coverage": 0.025
+        }
+      },
+      "frozen_mlp_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.2139534950256348,
+          "temperature_nll": 0.963874101638794,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.44065656565656564
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.048734188079834,
+          "temperature_nll": 0.9153273701667786,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.6993464052287581
+        }
+      },
+      "frozen_mlp_policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.065
+        }
+      },
+      "frozen_mlp_calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 96,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.48,
+        "delta_accuracy": 0.015,
+        "WC": 3,
+        "CW": 0,
+        "repair_rate": 0.028037383177570093,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.04,
+        "acceptance_coverage": 0.065
+      }
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110712,
+      "linear_parameters": 21508,
+      "epochs": 17,
+      "best_epoch": 2,
+      "temperature": 1.5,
+      "linear_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0023151636123657,
+          "temperature_nll": 0.9888958930969238,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.6742424242424242
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0391067266464233,
+          "temperature_nll": 1.0159565210342407,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.48366013071895425
+        }
+      },
+      "linear_policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 92,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.46,
+          "delta_accuracy": -0.005,
+          "WC": 0,
+          "CW": 1,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.005
+        }
+      },
+      "frozen_mlp_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.082716941833496,
+          "temperature_nll": 0.9296554327011108,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.7247474747474747
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.024954915046692,
+          "temperature_nll": 0.8845915794372559,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.6470588235294118
+        }
+      },
+      "frozen_mlp_policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 4,
+          "CW": 1,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.055
+        }
+      },
+      "frozen_mlp_calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 96,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.48,
+        "delta_accuracy": 0.015,
+        "WC": 4,
+        "CW": 1,
+        "repair_rate": 0.037383177570093455,
+        "harm_given_initial_correct": 0.010752688172043012,
+        "edit_coverage": 0.04,
+        "acceptance_coverage": 0.055
+      }
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110713,
+      "linear_parameters": 21508,
+      "epochs": 18,
+      "best_epoch": 3,
+      "temperature": 1.5,
+      "linear_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0166361331939697,
+          "temperature_nll": 0.9613862633705139,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.4318181818181818
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0170215368270874,
+          "temperature_nll": 0.9708366990089417,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.5424836601307189
+        }
+      },
+      "linear_policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.025,
+          "acceptance_coverage": 0.035
+        }
+      },
+      "frozen_mlp_diagnostics": {
+        "dev": {
+          "candidate_rows": 400,
+          "raw_nll": 1.1189544200897217,
+          "temperature_nll": 0.9532644748687744,
+          "transition_rows": 57,
+          "WC_vs_CW_utility_auc": 0.5580808080808081
+        },
+        "calibration": {
+          "candidate_rows": 400,
+          "raw_nll": 1.0838937759399414,
+          "temperature_nll": 0.9366206526756287,
+          "transition_rows": 35,
+          "WC_vs_CW_utility_auc": 0.4477124183006536
+        }
+      },
+      "frozen_mlp_policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.02
+        }
+      },
+      "frozen_mlp_calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 94,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.47,
+        "delta_accuracy": 0.005,
+        "WC": 1,
+        "CW": 0,
+        "repair_rate": 0.009345794392523364,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.005,
+        "acceptance_coverage": 0.02
+      }
+    }
+  ],
+  "train_articles": 1000,
+  "dev_articles": 200,
+  "calibration_articles": 200,
+  "diagnostic_eval_rows_used": 0,
+  "new_generator_or_feature_calls": 0,
+  "device": "cpu",
+  "threads": 4,
+  "scope": "Repeated-use development/capacity diagnosis, not independent efficacy validation"
+}

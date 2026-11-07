@@ -1,0 +1,27 @@
+{
+  "ce": {
+    "linear": {
+      "raw_nll": 0.9936229586601257,
+      "temperature_nll": 0.9459043145179749,
+      "WC_vs_CW_utility_auc": 0.49747474747474746
+    },
+    "frozen_mlp": {
+      "raw_nll": 1.1239039897918701,
+      "temperature_nll": 0.9449954032897949,
+      "WC_vs_CW_utility_auc": 0.5635521885521886
+    }
+  },
+  "ce_rank": {
+    "linear": {
+      "raw_nll": 1.0104622046152751,
+      "temperature_nll": 0.9584025740623474,
+      "WC_vs_CW_utility_auc": 0.4877946127946128
+    },
+    "frozen_mlp": {
+      "raw_nll": 1.138541618982951,
+      "temperature_nll": 0.9489313364028931,
+      "WC_vs_CW_utility_auc": 0.5744949494949495
+    }
+  },
+  "interpretation": "Repeated-use development diagnosis only; no stable improvement; capacity branch closed. No independent diagnostic evaluation."
+}

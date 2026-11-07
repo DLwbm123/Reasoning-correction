@@ -1,0 +1,11 @@
+{
+  "git_commit": "28213df15a4d24057863010151fede77725cae6c",
+  "device": "cpu",
+  "code_files": [
+    "capacity_probe.py",
+    "action_gate.py",
+    "train_gate_baseline.py",
+    "diagnose_gate_scores.py",
+    "gate_supervise.py"
+  ]
+}

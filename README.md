@@ -34,8 +34,11 @@ candidate evidence-audit module. The [G4 result](runs/evidence_audit_20261108_v1
 completed all 64 calls but failed its frozen engineering gates (24/64 valid requests, 22/64 effective
 paired agreements). Full audit expansion and associated training stopped. Wrapper-only offline
 normalization still failed; no clinical correctness or permutation instability is inferred.
-The next [CPU capacity diagnosis](runs/capacity_probe_20261108_v1/PREREG.md) trains smaller four-class
-heads on existing train/dev/cal caches, excluding old diagnostic rows and making no new model calls.
+The [CPU capacity diagnosis](runs/capacity_probe_20261108_v1/REPORT_ZH.md) also completed:
+six smaller four-class heads did not improve development utility ranking versus paired frozen MLPs.
+No old diagnostic rows were used, and no new generator or feature calls were made. This capacity
+branch is closed. The [next representation scope](NEXT_EVIDENCE_SCORE_SCOPE.md) is not implemented
+or launched; it requires its own frozen protocol and execution checks.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
