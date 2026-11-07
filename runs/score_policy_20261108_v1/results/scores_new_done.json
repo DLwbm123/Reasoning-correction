@@ -1,0 +1,12 @@
+{
+  "phase": "new",
+  "cases": 200,
+  "forward_calls": 400,
+  "seconds": 71.67855739593506,
+  "generation_calls": 0,
+  "input_tokens": 272552,
+  "visual_tokens": 194758,
+  "peak_allocated_bytes": 16999880192,
+  "peak_reserved_bytes": 18327011328,
+  "frozen_parameters": true
+}

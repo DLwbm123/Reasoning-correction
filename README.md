@@ -39,10 +39,12 @@ six smaller four-class heads did not improve development utility ranking versus 
 No old diagnostic rows were used, and no new generator or feature calls were made. This capacity
 branch is closed. The [G6 result](runs/evidence_score_20261108_v1/REPORT_ZH.md) is complete: hybrid CE/rank gates
 averaged 47.50/47.67% versus 48% KEEP on 200 new articles, with no stable benefit over frozen heads.
-All G6 jobs ended. The [G7 protocol](runs/score_policy_20261108_v1/PREREG.md) tests direct decision
-learning from the same ten support scores, with both frozen G2/G6 heads and fixed-margin controls;
-old diagnostic labels are excluded from selection. Its [launch receipt](runs/score_policy_20261108_v1/LAUNCH.json)
-records a running job on PRO5000 GPU 6, not completed diagnostic efficacy.
+All G6 jobs ended. The [G7 result](runs/score_policy_20261108_v1/REPORT_ZH.md) is also complete:
+direct score heads averaged 49.67/49.83% versus 49.5% KEEP, without stable gains; all six exceeded
+the old empirical calibration harm limit on new articles. The fixed no-evidence margin control
+reached 51.5% with 6.06% harm among initially correct cases, not a clinical safety result.
+The [next scope](NEXT_RISK_CALIBRATION_SCOPE.md) examines independent finite-sample risk calibration
+with frozen predictors; it is not an implemented or launched experiment.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

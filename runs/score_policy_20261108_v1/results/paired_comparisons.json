@@ -1,0 +1,376 @@
+{
+  "families": {
+    "score_ce": {
+      "accuracy_each_seed": [
+        0.5,
+        0.495,
+        0.495
+      ],
+      "mean_accuracy": 0.49666666666666665,
+      "WC_each_seed": [
+        7,
+        5,
+        5
+      ],
+      "CW_each_seed": [
+        6,
+        5,
+        5
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "frozen_ce": {
+      "accuracy_each_seed": [
+        0.505,
+        0.495,
+        0.49
+      ],
+      "mean_accuracy": 0.49666666666666665,
+      "WC_each_seed": [
+        4,
+        3,
+        0
+      ],
+      "CW_each_seed": [
+        2,
+        3,
+        1
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "hybrid_ce": {
+      "accuracy_each_seed": [
+        0.505,
+        0.495,
+        0.495
+      ],
+      "mean_accuracy": 0.49833333333333335,
+      "WC_each_seed": [
+        5,
+        2,
+        0
+      ],
+      "CW_each_seed": [
+        3,
+        2,
+        0
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "score_ce_rank": {
+      "accuracy_each_seed": [
+        0.495,
+        0.5,
+        0.5
+      ],
+      "mean_accuracy": 0.49833333333333335,
+      "WC_each_seed": [
+        5,
+        5,
+        5
+      ],
+      "CW_each_seed": [
+        5,
+        4,
+        4
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "frozen_ce_rank": {
+      "accuracy_each_seed": [
+        0.51,
+        0.49,
+        0.495
+      ],
+      "mean_accuracy": 0.49833333333333335,
+      "WC_each_seed": [
+        5,
+        4,
+        1
+      ],
+      "CW_each_seed": [
+        2,
+        5,
+        1
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "hybrid_ce_rank": {
+      "accuracy_each_seed": [
+        0.495,
+        0.5,
+        0.495
+      ],
+      "mean_accuracy": 0.49666666666666665,
+      "WC_each_seed": [
+        3,
+        3,
+        2
+      ],
+      "CW_each_seed": [
+        3,
+        2,
+        2
+      ],
+      "same_200_articles_shared_across_seeds": true
+    }
+  },
+  "paired_comparisons": [
+    {
+      "config": "ce",
+      "seed": 2026110711,
+      "control": "frozen",
+      "delta_vs_control": -0.005,
+      "paired_95ci": [
+        -0.04,
+        0.03
+      ],
+      "same_correctness_outcome_cases": 189
+    },
+    {
+      "config": "ce",
+      "seed": 2026110712,
+      "control": "frozen",
+      "delta_vs_control": 0.0,
+      "paired_95ci": [
+        -0.035,
+        0.035
+      ],
+      "same_correctness_outcome_cases": 188
+    },
+    {
+      "config": "ce",
+      "seed": 2026110713,
+      "control": "frozen",
+      "delta_vs_control": 0.005,
+      "paired_95ci": [
+        -0.025,
+        0.035
+      ],
+      "same_correctness_outcome_cases": 191
+    },
+    {
+      "config": "ce",
+      "seed": "mean_of_three",
+      "control": "frozen",
+      "delta": -2.7755575615628914e-19,
+      "paired_95ci": [
+        -0.03,
+        0.03
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce",
+      "seed": "mean_of_three",
+      "control": "keep",
+      "delta": 0.0016666666666666666,
+      "paired_95ci": [
+        -0.03,
+        0.03166666666666666
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce",
+      "seed": 2026110711,
+      "control": "hybrid",
+      "delta_vs_control": -0.005,
+      "paired_95ci": [
+        -0.04,
+        0.03
+      ],
+      "same_correctness_outcome_cases": 187
+    },
+    {
+      "config": "ce",
+      "seed": 2026110712,
+      "control": "hybrid",
+      "delta_vs_control": 0.0,
+      "paired_95ci": [
+        -0.03,
+        0.03
+      ],
+      "same_correctness_outcome_cases": 192
+    },
+    {
+      "config": "ce",
+      "seed": 2026110713,
+      "control": "hybrid",
+      "delta_vs_control": 0.0,
+      "paired_95ci": [
+        -0.03,
+        0.03
+      ],
+      "same_correctness_outcome_cases": 190
+    },
+    {
+      "config": "ce",
+      "seed": "mean_of_three",
+      "control": "hybrid",
+      "delta": -0.0016666666666666672,
+      "paired_95ci": [
+        -0.03,
+        0.025
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110711,
+      "control": "frozen",
+      "delta_vs_control": -0.015,
+      "paired_95ci": [
+        -0.045,
+        0.02
+      ],
+      "same_correctness_outcome_cases": 189
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110712,
+      "control": "frozen",
+      "delta_vs_control": 0.01,
+      "paired_95ci": [
+        -0.025,
+        0.045
+      ],
+      "same_correctness_outcome_cases": 188
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110713,
+      "control": "frozen",
+      "delta_vs_control": 0.005,
+      "paired_95ci": [
+        -0.02,
+        0.03
+      ],
+      "same_correctness_outcome_cases": 193
+    },
+    {
+      "config": "ce_rank",
+      "seed": "mean_of_three",
+      "control": "frozen",
+      "delta": 2.7755575615628914e-19,
+      "paired_95ci": [
+        -0.028333333333333332,
+        0.028333333333333332
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce_rank",
+      "seed": "mean_of_three",
+      "control": "keep",
+      "delta": 0.0033333333333333335,
+      "paired_95ci": [
+        -0.026666666666666665,
+        0.03333333333333333
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110711,
+      "control": "hybrid",
+      "delta_vs_control": 0.0,
+      "paired_95ci": [
+        -0.035,
+        0.035
+      ],
+      "same_correctness_outcome_cases": 188
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110712,
+      "control": "hybrid",
+      "delta_vs_control": 0.0,
+      "paired_95ci": [
+        -0.03,
+        0.03
+      ],
+      "same_correctness_outcome_cases": 192
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110713,
+      "control": "hybrid",
+      "delta_vs_control": 0.005,
+      "paired_95ci": [
+        -0.025,
+        0.035
+      ],
+      "same_correctness_outcome_cases": 191
+    },
+    {
+      "config": "ce_rank",
+      "seed": "mean_of_three",
+      "control": "hybrid",
+      "delta": 0.0016666666666666666,
+      "paired_95ci": [
+        -0.026666666666666665,
+        0.028333333333333335
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    }
+  ],
+  "scope": "Full 200 articles, all seeds; no refitting/selection on new diagnostic labels",
+  "fixed_margin_comparisons": [
+    {
+      "method": "without_evidence",
+      "control": "keep",
+      "delta": 0.02,
+      "paired_95ci": [
+        -0.02,
+        0.06
+      ]
+    },
+    {
+      "method": "mean_ce",
+      "control": "without_evidence",
+      "delta": -0.018333333333333333,
+      "paired_95ci": [
+        -0.04,
+        -5.551115123125783e-19
+      ]
+    },
+    {
+      "method": "mean_ce_rank",
+      "control": "without_evidence",
+      "delta": -0.016666666666666666,
+      "paired_95ci": [
+        -0.045,
+        0.006666666666666666
+      ]
+    },
+    {
+      "method": "with_evidence",
+      "control": "keep",
+      "delta": 0.01,
+      "paired_95ci": [
+        -0.035,
+        0.05
+      ]
+    },
+    {
+      "method": "mean_ce",
+      "control": "with_evidence",
+      "delta": -0.008333333333333335,
+      "paired_95ci": [
+        -0.03333333333333333,
+        0.015
+      ]
+    },
+    {
+      "method": "mean_ce_rank",
+      "control": "with_evidence",
+      "delta": -0.006666666666666667,
+      "paired_95ci": [
+        -0.035,
+        0.02
+      ]
+    }
+  ],
+  "selective_reset_same_answer_cases": 198
+}

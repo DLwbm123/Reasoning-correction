@@ -1,0 +1,38 @@
+{
+  "scope": "Post-completion descriptive old train/dev/cal only; no new fit or policy selection",
+  "splits": {
+    "train": {
+      "transition_rows_with_two_valid_answers": 179,
+      "WC_rows": 93,
+      "CW_rows": 86,
+      "WC_vs_CW_auc": {
+        "without_evidence": 0.6476619154788698,
+        "with_evidence": 0.532258064516129,
+        "margin_shift": 0.4221055263815954
+      },
+      "two_candidates_per_article_are_correlated": true
+    },
+    "dev": {
+      "transition_rows_with_two_valid_answers": 57,
+      "WC_rows": 24,
+      "CW_rows": 33,
+      "WC_vs_CW_auc": {
+        "without_evidence": 0.7455808080808081,
+        "with_evidence": 0.5732323232323232,
+        "margin_shift": 0.32575757575757575
+      },
+      "two_candidates_per_article_are_correlated": true
+    },
+    "calibration": {
+      "transition_rows_with_two_valid_answers": 35,
+      "WC_rows": 17,
+      "CW_rows": 18,
+      "WC_vs_CW_auc": {
+        "without_evidence": 0.7140522875816994,
+        "with_evidence": 0.7156862745098039,
+        "margin_shift": 0.5555555555555556
+      },
+      "two_candidates_per_article_are_correlated": true
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"""Fixed G6 paired results plus descriptive old train/dev/cal support-score diagnosis."""
+"""Fixed G6/G7 paired results and descriptive old train/dev/cal score diagnosis."""
 from collections import defaultdict
 import json
 import os
@@ -7,6 +7,7 @@ import statistics
 
 from analyze_action_gate import interval
 from diagnose_gate_scores import auc
+from evidence_score import choose_by_support
 
 
 def main():
@@ -32,21 +33,46 @@ def main():
             "WC_each_seed": [x["metrics"]["WC"] for x in items],
             "CW_each_seed": [x["metrics"]["CW"] for x in items],
             "same_200_articles_shared_across_seeds": True}
+    primary = os.environ.get("ANALYSIS_METHOD", "hybrid")
+    controls = ["frozen"] if primary == "hybrid" else ["frozen", "hybrid"]
     for config in ["ce", "ce_rank"]:
+      for control in controls:
         deltas, keep_deltas = [], []
         for seed in [2026110711, 2026110712, 2026110713]:
-            a, b = cases["hybrid_"+config+"_"+str(seed)], cases["frozen_"+config+"_"+str(seed)]
+            a, b = cases[primary+"_"+config+"_"+str(seed)], cases[control+"_"+config+"_"+str(seed)]
             assert all(x["c0"] == y["c0"] for x, y in zip(a, b))
             delta = [x["ca"]-y["ca"] for x, y in zip(a, b)]
             deltas.append(delta); keep_deltas.append([x["ca"]-x["c0"] for x in a])
-            summary["paired_comparisons"].append({"config": config, "seed": seed,
-                "delta_vs_frozen": sum(delta)/200, "paired_95ci": interval(delta),
+            summary["paired_comparisons"].append({"config": config, "seed": seed, "control": control,
+                "delta_vs_control": sum(delta)/200, "paired_95ci": interval(delta),
                 "same_correctness_outcome_cases": sum(x["ca"] == y["ca"] for x, y in zip(a, b))})
-        for control, values in [("frozen", deltas), ("keep", keep_deltas)]:
+        for label, values in [(control, deltas), ("keep", keep_deltas)]:
+            if label == "keep" and control != controls[0]: continue
             delta = [sum(v)/3 for v in zip(*values)]
             summary["paired_comparisons"].append({"config": config, "seed": "mean_of_three",
-                "control": control, "delta": sum(delta)/200, "paired_95ci": interval(delta),
+                "control": label, "delta": sum(delta)/200, "paired_95ci": interval(delta),
                 "resampling_unit": "article with all seeds paired; not 600 independent cases"})
+    if primary == "score":
+        rows = [json.loads(s) for s in (root/"inputs/supervision.private.jsonl").read_text().splitlines()]
+        grouped = defaultdict(list)
+        for r in rows: grouped[r["case_id"]].append(r)
+        new_scores = {r["case_id"]: r for r in map(json.loads, (out/"scores_new.jsonl").read_text().splitlines())}
+        summary["fixed_margin_comparisons"] = []
+        for context in ["without_evidence", "with_evidence"]:
+            fixed = []
+            for cid in paired["case_order"]:
+                pair = grouped[cid]; index = choose_by_support(pair, new_scores[cid][context]["logp"])
+                fixed.append(pair[index]["ca"] if index is not None else pair[0]["c0"])
+            assert sum(fixed) == result["simple_baselines"]["fixed_margin_"+context]["final_correct"]
+            base = cases[primary+"_ce_2026110711"]
+            delta = [ca-r["c0"] for ca, r in zip(fixed, base)]
+            summary["fixed_margin_comparisons"].append({"method": context, "control": "keep",
+                "delta": sum(delta)/200, "paired_95ci": interval(delta)})
+            for config in ["ce", "ce_rank"]:
+                delta = [sum(cases[primary+"_"+config+"_"+str(seed)][i]["ca"] for seed in
+                    [2026110711,2026110712,2026110713])/3-fixed[i] for i in range(200)]
+                summary["fixed_margin_comparisons"].append({"method": "mean_"+config, "control": context,
+                    "delta": sum(delta)/200, "paired_95ci": interval(delta)})
     manifest = [json.loads(s) for s in (root/"inputs/manifest.jsonl").read_text().splitlines()]
     summary["selective_reset_same_answer_cases"] = sum(
         (v := json.loads((out/"cases"/(r["case_id"]+".json")).read_text()))
@@ -56,7 +82,8 @@ def main():
 
     # Old training-source labels only; this diagnosis does not consult new diagnostic outcomes.
     sc = {x["case_id"]: x for x in map(json.loads, (out/"scores_old.jsonl").read_text().splitlines())}
-    supervision = [x for x in map(json.loads, (root/"cache/shared/inputs/supervision.private.jsonl").read_text().splitlines())
+    old_root = Path(os.environ.get("OLD_CACHE_ROOT", str(root/"cache/shared")))
+    supervision = [x for x in map(json.loads, (old_root/"inputs/supervision.private.jsonl").read_text().splitlines())
                    if x["split"] in {"train", "dev", "calibration"}]
     diagnostic = {"scope": "Post-completion descriptive old train/dev/cal only; no new fit or policy selection", "splits": {}}
     for split in ["train", "dev", "calibration"]:

@@ -1,0 +1,479 @@
+{
+  "status": "locked",
+  "locked_epoch": 1794080556.0324256,
+  "seconds": 55.53102970123291,
+  "models": [
+    {
+      "name": "score_ce_2026110711",
+      "family": "score_ce",
+      "seed": 2026110711,
+      "checkpoint": "score_ce_2026110711.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 4,
+          "CW": 1,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.065,
+          "acceptance_coverage": 0.07
+        }
+      },
+      "best_epoch": 91,
+      "epochs": 100,
+      "temperature": 1,
+      "best_dev_ce": 0.9200388193130493,
+      "trainable_parameters": 44
+    },
+    {
+      "name": "frozen_ce_2026110711",
+      "family": "frozen_ce",
+      "seed": 2026110711,
+      "shared_checkpoint": "ce_2026110711.pt",
+      "policy": {
+        "lambda": 2,
+        "delta": 0.1,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.03,
+          "acceptance_coverage": 0.08
+        }
+      }
+    },
+    {
+      "name": "hybrid_ce_2026110711",
+      "family": "hybrid_ce",
+      "seed": 2026110711,
+      "shared_hybrid_checkpoint": "hybrid_ce_2026110711.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 3,
+          "CW": 1,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.055,
+          "acceptance_coverage": 0.07
+        }
+      }
+    },
+    {
+      "name": "score_ce_2026110712",
+      "family": "score_ce",
+      "seed": 2026110712,
+      "checkpoint": "score_ce_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 97,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.485,
+          "delta_accuracy": 0.02,
+          "WC": 4,
+          "CW": 0,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.06,
+          "acceptance_coverage": 0.06
+        }
+      },
+      "best_epoch": 99,
+      "epochs": 100,
+      "temperature": 1,
+      "best_dev_ce": 0.9209048748016357,
+      "trainable_parameters": 44
+    },
+    {
+      "name": "frozen_ce_2026110712",
+      "family": "frozen_ce",
+      "seed": 2026110712,
+      "shared_checkpoint": "ce_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 97,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.485,
+          "delta_accuracy": 0.02,
+          "WC": 4,
+          "CW": 0,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.035,
+          "acceptance_coverage": 0.045
+        }
+      }
+    },
+    {
+      "name": "hybrid_ce_2026110712",
+      "family": "hybrid_ce",
+      "seed": 2026110712,
+      "shared_hybrid_checkpoint": "hybrid_ce_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.015,
+          "acceptance_coverage": 0.025
+        }
+      }
+    },
+    {
+      "name": "score_ce_2026110713",
+      "family": "score_ce",
+      "seed": 2026110713,
+      "checkpoint": "score_ce_2026110713.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.055,
+          "acceptance_coverage": 0.055
+        }
+      },
+      "best_epoch": 98,
+      "epochs": 100,
+      "temperature": 1,
+      "best_dev_ce": 0.9192145466804504,
+      "trainable_parameters": 44
+    },
+    {
+      "name": "frozen_ce_2026110713",
+      "family": "frozen_ce",
+      "seed": 2026110713,
+      "shared_checkpoint": "ce_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.015
+        }
+      }
+    },
+    {
+      "name": "hybrid_ce_2026110713",
+      "family": "hybrid_ce",
+      "seed": 2026110713,
+      "shared_hybrid_checkpoint": "hybrid_ce_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 1,
+        "keep_only": true,
+        "reason": "No grid point met the empirical development harm constraint"
+      }
+    },
+    {
+      "name": "score_ce_rank_2026110711",
+      "family": "score_ce_rank",
+      "seed": 2026110711,
+      "checkpoint": "score_ce_rank_2026110711.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.045,
+          "acceptance_coverage": 0.055
+        }
+      },
+      "best_epoch": 91,
+      "epochs": 100,
+      "temperature": 1,
+      "best_dev_ce": 0.919705331325531,
+      "trainable_parameters": 44
+    },
+    {
+      "name": "frozen_ce_rank_2026110711",
+      "family": "frozen_ce_rank",
+      "seed": 2026110711,
+      "shared_checkpoint": "ce_rank_2026110711.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.065
+        }
+      }
+    },
+    {
+      "name": "hybrid_ce_rank_2026110711",
+      "family": "hybrid_ce_rank",
+      "seed": 2026110711,
+      "shared_hybrid_checkpoint": "hybrid_ce_rank_2026110711.pt",
+      "policy": {
+        "lambda": 2,
+        "delta": 0.1,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.095
+        }
+      }
+    },
+    {
+      "name": "score_ce_rank_2026110712",
+      "family": "score_ce_rank",
+      "seed": 2026110712,
+      "checkpoint": "score_ce_rank_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.045
+        }
+      },
+      "best_epoch": 99,
+      "epochs": 100,
+      "temperature": 1,
+      "best_dev_ce": 0.9208224415779114,
+      "trainable_parameters": 44
+    },
+    {
+      "name": "frozen_ce_rank_2026110712",
+      "family": "frozen_ce_rank",
+      "seed": 2026110712,
+      "shared_checkpoint": "ce_rank_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 4,
+          "CW": 1,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.055
+        }
+      }
+    },
+    {
+      "name": "hybrid_ce_rank_2026110712",
+      "family": "hybrid_ce_rank",
+      "seed": 2026110712,
+      "shared_hybrid_checkpoint": "hybrid_ce_rank_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.025,
+          "acceptance_coverage": 0.04
+        }
+      }
+    },
+    {
+      "name": "score_ce_rank_2026110713",
+      "family": "score_ce_rank",
+      "seed": 2026110713,
+      "checkpoint": "score_ce_rank_2026110713.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.045
+        }
+      },
+      "best_epoch": 98,
+      "epochs": 100,
+      "temperature": 1,
+      "best_dev_ce": 0.9186707139015198,
+      "trainable_parameters": 44
+    },
+    {
+      "name": "frozen_ce_rank_2026110713",
+      "family": "frozen_ce_rank",
+      "seed": 2026110713,
+      "shared_checkpoint": "ce_rank_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.02
+        }
+      }
+    },
+    {
+      "name": "hybrid_ce_rank_2026110713",
+      "family": "hybrid_ce_rank",
+      "seed": 2026110713,
+      "shared_hybrid_checkpoint": "hybrid_ce_rank_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 93,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.465,
+          "delta_accuracy": 0.0,
+          "WC": 1,
+          "CW": 1,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.01,
+          "acceptance_coverage": 0.025
+        }
+      }
+    }
+  ],
+  "old_diagnostic_rows_used": 0,
+  "new_diagnostic_labels_read": false,
+  "old_candidate_rows": 2800,
+  "old_cases": 1400,
+  "input_dimension": 10
+}
