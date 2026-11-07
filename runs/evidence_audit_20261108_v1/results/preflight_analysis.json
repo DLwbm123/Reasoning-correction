@@ -1,0 +1,64 @@
+{
+  "frozen_preflight": {
+    "status": "gate_failed",
+    "passed": false,
+    "planned_cases": 32,
+    "planned_requests": 64,
+    "completed_requests": 64,
+    "schema_source_valid_requests": 24,
+    "schema_source_valid_rate": 0.375,
+    "eligible_agreements": 22,
+    "planned_candidate_pairs": 64,
+    "eligible_agreement_rate": 0.34375,
+    "canonical_accepted_candidates": 2,
+    "canonical_rejected_candidates": 20,
+    "expert_adjudications": 0,
+    "interpretation": "engineering/nondegeneracy only; not semantic audit accuracy or clinical efficacy",
+    "finished_epoch": 1794073842.9056938,
+    "actual_generation_calls": 64,
+    "format_retries": 0,
+    "generation_seconds": 497.5040600299835,
+    "input_tokens": 53584,
+    "output_tokens": 18915
+  },
+  "request_error_counts_nonexclusive": {
+    "missing_audits": 33,
+    "invented_citation": 6,
+    "support_without_adequate_source": 7
+  },
+  "complete_json_root_types_after_code_fence_removal": {
+    "list": 33,
+    "dict": 31
+  },
+  "complete_json_readable_requests": 64,
+  "both_permutations_valid_candidate_pairs": 22,
+  "agreements_within_valid_pairs": 22,
+  "actual_forwards": 18915,
+  "visual_tokens": 0,
+  "output_token_cap_hits": 0,
+  "maximum_output_tokens": 393,
+  "peak_allocated_bytes": 17099766784,
+  "peak_reserved_bytes": 18033410048,
+  "posthoc_wrapper_only_diagnostic": {
+    "status": "gate_failed",
+    "passed": false,
+    "planned_cases": 32,
+    "planned_requests": 64,
+    "completed_requests": 64,
+    "schema_source_valid_requests": 49,
+    "schema_source_valid_rate": 0.765625,
+    "eligible_agreements": 48,
+    "planned_candidate_pairs": 64,
+    "eligible_agreement_rate": 0.75,
+    "canonical_accepted_candidates": 2,
+    "canonical_rejected_candidates": 46,
+    "expert_adjudications": 0,
+    "interpretation": "engineering/nondegeneracy only; not semantic audit accuracy or clinical efficacy"
+  },
+  "posthoc_request_error_counts_nonexclusive": {
+    "support_without_adequate_source": 15,
+    "invented_citation": 8
+  },
+  "posthoc_scope": "No model calls, refitting, gate admission or prompt change. Diagnostic only; frozen failed result and full-extension stop remain binding.",
+  "new_expert_adjudications": 0
+}

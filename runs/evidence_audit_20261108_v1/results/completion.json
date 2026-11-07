@@ -1,0 +1,16 @@
+{
+  "status": "completed_preflight_failed",
+  "exit_code": 0,
+  "full_extension_run": false,
+  "started_epoch": 1794073176.383948,
+  "finished_epoch": 1794073845.6163356,
+  "elapsed_seconds": 669.2323875427246,
+  "allocated_bytes_final_run_root": 581632,
+  "allocated_bytes_neutral_entry": 17240064,
+  "allocated_bytes_total": 17821696,
+  "source_outputs_retrieved": true,
+  "new_diagnostic_collection_run": false,
+  "new_gate_training_run": false,
+  "model_generation_calls": 64,
+  "expert_adjudications": 0
+}

@@ -48,15 +48,17 @@ def allocated(path):
 def capture():
     ids = ",".join(map(str, [child.pid, os.getpid(), os.getppid()]))
     ps = subprocess.check_output(["ps", "-p", ids, "-o", "pid,ppid,args="], text=True)
-    gpu = subprocess.check_output(["nvidia-smi", "--query-compute-apps=pid,process_name,used_gpu_memory",
-                                   "--format=csv,noheader"], text=True)
+    cpu_only = os.environ.get("CPU_ONLY") == "1"
+    gpu = "" if cpu_only else subprocess.check_output([
+        "nvidia-smi", "--query-compute-apps=pid,process_name,used_gpu_memory",
+        "--format=csv,noheader"], text=True)
     own = [line for line in gpu.splitlines() if line.split(",")[0].strip() == str(child.pid)]
     if any(word in (ps+"\n"+"\n".join(own)).lower()
            for word in ["wangbomin", "reasoning-correction", "clear-med", "gate_baseline"]):
         raise RuntimeError("Non-neutral process display")
-    if own:
+    if own or cpu_only:
         write("process_" + str(child.pid) + ".json", {"ps": ps, "own_gpu": own, "epoch": time.time()})
-    return bool(own)
+    return bool(own) or cpu_only
 
 
 def main():

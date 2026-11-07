@@ -30,9 +30,12 @@ All G2 GPU work has ended. The [G3 result](runs/action_gate_20261107_v1/REPORT_Z
 conditional heads averaged 41.83% versus 42% KEEP and 43–43.33% frozen-head rule controls.
 This branch did not improve the baseline. All G3 jobs have exited. The
 [evidence-audit protocol](runs/evidence_audit_20261108_v1/PREREG.md) targets the original missing
-candidate evidence-audit module. Its [launch receipt](runs/evidence_audit_20261108_v1/LAUNCH.json)
-records the running 32-article, 64-request text-only preflight on physical GPU 6. The full extension
-and gate training require the frozen engineering gates to pass; no audit correctness or gain is established.
+candidate evidence-audit module. The [G4 result](runs/evidence_audit_20261108_v1/REPORT_ZH.md)
+completed all 64 calls but failed its frozen engineering gates (24/64 valid requests, 22/64 effective
+paired agreements). Full audit expansion and associated training stopped. Wrapper-only offline
+normalization still failed; no clinical correctness or permutation instability is inferred.
+The next [CPU capacity diagnosis](runs/capacity_probe_20261108_v1/PREREG.md) trains smaller four-class
+heads on existing train/dev/cal caches, excluding old diagnostic rows and making no new model calls.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
