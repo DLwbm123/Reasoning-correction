@@ -23,6 +23,9 @@ All calibrated gates chose KEEP on the 40-case retrospective diagnostic subset (
 the 20-case calibration subset contained no WC event. The training pipeline works, but a gate benefit
 is unsupported. No GPU job from G1 remains active. Independent clinical verification is unavailable;
 this is not a full-method or untouched-test evaluation.
+The [fresh-pool successor G2](runs/gate_pool_20261107_v1/PREREG.md) is launched on
+jiangsuiyang physical GPU 6: 1,600 new article groups, split 1,000/200/200/200,
+then the same frozen-feature MLP training. Its launch status does not imply results.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

@@ -1,0 +1,16 @@
+{
+  "git_commit": "b12b9841d7f3d32de893c2da3b44d91bfc39ad1b",
+  "code_files": [
+    "prepare_gate.py",
+    "encode_gate.py",
+    "train_gate_baseline.py",
+    "gate_supervise.py",
+    "pool_collect.py",
+    "pool_prepare_gate.py",
+    "run_e0.py",
+    "interface_run.py",
+    "mechanism.py",
+    "prompts_e0.json",
+    "prompts_interface.json"
+  ]
+}

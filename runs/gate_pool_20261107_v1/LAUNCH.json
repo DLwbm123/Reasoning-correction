@@ -1,0 +1,23 @@
+{
+  "run_id": "gate_pool_20261107_v1",
+  "server_alias": "jiangsuiyang",
+  "physical_gpu": 6,
+  "status_at_verification": "collection_process_running_model_loading",
+  "frozen_code_commit": "b12b984",
+  "source_articles": 1600,
+  "split_cases": {
+    "train": 1000,
+    "dev": 200,
+    "calibration": 200,
+    "diagnostic_eval": 200
+  },
+  "meaningful_tests_passed": 8,
+  "process_neutrality_snapshot_saved": true,
+  "read_only_shared_weights": true,
+  "first_complete_case_verified": false,
+  "started_epoch": 1794042397.317504,
+  "deadline_epoch": 1794114397.317504,
+  "total_budget_seconds": 72000,
+  "deadline_Asia_Shanghai": "2026-11-08T13:06:37.317504+08:00",
+  "heartbeat_automation_id": "automation-2"
+}
