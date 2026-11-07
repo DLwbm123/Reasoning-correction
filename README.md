@@ -3,12 +3,17 @@
 Development-only medical VQA context-reconstruction experiment, requested for GPU 6.
 See the active [v2 frozen protocol](runs/e0_20261107_v2/PREREG.md).
 
+E0 is complete; the active successor is a [32-case evidence-interface feasibility diagnosis](runs/e0_interface_20261107_v1/PREREG.md).
+It changes initial answer formatting and per-test observation execution, not the completed E0 result.
+The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
+the currently shared environments; no migration speedup or hardware-only attribution is claimed.
+
 Implemented: grouped PMC-VQA sample preparation; reference-free inference DTOs; role isolation;
 blind observations; evidence binding; graph/flat-state accounting; five same-template mechanism branches;
 deterministic branch reuse; token/forward/memory/latency traces; separate exact-letter evaluator;
 paired bootstrap; detached supervisor with deadline and storage guards.
 
-Executed locally: 12 permission/state/format/outcome-accounting unit tests and Python compilation. Data manifest: 200 unique
+Executed locally: 15 permission/state/format/execution-binding/outcome-accounting unit tests and Python compilation. E0 manifest: 200 unique
 source articles, no article overlap with the three excluded official test metadata files.
 Remote launch: jiangsuiyang/zmic44 physical GPU 6, active experiment `e0_20261107_v2`.
 The first v1 interface attempt was stopped after the first trace exposed non-neutral observation

@@ -1,0 +1,175 @@
+{
+  "purpose": "fixed-token throughput only; no correctness labels or clinical performance",
+  "torch": "2.2.1+cu121",
+  "transformers": "4.49.0",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "load_seconds": 5.115471709053963,
+  "measurements": [
+    {
+      "repeat": 0,
+      "request_index": 0,
+      "role": "initial",
+      "input_tokens": 750,
+      "visual_tokens": 504,
+      "output_tokens": 128,
+      "seconds": 3.6800041228998452
+    },
+    {
+      "repeat": 0,
+      "request_index": 1,
+      "role": "repair",
+      "input_tokens": 874,
+      "visual_tokens": 504,
+      "output_tokens": 128,
+      "seconds": 3.6568478289991617
+    },
+    {
+      "repeat": 0,
+      "request_index": 2,
+      "role": "initial",
+      "input_tokens": 821,
+      "visual_tokens": 560,
+      "output_tokens": 128,
+      "seconds": 3.673163696890697
+    },
+    {
+      "repeat": 0,
+      "request_index": 3,
+      "role": "repair",
+      "input_tokens": 955,
+      "visual_tokens": 560,
+      "output_tokens": 128,
+      "seconds": 3.7181057590059936
+    },
+    {
+      "repeat": 0,
+      "request_index": 4,
+      "role": "initial",
+      "input_tokens": 546,
+      "visual_tokens": 290,
+      "output_tokens": 128,
+      "seconds": 3.558902133954689
+    },
+    {
+      "repeat": 0,
+      "request_index": 5,
+      "role": "repair",
+      "input_tokens": 589,
+      "visual_tokens": 290,
+      "output_tokens": 128,
+      "seconds": 3.5389563869684935
+    },
+    {
+      "repeat": 1,
+      "request_index": 0,
+      "role": "initial",
+      "input_tokens": 750,
+      "visual_tokens": 504,
+      "output_tokens": 128,
+      "seconds": 3.643254736904055
+    },
+    {
+      "repeat": 1,
+      "request_index": 1,
+      "role": "repair",
+      "input_tokens": 874,
+      "visual_tokens": 504,
+      "output_tokens": 128,
+      "seconds": 3.6905393002089113
+    },
+    {
+      "repeat": 1,
+      "request_index": 2,
+      "role": "initial",
+      "input_tokens": 821,
+      "visual_tokens": 560,
+      "output_tokens": 128,
+      "seconds": 3.7186376231256872
+    },
+    {
+      "repeat": 1,
+      "request_index": 3,
+      "role": "repair",
+      "input_tokens": 955,
+      "visual_tokens": 560,
+      "output_tokens": 128,
+      "seconds": 3.695795411011204
+    },
+    {
+      "repeat": 1,
+      "request_index": 4,
+      "role": "initial",
+      "input_tokens": 546,
+      "visual_tokens": 290,
+      "output_tokens": 128,
+      "seconds": 3.484087642049417
+    },
+    {
+      "repeat": 1,
+      "request_index": 5,
+      "role": "repair",
+      "input_tokens": 589,
+      "visual_tokens": 290,
+      "output_tokens": 128,
+      "seconds": 3.4770340649411082
+    },
+    {
+      "repeat": 2,
+      "request_index": 0,
+      "role": "initial",
+      "input_tokens": 750,
+      "visual_tokens": 504,
+      "output_tokens": 128,
+      "seconds": 3.5979820089414716
+    },
+    {
+      "repeat": 2,
+      "request_index": 1,
+      "role": "repair",
+      "input_tokens": 874,
+      "visual_tokens": 504,
+      "output_tokens": 128,
+      "seconds": 3.6298933029174805
+    },
+    {
+      "repeat": 2,
+      "request_index": 2,
+      "role": "initial",
+      "input_tokens": 821,
+      "visual_tokens": 560,
+      "output_tokens": 128,
+      "seconds": 3.665096879005432
+    },
+    {
+      "repeat": 2,
+      "request_index": 3,
+      "role": "repair",
+      "input_tokens": 955,
+      "visual_tokens": 560,
+      "output_tokens": 128,
+      "seconds": 3.6628754939883947
+    },
+    {
+      "repeat": 2,
+      "request_index": 4,
+      "role": "initial",
+      "input_tokens": 546,
+      "visual_tokens": 290,
+      "output_tokens": 128,
+      "seconds": 3.4913520249538124
+    },
+    {
+      "repeat": 2,
+      "request_index": 5,
+      "role": "repair",
+      "input_tokens": 589,
+      "visual_tokens": 290,
+      "output_tokens": 128,
+      "seconds": 3.491004039067775
+    }
+  ],
+  "total_seconds": 65.07353245583363,
+  "tokens_per_second": 35.406100038656405,
+  "peak_allocated_bytes": 17093628416,
+  "hardware_snapshot": "3, NVIDIA GeForce RTX 3090, 18394 MiB, 82 %, 347.44 W\n"
+}

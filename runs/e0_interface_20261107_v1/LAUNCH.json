@@ -1,0 +1,20 @@
+{
+  "run_id": "e0_interface_20261107_v1",
+  "status_at_launch_verification": "running",
+  "planned_cases": 32,
+  "completed_cases_at_verification": 1,
+  "server_alias": "pro5000",
+  "physical_gpu": 6,
+  "remote_root": "/data/bmw/Reasoning-correction/e0_interface_20261107_v1",
+  "neutral_root": "/data/bmw/.ops/y9d3",
+  "timeout_pid": 2277465,
+  "supervisor_pid": 2277466,
+  "inference_pid": 2277467,
+  "deadline_epoch": 1794039009.871001,
+  "visible_gpu_process": "/data/bmw/.ops/y9d3/p",
+  "gpu_memory_MiB_at_verification": 18270,
+  "tests_passed": 15,
+  "reference_labels_not_opened_during_collection": true,
+  "old_E0_unchanged": true,
+  "reason_for_server_choice": "Measured throughput was comparable; pro5000 offers more current memory headroom and read-only reuse of staged weights."
+}

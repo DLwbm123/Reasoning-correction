@@ -8,14 +8,15 @@ import sys
 import time
 import traceback
 
-ROOT = Path('/tmp/r7x4/root.txt').read_text().strip()
+NEUTRAL = Path(os.environ.get('NEUTRAL_ROOT', '/tmp/r7x4'))
+ROOT = (NEUTRAL/'root.txt').read_text().strip()
 R = Path(ROOT)
 ENV = dict(os.environ, RUN_ROOT=ROOT, CUDA_VISIBLE_DEVICES='6',
            HF_HOME=str(R/'cache'), TRANSFORMERS_OFFLINE='1', HF_HUB_OFFLINE='1',
            HF_HUB_DISABLE_TELEMETRY='1', TOKENIZERS_PARALLELISM='false',
            OMP_NUM_THREADS='4', MKL_NUM_THREADS='4', PYTHONUNBUFFERED='1',
-           PYTHONHOME='/home/jiangsuiyang/anaconda3/envs/m3d',
-           PYTHONPATH=str(R/'code'), TMPDIR=str(R/'cache'))
+           PYTHONHOME=os.environ.get('PYTHONHOME','/home/jiangsuiyang/anaconda3/envs/m3d'),
+           PYTHONPATH=str(R/'code')+os.pathsep+os.environ.get('PYTHONPATH',''), TMPDIR=str(R/'cache'))
 DEADLINE = json.loads((R/'started.json').read_text())['deadline_epoch']
 child = None
 
@@ -49,7 +50,7 @@ def used_bytes():
             except FileNotFoundError:
                 pass
     # Small neutral interpreter and launcher files outside the experiment root also count.
-    for p in Path('/tmp/r7x4').glob('*'):
+    for p in NEUTRAL.glob('*'):
         if p.is_file() and not p.is_symlink():
             total += p.stat().st_blocks * 512
     return total
@@ -65,7 +66,7 @@ def main():
             raise RuntimeError('Deadline reached before inference')
         time.sleep(15)
     with (R/'outputs/inference.log').open('a') as log:
-        child = subprocess.Popen(['/tmp/r7x4/p','-u','/tmp/r7x4/r.py'],env=ENV,
+        child = subprocess.Popen([str(NEUTRAL/'p'),'-u',str(NEUTRAL/'r.py')],env=ENV,
                                  stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
         (R/'outputs/inference_pid.txt').write_text(str(child.pid))
         (R/'outputs/supervisor.json').write_text(json.dumps({'status':'inference_running','pid':os.getpid(),'child_pid':child.pid,'deadline_epoch':DEADLINE}))
@@ -86,7 +87,7 @@ def main():
     if code:
         raise RuntimeError(f'Inference process exit {code}; no automatic costly rerun')
     with (R/'outputs/evaluation.log').open('w') as log:
-        child = subprocess.Popen(['/tmp/r7x4/p','-u','/tmp/r7x4/e.py'],env=ENV,
+        child = subprocess.Popen([str(NEUTRAL/'p'),'-u',str(NEUTRAL/'e.py')],env=ENV,
                                  stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
         try:
             code = child.wait(timeout=min(120,max(1,DEADLINE-time.time()-30)))

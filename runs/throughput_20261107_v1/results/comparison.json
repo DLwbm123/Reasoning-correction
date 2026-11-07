@@ -1,0 +1,10 @@
+{
+  "pro5000_tokens_per_second": 34.72902618995671,
+  "rtx3090_tokens_per_second": 35.406100038656405,
+  "pro5000_throughput_ratio": 0.9808769153349151,
+  "same_input_and_output_token_lengths": true,
+  "measured_requests_each": 18,
+  "software_stacks_differ": true,
+  "shared_gpu_loads_not_controlled": true,
+  "interpretation": "operational throughput only; no accuracy, no isolated hardware attribution"
+}
