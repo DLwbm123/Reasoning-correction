@@ -44,7 +44,10 @@ direct score heads averaged 49.67/49.83% versus 49.5% KEEP, without stable gains
 the old empirical calibration harm limit on new articles. The fixed no-evidence margin control
 reached 51.5% with 6.06% harm among initially correct cases, not a clinical safety result.
 The [next scope](NEXT_RISK_CALIBRATION_SCOPE.md) examines independent finite-sample risk calibration
-with frozen predictors; it is not an implemented or launched experiment.
+with frozen predictors. The [G8 protocol](runs/risk_calibration_20261108_v1/PREREG.md) and
+[launch receipt](runs/risk_calibration_20261108_v1/LAUNCH.json) record a running 800-calibration/
+200-diagnostic article experiment, with physically separated labels and no model retraining.
+No finite-sample or clinical risk result is established by the launch.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

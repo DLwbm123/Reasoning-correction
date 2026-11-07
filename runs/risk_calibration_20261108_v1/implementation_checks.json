@@ -1,0 +1,8 @@
+{
+  "unit_checks_passed": 11,
+  "actual_scipy_one_sided_checked_against_binomtest_less": true,
+  "positive_event_and_zero_event_bounds_checked": true,
+  "label_isolation_and_prelock_guard_checked": true,
+  "new_model_training": false,
+  "gpu_forward_calls_before_launch": 0
+}
