@@ -1,0 +1,188 @@
+{
+  "families": {
+    "hybrid_ce": {
+      "accuracy_each_seed": [
+        0.485,
+        0.46,
+        0.48
+      ],
+      "mean_accuracy": 0.475,
+      "WC_each_seed": [
+        3,
+        1,
+        0
+      ],
+      "CW_each_seed": [
+        2,
+        5,
+        0
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "frozen_ce": {
+      "accuracy_each_seed": [
+        0.49,
+        0.46,
+        0.48
+      ],
+      "mean_accuracy": 0.4766666666666667,
+      "WC_each_seed": [
+        3,
+        1,
+        0
+      ],
+      "CW_each_seed": [
+        1,
+        5,
+        0
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "hybrid_ce_rank": {
+      "accuracy_each_seed": [
+        0.485,
+        0.465,
+        0.48
+      ],
+      "mean_accuracy": 0.4766666666666667,
+      "WC_each_seed": [
+        3,
+        1,
+        0
+      ],
+      "CW_each_seed": [
+        2,
+        4,
+        0
+      ],
+      "same_200_articles_shared_across_seeds": true
+    },
+    "frozen_ce_rank": {
+      "accuracy_each_seed": [
+        0.49,
+        0.46,
+        0.475
+      ],
+      "mean_accuracy": 0.475,
+      "WC_each_seed": [
+        3,
+        1,
+        0
+      ],
+      "CW_each_seed": [
+        1,
+        5,
+        1
+      ],
+      "same_200_articles_shared_across_seeds": true
+    }
+  },
+  "paired_comparisons": [
+    {
+      "config": "ce",
+      "seed": 2026110711,
+      "delta_vs_frozen": -0.005,
+      "paired_95ci": [
+        -0.015,
+        0.0
+      ],
+      "same_correctness_outcome_cases": 199
+    },
+    {
+      "config": "ce",
+      "seed": 2026110712,
+      "delta_vs_frozen": 0.0,
+      "paired_95ci": [
+        -0.015,
+        0.015
+      ],
+      "same_correctness_outcome_cases": 198
+    },
+    {
+      "config": "ce",
+      "seed": 2026110713,
+      "delta_vs_frozen": 0.0,
+      "paired_95ci": [
+        0.0,
+        0.0
+      ],
+      "same_correctness_outcome_cases": 200
+    },
+    {
+      "config": "ce",
+      "seed": "mean_of_three",
+      "control": "frozen",
+      "delta": -0.0016666666666666666,
+      "paired_95ci": [
+        -0.006666666666666666,
+        0.003333333333333333
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce",
+      "seed": "mean_of_three",
+      "control": "keep",
+      "delta": -0.005,
+      "paired_95ci": [
+        -0.018333333333333333,
+        0.006666666666666666
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110711,
+      "delta_vs_frozen": -0.005,
+      "paired_95ci": [
+        -0.015,
+        0.0
+      ],
+      "same_correctness_outcome_cases": 199
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110712,
+      "delta_vs_frozen": 0.005,
+      "paired_95ci": [
+        0.0,
+        0.015
+      ],
+      "same_correctness_outcome_cases": 199
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110713,
+      "delta_vs_frozen": 0.005,
+      "paired_95ci": [
+        0.0,
+        0.015
+      ],
+      "same_correctness_outcome_cases": 199
+    },
+    {
+      "config": "ce_rank",
+      "seed": "mean_of_three",
+      "control": "frozen",
+      "delta": 0.0016666666666666666,
+      "paired_95ci": [
+        -0.003333333333333333,
+        0.006666666666666666
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    },
+    {
+      "config": "ce_rank",
+      "seed": "mean_of_three",
+      "control": "keep",
+      "delta": -0.003333333333333333,
+      "paired_95ci": [
+        -0.016666666666666666,
+        0.008333333333333333
+      ],
+      "resampling_unit": "article with all seeds paired; not 600 independent cases"
+    }
+  ],
+  "scope": "Full 200 articles, all seeds; no refitting/selection on new diagnostic labels",
+  "selective_reset_same_answer_cases": 193
+}

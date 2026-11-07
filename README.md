@@ -37,11 +37,11 @@ normalization still failed; no clinical correctness or permutation instability i
 The [CPU capacity diagnosis](runs/capacity_probe_20261108_v1/REPORT_ZH.md) also completed:
 six smaller four-class heads did not improve development utility ranking versus paired frozen MLPs.
 No old diagnostic rows were used, and no new generator or feature calls were made. This capacity
-branch is closed. The [G6 frozen protocol](runs/evidence_score_20261108_v1/PREREG.md) now implements evidence-conditioned
-forced-letter support features. Its [launch receipt](runs/evidence_score_20261108_v1/LAUNCH.json)
-records old-cache scoring in progress on PRO5000 GPU 6; fitting and new diagnostic evaluation have
-not yet completed. The extra scoring cost and software-stack difference from cached G2 vectors
-are explicit experimental limitations.
+branch is closed. The [G6 result](runs/evidence_score_20261108_v1/REPORT_ZH.md) is complete: hybrid CE/rank gates
+averaged 47.50/47.67% versus 48% KEEP on 200 new articles, with no stable benefit over frozen heads.
+All G6 jobs ended. The [G7 protocol](runs/score_policy_20261108_v1/PREREG.md) tests direct decision
+learning from the same ten support scores, with both frozen G2/G6 heads and fixed-margin controls;
+old diagnostic labels are excluded from selection.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

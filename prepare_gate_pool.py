@@ -15,7 +15,10 @@ def main():
     code = Path(__file__).resolve().parent
     action = os.environ.get("PREPARE_ACTION_PROBE") == "1"
     evidence_score = os.environ.get("PREPARE_EVIDENCE_SCORE") == "1"
-    root = code/("runs/evidence_score_20261108_v1" if evidence_score else
+    score_policy = os.environ.get("PREPARE_SCORE_POLICY") == "1"
+    evidence_score = evidence_score or score_policy
+    root = code/("runs/score_policy_20261108_v1" if score_policy else
+                 "runs/evidence_score_20261108_v1" if evidence_score else
                  "runs/action_gate_20261107_v1" if action else "runs/gate_pool_20261107_v1")
     action = action or evidence_score
     n = 200 if action else 1600
@@ -23,7 +26,10 @@ def main():
     execution_seed = 2026110716 if action else 2026110709
     if evidence_score:
         seed, execution_seed = 2026110804, 2026110805
+    if score_policy:
+        seed, execution_seed = 2026110807, 2026110808
     budget = 4*3600 if action else 20*3600
+    if score_policy: budget = 3*3600
     (root/"inputs/images").mkdir(parents=True, exist_ok=False)
     start = time.time()
     (root/"started.json").write_text(json.dumps({"started_epoch": start,
@@ -36,6 +42,7 @@ def main():
     old_runs = ["e0_20261107_v2", "e0_interface_20261107_v1"]
     if action: old_runs.append("gate_pool_20261107_v1")
     if evidence_score: old_runs.append("action_gate_20261107_v1")
+    if score_policy: old_runs.append("evidence_score_20261108_v1")
     for name in old_runs:
         rows = [json.loads(x) for x in (code/"runs"/name/"inputs/manifest.jsonl").read_text().splitlines()]
         old_groups.update(r["group_id"] for r in rows)
@@ -61,7 +68,7 @@ def main():
             if fingerprint in pixels:
                 continue
             pixels.add(fingerprint); groups.add(group)
-            cid = ("j" if evidence_score else "h" if action else "g")+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
+            cid = ("k" if score_policy else "j" if evidence_score else "h" if action else "g")+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
             (root/"inputs"/image).write_bytes(data)
             infer.append({"case_id": cid, "group_id": group, "question": row["Question"].strip(),
                 "choices": {x: row["Choice "+x].strip() for x in "ABCD"},

@@ -1,0 +1,11 @@
+{
+  "rows": 400,
+  "dimension": 3584,
+  "unique_forwards": 276,
+  "seconds": 54.021751165390015,
+  "input_tokens": 251804,
+  "visual_tokens": 129215,
+  "peak_allocated_bytes": 17314715648,
+  "peak_reserved_bytes": 19482542080,
+  "frozen_parameters": true
+}
