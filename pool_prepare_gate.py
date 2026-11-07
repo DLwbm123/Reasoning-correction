@@ -16,4 +16,6 @@ if __name__ == "__main__":
     split = json.loads((root/"inputs/splits.private.json").read_text())
     if (root/"inputs/features.jsonl").exists():
         raise RuntimeError("Prepared pool already exists")
-    prepare_pool(root, root, split, copy_images=False, split_seed=2026110715 if action else 2026110708, retrospective=False)
+    # Report the already frozen sampler seed; this does not reshuffle or resample.
+    sampling_seed = json.loads((root/"selection.json").read_text())["sample_split_seed"]
+    prepare_pool(root, root, split, copy_images=False, split_seed=sampling_seed, retrospective=False)
