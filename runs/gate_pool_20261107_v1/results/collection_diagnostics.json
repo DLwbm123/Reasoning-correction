@@ -1,0 +1,51 @@
+{
+  "collection": {
+    "cases": 1600,
+    "pipeline_error_cases": 0,
+    "initial_invalid_cases": 3,
+    "k_empty_cases": 1009,
+    "graph_changes_k_cases": 2,
+    "trigger_cases": 37,
+    "requested_observations": 2071,
+    "registered_observations": 2007,
+    "cases_with_adequate_observation": 1220,
+    "candidate_schema_warning_rows": 0
+  },
+  "observation_status_counts": {
+    "adequate": 1750,
+    "limited": 246,
+    "unavailable": 11
+  },
+  "paired_branch_vs_keep": {
+    "selective": {
+      "delta_accuracy": 0.015,
+      "paired_95ci": [
+        -0.02,
+        0.05
+      ]
+    },
+    "reset": {
+      "delta_accuracy": 0.015,
+      "paired_95ci": [
+        -0.02,
+        0.05
+      ]
+    }
+  },
+  "generation_cost": {
+    "generation_calls": 9073,
+    "unparsed_generation_calls": 26,
+    "retry_calls": 14,
+    "input_tokens": 5878542,
+    "output_tokens": 678403,
+    "visual_tokens": 2812755,
+    "forwards": 678403,
+    "peak_memory_allocated": 17378083840,
+    "peak_memory_reserved": 19583205376,
+    "generation_seconds_sum": 19885.028933525085,
+    "call_latency_p50": 2.1501777172088623,
+    "call_latency_p95": 4.190727710723877
+  },
+  "original_start_to_completed_seconds": 21795.98258137703,
+  "analysis_scope": "post-completion aggregate counts; no policy/model changes"
+}
