@@ -17,9 +17,10 @@ def main():
     if (outdir / "features.npz").exists():
         raise RuntimeError("Refusing to overwrite completed features")
     torch.set_num_threads(4)
-    if torch.cuda.mem_get_info()[0] < 24 * 1024**3:
-        raise RuntimeError("Less than 24 GiB free before loading")
-    torch.cuda.set_per_process_memory_fraction(.60)
+    minimum = float(os.environ.get("FEATURE_MIN_FREE_GIB", "24"))
+    if torch.cuda.mem_get_info()[0] < minimum * 1024**3:
+        raise RuntimeError("Insufficient free memory before feature loading")
+    torch.cuda.set_per_process_memory_fraction(float(os.environ.get("FEATURE_MEMORY_FRACTION", ".60")))
     path = (root / "model_path.txt").read_text().strip()
     processor = AutoProcessor.from_pretrained(path, min_pixels=256*28*28,
         max_pixels=768*28*28, local_files_only=True)

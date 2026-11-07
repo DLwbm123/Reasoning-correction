@@ -1,0 +1,81 @@
+"""Freeze a fresh article-disjoint training-source pool; no model outcomes consulted."""
+import csv
+import hashlib
+import json
+from pathlib import Path
+import random
+import time
+import zipfile
+
+from prepare_data import SOURCE, VISUAL, EXCLUDE, article
+
+
+def main():
+    code = Path(__file__).resolve().parent
+    root = code/"runs/gate_pool_20261107_v1"
+    (root/"inputs/images").mkdir(parents=True, exist_ok=False)
+    start = time.time()
+    (root/"started.json").write_text(json.dumps({"started_epoch": start,
+        "deadline_epoch": start+20*3600, "total_budget_seconds": 72000}, indent=2))
+    test_groups = set()
+    for name in ["test.csv", "test_clean.csv", "test_2.csv"]:
+        with (SOURCE/name).open(newline="") as f:
+            test_groups.update(article(r["Figure_path"]) for r in csv.DictReader(f))
+    old_groups, old_pixels = set(), set()
+    for name in ["e0_20261107_v2", "e0_interface_20261107_v1"]:
+        rows = [json.loads(x) for x in (code/"runs"/name/"inputs/manifest.jsonl").read_text().splitlines()]
+        old_groups.update(r["group_id"] for r in rows)
+        old_pixels.update(r["image_sha256"] for r in rows)
+    candidates = []
+    with (SOURCE/"train.csv").open(newline="") as f:
+        for i, row in enumerate(csv.DictReader(f)):
+            group, q = article(row["Figure_path"]), row["Question"].strip()
+            if group and group not in test_groups|old_groups and VISUAL.search(q) and not EXCLUDE.search(q):
+                # Source-label syntax, not correctness/model outcomes, is checked before sampling.
+                if row["Answer_label"].strip() in ["A", "B", "C", "D"]:
+                    candidates.append((i, row))
+    random.Random(2026110708).shuffle(candidates)
+    infer, labels, groups, pixels = [], [], set(), set(old_pixels)
+    with zipfile.ZipFile(SOURCE/"images.zip") as archive:
+        for i, row in candidates:
+            group = article(row["Figure_path"]); member = "images/"+row["Figure_path"]
+            if group in groups or member not in archive.NameToInfo:
+                continue
+            data = archive.read(member)
+            # Scientific exact-image grouping only; not a model/file-transfer integrity hash.
+            fingerprint = hashlib.sha256(data).hexdigest()
+            if fingerprint in pixels:
+                continue
+            pixels.add(fingerprint); groups.add(group)
+            cid = "g"+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
+            (root/"inputs"/image).write_bytes(data)
+            infer.append({"case_id": cid, "group_id": group, "question": row["Question"].strip(),
+                "choices": {x: row["Choice "+x].strip() for x in "ABCD"},
+                "image": image, "image_sha256": fingerprint})
+            labels.append({"case_id": cid, "group_id": group, "reference_letter": row["Answer_label"].strip(),
+                "source_row": i, "source_image": row["Figure_path"]})
+            if len(infer) == 1600:
+                break
+    if len(infer) != 1600:
+        raise RuntimeError("Insufficient eligible groups; no label-based replenishment")
+    # Independently shuffle selected groups, without answer/outcome stratification.
+    ordered = sorted(groups); random.Random(2026110708).shuffle(ordered)
+    splits = {g: s for s, subset in [("train", ordered[:1000]), ("dev", ordered[1000:1200]),
+             ("calibration", ordered[1200:1400]), ("diagnostic_eval", ordered[1400:])]
+              for g in subset}
+    # Random case interleaving avoids a hard stop preferentially retaining train cases.
+    random.Random(2026110709).shuffle(infer)
+    for name, rows in [("manifest.jsonl", infer), ("labels.private.jsonl", labels)]:
+        (root/"inputs"/name).write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows)+"\n")
+    (root/"inputs/splits.private.json").write_text(json.dumps(splits))
+    summary = {"n": 1600, "unique_articles": len(groups), "official_test_article_overlap": len(groups&test_groups),
+        "old_article_overlap": len(groups&old_groups), "old_exact_encoded_image_overlap": 0,
+        "split_cases": {s: list(splits.values()).count(s) for s in ["train", "dev", "calibration", "diagnostic_eval"]},
+        "sample_split_seed": 2026110708, "execution_seed": 2026110709,
+        "selection_uses_model_outcomes": False, "near_duplicate_or_patient_independence_claimed": False,
+        "eligible_rows_before_group_sampling": len(candidates)}
+    (root/"selection.json").write_text(json.dumps(summary, indent=2)); print(json.dumps(summary))
+
+
+if __name__ == "__main__":
+    main()

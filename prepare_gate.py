@@ -24,23 +24,16 @@ def split_groups(groups):
             for g in subset}
 
 
-def main():
-    root = Path(__file__).resolve().parent
-    old = root / "runs/e0_20261107_v2"
-    new = root / "runs/gate_baseline_20261107_v1"
+def prepare_pool(old, new, split, *, copy_images=True, split_seed=2026110707, retrospective=True):
     inputs = new / "inputs"
-    inputs.mkdir(exist_ok=False)
-    started = time.time()
-    (new / "started.json").write_text(json.dumps({"started_epoch": started,
-        "deadline_epoch": started + 3 * 3600, "total_budget_seconds": 10800}, indent=2))
     labels = {x["case_id"]: x for x in map(json.loads,
         (old / "inputs/labels.private.jsonl").read_text().splitlines())}
     manifest = [json.loads(x) for x in (old / "inputs/manifest.jsonl").read_text().splitlines()]
-    if len(manifest) != 200 or len({r["case_id"] for r in manifest}) != 200:
+    if len(manifest) != len(split) or len({r["case_id"] for r in manifest}) != len(split):
         raise ValueError("Unexpected source denominator")
-    split = split_groups(r["group_id"] for r in manifest)
     feature_rows, targets = [], []
-    (inputs / "images").mkdir()
+    if copy_images:
+        (inputs / "images").mkdir()
     for row in manifest:
         cid = row["case_id"]
         case = json.loads((old / "outputs/cases" / (cid + ".json")).read_text())
@@ -50,7 +43,8 @@ def main():
         image = Path(row["image"])
         if image.is_absolute() or ".." in image.parts:
             raise ValueError("Unsafe image path")
-        shutil.copyfile(old / "inputs" / image, inputs / "images" / image.name)
+        if copy_images:
+            shutil.copyfile(old / "inputs" / image, inputs / "images" / image.name)
         evidence = case.get("evidence", [])
         refs = {e["evidence_id"]: "E" + str(i) for i, e in enumerate(evidence)}
         def local_ids(value):
@@ -87,9 +81,21 @@ def main():
               for s in ["train", "dev", "calibration", "diagnostic_eval"]}
     (new / "preparation.json").write_text(json.dumps({"source_cases": len(manifest),
         "candidate_rows": len(targets), "case_counts": counts,
-        "split_seed": 2026110707, "official_test_used": False,
-        "retrospective_development_only": True}, indent=2))
+        "split_seed": split_seed, "official_test_used": False,
+        "retrospective_development_only": retrospective}, indent=2))
     print(json.dumps(counts))
+
+
+def main():
+    root = Path(__file__).resolve().parent
+    old = root / "runs/e0_20261107_v2"
+    new = root / "runs/gate_baseline_20261107_v1"
+    (new / "inputs").mkdir(exist_ok=False)
+    started = time.time()
+    (new / "started.json").write_text(json.dumps({"started_epoch": started,
+        "deadline_epoch": started + 3 * 3600, "total_budget_seconds": 10800}, indent=2))
+    manifest = [json.loads(x) for x in (old / "inputs/manifest.jsonl").read_text().splitlines()]
+    prepare_pool(old, new, split_groups(r["group_id"] for r in manifest))
 
 
 if __name__ == "__main__":

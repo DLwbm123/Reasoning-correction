@@ -61,14 +61,17 @@ def capture():
 
 def main():
     global child
+    config = json.loads((R/"pipeline.json").read_text()) if (R/"pipeline.json").exists() else {}
     env = dict(os.environ, RUN_ROOT=str(R), CUDA_VISIBLE_DEVICES="6", PYTHONHOME="/usr",
         PYTHONPATH=str(R/"code")+":/data/bmw/envs/s0/lib/python3.12/site-packages:/data/bmw/envs/v0/lib/python3.12/site-packages",
         HF_HOME=str(R/"cache"), TMPDIR=str(R/"cache"), TRANSFORMERS_OFFLINE="1", HF_HUB_OFFLINE="1",
         HF_HUB_DISABLE_TELEMETRY="1", TOKENIZERS_PARALLELISM="false", OMP_NUM_THREADS="4",
         MKL_NUM_THREADS="4", PYTHONUNBUFFERED="1")
+    env.update(config.get("environment", {}))
+    # This launcher map and environment are frozen program configuration, never model output.
     for sig in [signal.SIGTERM, signal.SIGINT]:
         signal.signal(sig, handle)
-    for stage, entry in [("features", "r.py"), ("training", "t.py")]:
+    for stage, entry in config.get("stages", [("features", "r.py"), ("training", "t.py")]):
         if time.time() > DEADLINE-120:
             raise RuntimeError("Original experiment deadline")
         with (R/"outputs"/(stage+".log")).open("x") as log:
@@ -84,9 +87,10 @@ def main():
                     raise RuntimeError("Hard deadline guard")
                 if time.time()-disk_time > 60:
                     used = allocated(R)+allocated(N)
-                    write("storage.json", {"allocated_bytes": used, "stop_at_bytes": 6000000000,
+                    threshold = int(config.get("storage_stop_bytes", 6000000000))
+                    write("storage.json", {"allocated_bytes": used, "stop_at_bytes": threshold,
                           "hard_limit_bytes": 50000000000, "epoch": time.time()})
-                    if used >= 6_000_000_000:
+                    if used >= threshold:
                         raise RuntimeError("Conservative storage guard")
                     disk_time = time.time()
                 time.sleep(2)

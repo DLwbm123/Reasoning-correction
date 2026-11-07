@@ -193,7 +193,7 @@ def main():
             for pair in [rows[i:i+2] for i in range(0, len(rows), 2)]),
         "invalid_candidate_rows": sum(not r["valid"] for r in rows),
         "missing_explanation_candidate_rows": sum(r["explanation_missing"] for r in rows),
-        "training_seconds": time.time()-started, "retrospective_development_only": True,
+        "training_seconds": time.time()-started, "retrospective_development_only": os.environ.get("FRESH_GROUP_EVAL") != "1",
         "independent_candidate_evidence_audit": False}
     (out / "metrics.json").write_text(json.dumps(summary, indent=2))
     (out / "training_done.json").write_text(json.dumps({"status": "completed", "finished_epoch": time.time(), "models": 6}))
