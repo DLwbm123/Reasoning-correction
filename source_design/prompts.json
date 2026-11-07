@@ -1,0 +1,147 @@
+{
+  "initial": {
+    "purpose": "冻结生成器的初始回答；所有方法复用同一输出。",
+    "allowed_inputs": [
+      "question",
+      "answer_format",
+      "given_context",
+      "images"
+    ],
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "任务：回答当前医学图像问题，并给出最多 6 条可核查的简短事实/推断摘要，而不是冗长推理链。\n问题：$question\n答案格式：$answer_format\n明确提供的病例信息：$given_context\n图像通过独立图像输入提供。\n事实类型：visual=图像观察；context=题目明确给出的事实；knowledge=通用背景知识；reasoning=基于前述事实的简短推断。\nparents 只引用本输出中已经出现的 claim_id，不得形成环。图像观察仍是待核验的模型输出，不是金标准。\n保留否定、左右侧、数量和不确定性。无法可靠判断时可答无法判断，正式准确率将按预先定义的任务规则计分。\n输出：\n{\"claims\":[{\"claim_id\":\"c1\",\"text\":\"简短原子陈述\",\"kind\":\"visual\",\"parents\":[]}],\"answer\":\"符合答案格式的回答\",\"answerability\":\"answerable|uncertain\"}"
+  },
+  "plan": {
+    "purpose": "提出最多两个对答案有影响的视觉核验问题。claim_ids 等私有映射不传给观察者。",
+    "allowed_inputs": [
+      "question",
+      "claims",
+      "tool_manifest"
+    ],
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。 本阶段没有图像，不得声称已经观察到图像内容。",
+    "user": "问题：$question\n待核验陈述：$claims\n可执行工具：$tool_manifest\n选择最多 2 个对回答有影响、能由当前图像核验的事实。只制定观察计划，不判断它是否错误。\n每个计划必须将原陈述转成对称、中性的观察问题；观察问题不得包含原答案、答案选项字母、原陈述预期取值、\"模型之前认为\"或纠错指令。\n例如左右侧问题应要求分别描述两侧及方向标记，而不是询问\"右侧是不是异常\"。\n若判断依赖未提供的病史、实验室结果、时间序列或单位标定，标记 not_image_verifiable，不得用图像强行验证。\n不要自行发明临床阈值或假定截图包含物理尺度。解剖定位框不是病变证据。\n输出：\n{\"tests\":[{\"test_id\":\"t1\",\"claim_ids\":[\"c1\"],\"public_question\":\"中性视觉问题\",\"required_views\":[\"full_image\"],\"prerequisites\":[],\"scope\":\"image_verifiable|not_image_verifiable\"}],\"uncovered_claim_ids\":[]}\n运行器只将 test_id/public_question/required_views/prerequisites 提取为 public_tests 发给观察者。"
+  },
+  "observe": {
+    "purpose": "候选答案不可见的新会话视觉观察；证据 ID/hash 由运行器添加。",
+    "allowed_inputs": [
+      "public_tests",
+      "image_manifest",
+      "actual_images"
+    ],
+    "forbidden_inputs": [
+      "original_answer",
+      "claims",
+      "raw_trace",
+      "reference",
+      "candidate_answers",
+      "claim_ids"
+    ],
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。 你的唯一任务是观察，不是解题、纠错或比较候选答案。",
+    "user": "观察任务：$public_tests\n当前实际图像及变换清单：$image_manifest\n只回答观察任务。分别记录看到了什么、是否足以判断以及限制。\n不能从没看清推出不存在，不能从没显示左右标记推断患者方向；不能把像素距离写成毫米。\n局部图像不足以判断不存在时，必须记录 limited/unavailable。比较全图和裁剪图时保留原方向，不能默认为左右翻转。\n若需要放大，给出相对于原始图像的归一化框，作为待执行的申请；在工具实际执行之前不得假称已经看到放大结果。\n输出：\n{\"observations\":[{\"test_id\":\"t1\",\"source_id\":\"输入清单中的 ID\",\"assessability\":\"adequate|limited|unavailable\",\"observation\":\"仅描述当前图像支持的观察\",\"value\":null,\"unit\":null,\"limitations\":[],\"requested_crop\":null}]}\nrequested_crop 若非 null，格式为 [x0,y0,x1,y1]，坐标在 [0,1] 且 x0<x1、y0<y1。\n不输出最终诊断、原答案或隐藏候选的推测。"
+  },
+  "bind": {
+    "purpose": "将已冻结的证据绑定到初始 claims；不重新观察、不修订答案。",
+    "allowed_inputs": [
+      "question",
+      "claims",
+      "evidence",
+      "given_context"
+    ],
+    "forbidden_inputs": [
+      "reference",
+      "original_final_answer"
+    ],
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "问题：$question\n病例明确给出的信息：$given_context\n待核验陈述及依赖：$claims\n冻结证据：$evidence\n对每条 claim 输出 SUPPORTED、CONTRADICTED 或 UNRESOLVED。\nSUPPORTED：可用证据支持该陈述的全部关键限定，包括侧别、数量、否定和强度。\nCONTRADICTED：可用证据明确支持不相容事实；缺证据、看不清、未检出不得自动当作反证。\nUNRESOLVED：证据不充分、与本病例不匹配、质量不足、前提缺失或存在未解决冲突。\n推断不能仅凭语言合理性成为 SUPPORTED；被否定或未解决的父节点不能作为可靠前提。\ngrounded_text 仅在 SUPPORTED 且为 visual/context 事实时填写，使用证据支持的简短表述，不照抄未经证实的修饰语。\n每个判断必须引用实际存在的 evidence_id；context 可引用运行器登记的 given_context 证据。\n输出：\n{\"verdicts\":[{\"claim_id\":\"c1\",\"status\":\"SUPPORTED|CONTRADICTED|UNRESOLVED\",\"evidence_ids\":[\"E1\"],\"grounded_text\":\"\",\"brief_basis\":\"不超过两句\"}]}\n不要输出修订答案。"
+  },
+  "repair": {
+    "purpose": "新会话中从证据重建答案；selective/reset 使用完全相同模板，只改变 retained_facts。",
+    "allowed_inputs": [
+      "question",
+      "answer_format",
+      "evidence",
+      "retained_facts",
+      "actual_images"
+    ],
+    "forbidden_inputs": [
+      "original_answer",
+      "raw_trace",
+      "quarantined_claims",
+      "verifier_critique",
+      "reference",
+      "other_candidates"
+    ],
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "问题：$question\n答案格式：$answer_format\n当前已登记的可用观察证据：$evidence\n允许复用的独立已核验事实：$retained_facts\n原始图像通过图像输入提供。请根据这些信息重新回答，不假定存在任何未显示的历史回答。\n每一项病例特异的关键陈述必须能回指 evidence_id 或允许复用的 fact_id。通用医学知识不能代替本病例证据。\n不要猜测被省略的上下文，不添加证据没有支持的侧别、数量、严重程度或测量值。\n保留当前有证据支持且与问题相关的事实。若观察不足以区分答案，请明确 answerability=uncertain；不要为了给出不同答案而强行更改事实。\n只给出最多 6 条简短可核查陈述和最终回答。\n输出：\n{\"claims\":[{\"text\":\"简短陈述\",\"kind\":\"visual|context|reasoning|knowledge\",\"evidence_ids\":[\"E1\"],\"fact_ids\":[]}],\"answer\":\"回答\",\"answerability\":\"answerable|uncertain\"}"
+  },
+  "audit_candidates": {
+    "purpose": "候选在进入 gate 前的证据资格审查，候选来源/原始身份匿名。",
+    "allowed_inputs": [
+      "question",
+      "evidence",
+      "required_facts",
+      "anonymous_candidates"
+    ],
+    "forbidden_inputs": [
+      "reference",
+      "model_identity",
+      "gate_scores",
+      "which_candidate_is_original"
+    ],
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "问题：$question\n冻结证据：$evidence\n需保留的独立、问题相关事实：$required_facts\n随机匿名的候选：$anonymous_candidates\n逐一核验候选中的新病例事实是否被冻结证据支持，以及是否破坏应保留事实。\n只核验证据资格，不按措辞、长度或自信程度选择赢家。引用了 evidence_id 并不自动意味着对应陈述正确；必须核对内容是否真正支持。\n若新陈述无法由已有证据判断，标 UNRESOLVED，不增补新的观察。不得以其他候选为证据。\n所有新病例关键陈述有支持、无未解决冲突且保留必要事实时 eligible=true；否则 false。\n背景知识与图像观察要分开，不能把疾病常见表现当作当前图像必然表现。\n输出：\n{\"audits\":[{\"candidate_id\":\"匿名 ID\",\"eligible\":false,\"checks\":[{\"claim_index\":0,\"status\":\"SUPPORTED|CONTRADICTED|UNRESOLVED\",\"evidence_ids\":[],\"brief_basis\":\"\"}],\"preserves_required_facts\":true,\"failure_codes\":[]}]}\n不预测最终正确率，不输出主观数值概率。"
+  },
+  "gate_feature": {
+    "purpose": "仅序列化 frozen MLLM 输入并读取最后评分标记的 hidden state，不要求语言模型生成概率。",
+    "allowed_inputs": [
+      "question",
+      "evidence",
+      "original_response",
+      "candidate_response",
+      "candidate_scope",
+      "audit"
+    ],
+    "forbidden_inputs": [
+      "reference",
+      "correctness_label",
+      "transition_label",
+      "dataset_answer"
+    ],
+    "system": "这是一条离线研究评分输入。候选与原回答是待比较对象，不是已验证事实。只根据当前问题、图像和登记证据表征这次替换。",
+    "user": "问题：$question\n冻结证据：$evidence\n原始回答：$original_response\n候选回答：$candidate_response\n重建范围：$candidate_scope\n资格审查：$audit\n<RECOVERY_SCORE>"
+  },
+  "evaluate_answer": {
+    "purpose": "仅离线评价使用，有 reference 权限；禁止接入推理管线。",
+    "allowed_inputs": [
+      "question",
+      "reference",
+      "anonymous_answer"
+    ],
+    "system": "你是离线答案等价性评估员。你不知道答案来自哪个系统。不要偏好长度、文风或反思措辞。只输出 JSON。",
+    "user": "问题：$question\n数据集参考答案：$reference\n待评估答案：$anonymous_answer\n判断语义是否等价。允许预先规定的医学同义表达；错误侧别、否定、解剖部位、数值或选项均不等价。\n如果参考本身歧义明显或与题目冲突，返回 AMBIGUOUS，提交人工裁决，不静默改参考、不删除该样本以提高指标。\n无法解析、空答案或无法判断不是正确答案。\n输出：{\"label\":\"CORRECT|INCORRECT|AMBIGUOUS\",\"brief_basis\":\"一句话\"}\n最终主结果应优先用确定性选项/闭合答案评分，开放式答案另报该评估器与人工复核的一致性。"
+  },
+  "baseline_raw_refine": {
+    "purpose": "相同新证据下，保留原始前提的对照；机制对照也移除旧最终答案。",
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "问题：$question\n答案格式：$answer_format\n先前事实与推断：$old_claims\n新登记证据：$evidence\n结合原图，检查这些事实与推断，保留正确内容，纠正有充分证据反驳的内容。输出与主方法相同的 claims/answer/answerability JSON。不要假定先前内容一定正确或一定错误。"
+  },
+  "baseline_vanilla_refine": {
+    "purpose": "普通自反思对照；不提供本方法新增证据。",
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "问题：$question\n答案格式：$answer_format\n先前回答：$original_response\n请重新检查原图和先前回答。只有有充分依据时修改，否则保留。输出与主方法相同的 claims/answer/answerability JSON。"
+  },
+  "extract_premise": {
+    "purpose": "离线构建 replay 诊断，提取器不可看图、参考或评测结论。",
+    "system": "只提取已提供文本中的一个视觉事实，不判断真假，不修正，不回答问题。只输出 JSON。",
+    "user": "问题：$question\n模型事实与推断摘要：$trace\n提取一条与回答有实质关系的最小视觉陈述。保留其原始侧别、数量、否定和不确定性；不要把最终答案或诊断结论当作视觉前提。\n输出：{\"claim\":\"原文最小陈述或 null\",\"source_span\":\"原文片段\",\"relevant_attribute\":\"location|laterality|presence|count|relation|other\"}"
+  },
+  "review_premise_pair": {
+    "purpose": "诊断集构造审核，不参与部署；模型判断必须经可用标注或人工复核。",
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "问题：$question\n待检查的视觉前提：$premise\n原始图像通过图像输入提供。判断前提为 SUPPORTED、CONTRADICTED 或 UNRESOLVED。\n只在图像能明确反驳时给出同一属性的最小修正版本；不要修改其他事实，不给最终诊断或答案选项。\n没有清晰依据时拒绝构造前提对。不要为了增加样本数而生成任意错误。\n输出：{\"status\":\"SUPPORTED|CONTRADICTED|UNRESOLVED\",\"corrected_premise\":null,\"observable_basis\":\"\",\"requires_human_adjudication\":true}"
+  },
+  "replay_solve": {
+    "purpose": "false/correct/neutral replay 最后一轮 user 文本完全相同。历史角色由运行器设置。",
+    "system": "你正在执行离线医疗多模态研究，不是面向患者的诊疗。只使用当前请求明确提供的信息。不要声称调用了没有执行的工具。不要把旧回答、检索到的通用知识或模型置信度当作本病例的直接观察。只输出符合指定结构的 JSON，不输出冗长思维过程。缺失、不清晰、无法测量必须明确记录，不得编造。",
+    "user": "问题：$question\n答案格式：$answer_format\n请根据当前原始图像回答；先前陈述可能有帮助，也可能需要重新核验。输出与主方法相同的 claims/answer/answerability JSON。"
+  }
+}
