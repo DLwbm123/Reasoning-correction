@@ -34,8 +34,13 @@ def main():
             batch = backend.processor(text=[text], return_tensors="pt").to("cuda")
             n = batch["input_ids"].shape[1]
             begin = time.time()
-            with torch.inference_mode():
-                ids = backend.model.generate(**batch, do_sample=False, num_beams=1, max_new_tokens=1024, use_cache=True)
+            forwards = [0]
+            handle = backend.model.register_forward_pre_hook(lambda *args: forwards.__setitem__(0, forwards[0]+1))
+            try:
+                with torch.inference_mode():
+                    ids = backend.model.generate(**batch, do_sample=False, num_beams=1, max_new_tokens=1024, use_cache=True)
+            finally:
+                handle.remove()
             torch.cuda.synchronize()
             raw = backend.processor.tokenizer.decode(ids[0, n:], skip_special_tokens=True)
             try:
@@ -46,7 +51,7 @@ def main():
                 bound = {"schema_ok": False, "errors": ["parse_or_schema_error: "+str(exc)], "by_branch": {}}
             record = {"case_id": row["case_id"], "permutation": permutation, "payload": payload,
                 "raw_output": raw, "parsed_output": parsed, "bound": bound, "attempt": 0,
-                "input_tokens": n, "output_tokens": ids.shape[1]-n, "visual_tokens": 0,
+                "input_tokens": n, "output_tokens": ids.shape[1]-n, "visual_tokens": 0, "forwards": forwards[0],
                 "seconds": time.time()-begin, "epoch": time.time(),
                 "peak_allocated_bytes": torch.cuda.max_memory_allocated(),
                 "peak_reserved_bytes": torch.cuda.max_memory_reserved()}
