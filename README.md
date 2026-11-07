@@ -26,10 +26,11 @@ this is not a full-method or untouched-test evaluation.
 The [fresh-pool G2 result](runs/gate_pool_20261107_v1/REPORT_ZH.md) is complete:
 1,600 new article groups, six trained gates, 43.17% mean diagnostic accuracy per training configuration
 versus 43% KEEP and 44.5% always-repair. No stable gate gain was established.
-All G2 GPU work has ended. The [conditional-gate successor G3](runs/action_gate_20261107_v1/PREREG.md)
-has started on jiangsuiyang physical GPU 6: fit on shared old train/dev/cal resources, lock policies,
-then collect and evaluate 200 fresh diagnostic articles. See its
-[launch receipt](runs/action_gate_20261107_v1/LAUNCH.json); no G3 outcome is established yet.
+All G2 GPU work has ended. The [G3 result](runs/action_gate_20261107_v1/REPORT_ZH.md) is complete:
+conditional heads averaged 41.83% versus 42% KEEP and 43–43.33% frozen-head rule controls.
+This branch did not improve the baseline. All G3 jobs have exited. The
+[next frozen protocol](runs/evidence_audit_20261108_v1/PREREG.md) targets the original missing
+candidate evidence-audit module; it is not a launch receipt or expert validation.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

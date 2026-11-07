@@ -1,0 +1,511 @@
+{
+  "status": "locked",
+  "locked_epoch": 1794067754.5771942,
+  "training_seconds": 31.392669677734375,
+  "models": [
+    {
+      "name": "action_ce_2026110711",
+      "family": "action_ce",
+      "seed": 2026110711,
+      "checkpoint": "action_ce_2026110711.pt",
+      "policy": {
+        "lambda": 2,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.03,
+          "acceptance_coverage": 0.03
+        }
+      },
+      "temperature": 3,
+      "best_epoch": 3,
+      "epochs": 18,
+      "best_dev_action_ce": 1.7232893705368042,
+      "trainable_parameters": 1844227
+    },
+    {
+      "name": "action_ce_2026110712",
+      "family": "action_ce",
+      "seed": 2026110712,
+      "checkpoint": "action_ce_2026110712.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 93,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.465,
+          "delta_accuracy": 0.0,
+          "WC": 1,
+          "CW": 1,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.02,
+          "acceptance_coverage": 0.02
+        }
+      },
+      "temperature": 3,
+      "best_epoch": 2,
+      "epochs": 17,
+      "best_dev_action_ce": 1.64424467086792,
+      "trainable_parameters": 1844227
+    },
+    {
+      "name": "action_ce_2026110713",
+      "family": "action_ce",
+      "seed": 2026110713,
+      "checkpoint": "action_ce_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 93,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.465,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "temperature": 3,
+      "best_epoch": 1,
+      "epochs": 16,
+      "best_dev_action_ce": 1.7416186332702637,
+      "trainable_parameters": 1844227
+    },
+    {
+      "name": "action_ce_rank_2026110711",
+      "family": "action_ce_rank",
+      "seed": 2026110711,
+      "checkpoint": "action_ce_rank_2026110711.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.035,
+          "acceptance_coverage": 0.035
+        }
+      },
+      "temperature": 3,
+      "best_epoch": 3,
+      "epochs": 18,
+      "best_dev_action_ce": 1.7180405855178833,
+      "trainable_parameters": 1844227
+    },
+    {
+      "name": "action_ce_rank_2026110712",
+      "family": "action_ce_rank",
+      "seed": 2026110712,
+      "checkpoint": "action_ce_rank_2026110712.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 93,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.465,
+          "delta_accuracy": 0.0,
+          "WC": 1,
+          "CW": 1,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.02,
+          "acceptance_coverage": 0.02
+        }
+      },
+      "temperature": 3,
+      "best_epoch": 2,
+      "epochs": 17,
+      "best_dev_action_ce": 1.6407952308654785,
+      "trainable_parameters": 1844227
+    },
+    {
+      "name": "action_ce_rank_2026110713",
+      "family": "action_ce_rank",
+      "seed": 2026110713,
+      "checkpoint": "action_ce_rank_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 93,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.465,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "temperature": 3,
+      "best_epoch": 1,
+      "epochs": 16,
+      "best_dev_action_ce": 1.7597547769546509,
+      "trainable_parameters": 1844227
+    },
+    {
+      "name": "frozen_ce_2026110711",
+      "family": "frozen_ce",
+      "seed": 2026110711,
+      "shared_checkpoint": "ce_2026110711.pt",
+      "policy": {
+        "lambda": 2,
+        "delta": 0.1,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.03,
+          "acceptance_coverage": 0.08
+        }
+      },
+      "project": false
+    },
+    {
+      "name": "projected_ce_2026110711",
+      "family": "projected_ce",
+      "seed": 2026110711,
+      "shared_checkpoint": "ce_2026110711.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.1,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.015,
+          "acceptance_coverage": 0.015
+        }
+      },
+      "project": true
+    },
+    {
+      "name": "frozen_ce_2026110712",
+      "family": "frozen_ce",
+      "seed": 2026110712,
+      "shared_checkpoint": "ce_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 97,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.485,
+          "delta_accuracy": 0.02,
+          "WC": 4,
+          "CW": 0,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.035,
+          "acceptance_coverage": 0.045
+        }
+      },
+      "project": false
+    },
+    {
+      "name": "projected_ce_2026110712",
+      "family": "projected_ce",
+      "seed": 2026110712,
+      "shared_checkpoint": "ce_2026110712.pt",
+      "policy": {
+        "lambda": 2,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.02,
+          "acceptance_coverage": 0.02
+        }
+      },
+      "project": true
+    },
+    {
+      "name": "frozen_ce_2026110713",
+      "family": "frozen_ce",
+      "seed": 2026110713,
+      "shared_checkpoint": "ce_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.015
+        }
+      },
+      "project": false
+    },
+    {
+      "name": "projected_ce_2026110713",
+      "family": "projected_ce",
+      "seed": 2026110713,
+      "shared_checkpoint": "ce_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.005
+        }
+      },
+      "project": true
+    },
+    {
+      "name": "frozen_ce_rank_2026110711",
+      "family": "frozen_ce_rank",
+      "seed": 2026110711,
+      "shared_checkpoint": "ce_rank_2026110711.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 3,
+          "CW": 0,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.065
+        }
+      },
+      "project": false
+    },
+    {
+      "name": "projected_ce_rank_2026110711",
+      "family": "projected_ce_rank",
+      "seed": 2026110711,
+      "shared_checkpoint": "ce_rank_2026110711.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.025,
+          "acceptance_coverage": 0.025
+        }
+      },
+      "project": true
+    },
+    {
+      "name": "frozen_ce_rank_2026110712",
+      "family": "frozen_ce_rank",
+      "seed": 2026110712,
+      "shared_checkpoint": "ce_rank_2026110712.pt",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 96,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.48,
+          "delta_accuracy": 0.015,
+          "WC": 4,
+          "CW": 1,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.055
+        }
+      },
+      "project": false
+    },
+    {
+      "name": "projected_ce_rank_2026110712",
+      "family": "projected_ce_rank",
+      "seed": 2026110712,
+      "shared_checkpoint": "ce_rank_2026110712.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 3,
+          "CW": 1,
+          "repair_rate": 0.028037383177570093,
+          "harm_given_initial_correct": 0.010752688172043012,
+          "edit_coverage": 0.035,
+          "acceptance_coverage": 0.035
+        }
+      },
+      "project": true
+    },
+    {
+      "name": "frozen_ce_rank_2026110713",
+      "family": "frozen_ce_rank",
+      "seed": 2026110713,
+      "shared_checkpoint": "ce_rank_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.02
+        }
+      },
+      "project": false
+    },
+    {
+      "name": "projected_ce_rank_2026110713",
+      "family": "projected_ce_rank",
+      "seed": 2026110713,
+      "shared_checkpoint": "ce_rank_2026110713.pt",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 94,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.47,
+          "delta_accuracy": 0.005,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.009345794392523364,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.005,
+          "acceptance_coverage": 0.005
+        }
+      },
+      "project": true
+    }
+  ],
+  "old_diagnostic_rows_used": 0,
+  "actionable_rows": {
+    "train": 305,
+    "dev": 72,
+    "calibration": 66
+  },
+  "actionable_train_classes": {
+    "1": 95,
+    "0": 124,
+    "2": 86
+  },
+  "new_diagnostic_labels_read": false
+}

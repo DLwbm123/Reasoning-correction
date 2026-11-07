@@ -66,7 +66,7 @@ def main():
         "paired_branch_vs_keep": ci, "generation_cost": dict(costs),
         "original_start_to_completed_seconds": done["finished_epoch"]-start["started_epoch"],
         "analysis_scope": "post-completion aggregate counts; no policy/model changes"}
-    assert summary["collection"]["cases"] == 1600
+    assert summary["collection"]["cases"] == int(os.environ.get("EXPECTED_CASES", "1600"))
     (public/"collection_diagnostics.json").write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))
 

@@ -1,0 +1,291 @@
+{
+  "family_summaries": {
+    "action_ce": {
+      "accuracy_each_seed": [
+        0.425,
+        0.41,
+        0.42
+      ],
+      "mean_accuracy": 0.41833333333333333,
+      "sample_sd_across_seeds": 0.00763762615825974,
+      "WC_each_seed": [
+        2,
+        0,
+        0
+      ],
+      "CW_each_seed": [
+        1,
+        2,
+        0
+      ],
+      "three_seeds_share_same_200_cases": true
+    },
+    "action_ce_rank": {
+      "accuracy_each_seed": [
+        0.425,
+        0.41,
+        0.42
+      ],
+      "mean_accuracy": 0.41833333333333333,
+      "sample_sd_across_seeds": 0.00763762615825974,
+      "WC_each_seed": [
+        2,
+        0,
+        0
+      ],
+      "CW_each_seed": [
+        1,
+        2,
+        0
+      ],
+      "three_seeds_share_same_200_cases": true
+    },
+    "frozen_ce": {
+      "accuracy_each_seed": [
+        0.425,
+        0.425,
+        0.43
+      ],
+      "mean_accuracy": 0.42666666666666664,
+      "sample_sd_across_seeds": 0.0028867513459481316,
+      "WC_each_seed": [
+        2,
+        2,
+        2
+      ],
+      "CW_each_seed": [
+        1,
+        1,
+        0
+      ],
+      "three_seeds_share_same_200_cases": true
+    },
+    "projected_ce": {
+      "accuracy_each_seed": [
+        0.43,
+        0.43,
+        0.43
+      ],
+      "mean_accuracy": 0.43,
+      "sample_sd_across_seeds": 0.0,
+      "WC_each_seed": [
+        2,
+        2,
+        3
+      ],
+      "CW_each_seed": [
+        0,
+        0,
+        1
+      ],
+      "three_seeds_share_same_200_cases": true
+    },
+    "frozen_ce_rank": {
+      "accuracy_each_seed": [
+        0.425,
+        0.44,
+        0.43
+      ],
+      "mean_accuracy": 0.43166666666666664,
+      "sample_sd_across_seeds": 0.00763762615825974,
+      "WC_each_seed": [
+        2,
+        5,
+        3
+      ],
+      "CW_each_seed": [
+        1,
+        1,
+        1
+      ],
+      "three_seeds_share_same_200_cases": true
+    },
+    "projected_ce_rank": {
+      "accuracy_each_seed": [
+        0.43,
+        0.44,
+        0.43
+      ],
+      "mean_accuracy": 0.43333333333333335,
+      "sample_sd_across_seeds": 0.005773502691896263,
+      "WC_each_seed": [
+        2,
+        5,
+        3
+      ],
+      "CW_each_seed": [
+        0,
+        1,
+        1
+      ],
+      "three_seeds_share_same_200_cases": true
+    }
+  },
+  "paired_comparisons": [
+    {
+      "method": "action_ce",
+      "control": "frozen_ce",
+      "seed": 2026110711,
+      "delta_accuracy": 0.0,
+      "paired_95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "action_ce",
+      "control": "frozen_ce",
+      "seed": 2026110712,
+      "delta_accuracy": -0.015,
+      "paired_95ci": [
+        -0.04,
+        0.005
+      ]
+    },
+    {
+      "method": "action_ce",
+      "control": "frozen_ce",
+      "seed": 2026110713,
+      "delta_accuracy": -0.01,
+      "paired_95ci": [
+        -0.025,
+        0.0
+      ]
+    },
+    {
+      "method": "action_ce",
+      "control": "frozen_ce",
+      "seed": "mean_of_predeclared_three",
+      "delta_accuracy": -0.008333333333333333,
+      "paired_95ci": [
+        -0.02,
+        0.0016666666666666666
+      ]
+    },
+    {
+      "method": "action_ce",
+      "control": "projected_ce",
+      "seed": 2026110711,
+      "delta_accuracy": -0.005,
+      "paired_95ci": [
+        -0.015,
+        0.0
+      ]
+    },
+    {
+      "method": "action_ce",
+      "control": "projected_ce",
+      "seed": 2026110712,
+      "delta_accuracy": -0.02,
+      "paired_95ci": [
+        -0.04,
+        -0.005
+      ]
+    },
+    {
+      "method": "action_ce",
+      "control": "projected_ce",
+      "seed": 2026110713,
+      "delta_accuracy": -0.01,
+      "paired_95ci": [
+        -0.03,
+        0.01
+      ]
+    },
+    {
+      "method": "action_ce",
+      "control": "projected_ce",
+      "seed": "mean_of_predeclared_three",
+      "delta_accuracy": -0.011666666666666665,
+      "paired_95ci": [
+        -0.025,
+        -0.0016666666666666666
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "frozen_ce_rank",
+      "seed": 2026110711,
+      "delta_accuracy": 0.0,
+      "paired_95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "frozen_ce_rank",
+      "seed": 2026110712,
+      "delta_accuracy": -0.03,
+      "paired_95ci": [
+        -0.06,
+        -0.005
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "frozen_ce_rank",
+      "seed": 2026110713,
+      "delta_accuracy": -0.01,
+      "paired_95ci": [
+        -0.03,
+        0.01
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "frozen_ce_rank",
+      "seed": "mean_of_predeclared_three",
+      "delta_accuracy": -0.013333333333333332,
+      "paired_95ci": [
+        -0.026666666666666665,
+        -0.0016666666666666666
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "projected_ce_rank",
+      "seed": 2026110711,
+      "delta_accuracy": -0.005,
+      "paired_95ci": [
+        -0.015,
+        0.0
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "projected_ce_rank",
+      "seed": 2026110712,
+      "delta_accuracy": -0.03,
+      "paired_95ci": [
+        -0.06,
+        -0.005
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "projected_ce_rank",
+      "seed": 2026110713,
+      "delta_accuracy": -0.01,
+      "paired_95ci": [
+        -0.03,
+        0.01
+      ]
+    },
+    {
+      "method": "action_ce_rank",
+      "control": "projected_ce_rank",
+      "seed": "mean_of_predeclared_three",
+      "delta_accuracy": -0.015,
+      "paired_95ci": [
+        -0.03,
+        -0.0016666666666666666
+      ]
+    }
+  ],
+  "scope": "fixed policies, full 200-case denominator, no retraining or threshold selection",
+  "lock_before_collection_finished": true,
+  "model_count": 18,
+  "trained_new_heads": 6,
+  "features_rows": 400
+}
