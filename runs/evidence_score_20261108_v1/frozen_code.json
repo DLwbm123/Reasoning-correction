@@ -1,5 +1,5 @@
 {
-  "git_commit": "b2ced2421e90396086eacfaf13aec0b3523c1c8c",
+  "git_commit": "a262bf207feca59b60885ab1ba9cdad291ceebda",
   "code_files": [
     "evidence_score.py",
     "run_evidence_score.py",
@@ -20,5 +20,13 @@
     "test_evidence_score.py",
     "test_interface.py",
     "test_pool_io.py"
-  ]
+  ],
+  "initial_score_stage_commit": "b2ced2421e90396086eacfaf13aec0b3523c1c8c",
+  "post_launch_metadata_correction": {
+    "file": "pool_prepare_gate.py",
+    "scope": "Offline preparation reports actual frozen selection seed; no sample/split/scoring/training rule change",
+    "phase_at_correction": "scores_old",
+    "original_clock_preserved": true,
+    "old_score_worker_restarted": false
+  }
 }
