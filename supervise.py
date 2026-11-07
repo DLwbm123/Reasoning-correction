@@ -41,7 +41,8 @@ for s in [signal.SIGTERM, signal.SIGINT]:
 
 def used_bytes():
     total = 0
-    for parent, _, files in os.walk(R):
+    # Include the preserved first interface-failure attempt and its shared model cache.
+    for parent, _, files in os.walk(R.parent):
         for name in files:
             try:
                 total += os.lstat(os.path.join(parent, name)).st_blocks * 512

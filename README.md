@@ -1,25 +1,30 @@
 # Reasoning-correction mechanism pilot
 
 Development-only medical VQA context-reconstruction experiment, requested for GPU 6.
-See [frozen protocol](runs/e0_20261107_v1/PREREG.md).
+See the active [v2 frozen protocol](runs/e0_20261107_v2/PREREG.md).
 
 Implemented: grouped PMC-VQA sample preparation; reference-free inference DTOs; role isolation;
 blind observations; evidence binding; graph/flat-state accounting; five same-template mechanism branches;
 deterministic branch reuse; token/forward/memory/latency traces; separate exact-letter evaluator;
 paired bootstrap; detached supervisor with deadline and storage guards.
 
-Executed locally: 9 permission/state/outcome-accounting unit tests and Python compilation. Data manifest: 200 unique
+Executed locally: 12 permission/state/format/outcome-accounting unit tests and Python compilation. Data manifest: 200 unique
 source articles, no article overlap with the three excluded official test metadata files.
-Remote launch: jiangsuiyang/zmic44 physical GPU 6, experiment `e0_20261107_v1`.
-Model download and adapter import succeeded; checkpoint loading has started. At this snapshot,
-real model generation and medical performance evaluation are not yet confirmed complete.
+Remote launch: jiangsuiyang/zmic44 physical GPU 6, active experiment `e0_20261107_v2`.
+The first v1 interface attempt was stopped after the first trace exposed non-neutral observation
+questions. Its two completed cases / 33 calls and raw failures are preserved; no accuracy labels were
+opened and it is not scientific effectiveness evidence. V2 uses program-owned neutral questions and
+separates valid answer letters from explanation schema failures. It shares the original sample,
+weights, overall time deadline and storage budget, without overwriting v1.
+V2 model generation is confirmed: first complete five-branch trace passed interface checks;
+two of 200 cases had completed at the launch-verification snapshot. Medical evaluation is pending.
 Runtime progress and results are under the experiment's NAS outputs, not implied by unit tests.
 
 Not implemented/run: learned gate, expert oracle observations, crop tools, independent expert process audit,
 clinical evaluation, final held-out generalization study, or exhaustive image near-duplicate auditing.
 This pilot does not establish the full method's effectiveness or clinical safety.
 
-Local checks: `python -m unittest -v test_mechanism.py test_evaluation.py`.
+Local checks: `python -m unittest -v test_mechanism.py test_evaluation.py test_format.py`.
 `prepare_data.py` reads the already downloaded dataset from its frozen local source path.
 On the server, set `RUN_ROOT` and execute `run_e0.py`; after collection exits, execute
 `evaluate_e0.py` in a separate process. `supervise.py` is the configured neutral-entry wrapper.

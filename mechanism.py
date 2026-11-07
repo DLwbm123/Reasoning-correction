@@ -12,6 +12,18 @@ ROLE_KEYS = {
     'repair': {'question', 'choices', 'evidence', 'historical_facts'},
 }
 
+# The planner chooses an attribute, never the wording seen by the observer.
+# No previous expected value, arbitrary model text, or private mapping is forwarded.
+NEUTRAL_QUESTIONS = {
+    'modality': 'Describe the imaging modality of each panel using visible acquisition features. State uncertainty when the modality cannot be identified.',
+    'anatomy': 'Describe the anatomical structures visible in each panel and the visible basis for identifying them. Do not infer structures outside the field of view.',
+    'laterality': 'Describe visible findings on both sides and any orientation markers. State whether patient laterality can actually be determined.',
+    'presence': 'Describe visible abnormalities and normal features across the full image and its panels. Distinguish unclear findings from absent findings.',
+    'count': 'Describe the visible structures or abnormalities and their separable instance counts. State when overlap or field of view prevents counting.',
+    'relation': 'Describe the spatial relationships among visible anatomical structures and abnormalities, using only relationships supported by the image.',
+    'appearance': 'Describe visible shapes, signal or density patterns, colors and boundaries in each panel, without adding an unsupported diagnosis.',
+}
+
 
 def payload(role, **values):
     if set(values) != ROLE_KEYS[role]:
@@ -39,12 +51,17 @@ def claims_from(result):
 
 
 def public_tests(plan):
-    # Private claim mappings, scope flags, old texts and answer letters cannot be serialized.
-    return [{k: t.get(k, [] if k in {'required_views', 'prerequisites'} else '')
-             for k in ('test_id', 'public_question', 'required_views', 'prerequisites')}
-            for t in plan.get('tests', [])[:2]
-            if isinstance(t, dict) and t.get('scope') == 'image_verifiable'
-            and isinstance(t.get('public_question'), str)]
+    out, used = [], set()
+    for t in plan.get('tests', [])[:2]:
+        if not isinstance(t, dict) or t.get('scope') != 'image_verifiable':
+            continue
+        attribute = t.get('attribute')
+        if attribute not in NEUTRAL_QUESTIONS or attribute in used:
+            continue
+        used.add(attribute)
+        out.append({'test_id': f't{len(out)+1}', 'public_question': NEUTRAL_QUESTIONS[attribute],
+                    'required_views': ['full_image'], 'prerequisites': []})
+    return out
 
 
 def register_evidence(observed, tests, case_id):

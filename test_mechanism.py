@@ -10,9 +10,17 @@ class PermissionsAndState(unittest.TestCase):
                 payload('observe', public_tests=[], image_manifest=[], **{field: 'SECRET'})
 
     def test_private_planner_mapping_not_forwarded(self):
-        plan = {'tests': [{'test_id': 't', 'claim_ids': ['SECRET'], 'public_question': 'Describe both sides',
+        plan = {'tests': [{'test_id': 'SECRET', 'attribute': 'modality', 'claim_ids': ['SECRET'],
+                           'public_question': 'SECRET', 'prerequisites': ['SECRET'],
                            'scope': 'image_verifiable', 'answer': 'SECRET'}]}
         self.assertNotIn('SECRET', json.dumps(public_tests(plan)))
+        self.assertEqual(len(public_tests(plan)), 1)
+
+    def test_expected_observation_value_cannot_reach_observer(self):
+        plan = {'tests': [{'attribute': 'modality', 'public_question': 'Is this a radiograph?',
+                           'scope': 'image_verifiable'}]}
+        self.assertNotIn('radiograph', json.dumps(public_tests(plan)))
+        self.assertIn('imaging modality', public_tests(plan)[0]['public_question'])
 
     def test_repair_rejects_old_answer_and_trace(self):
         with self.assertRaises(ValueError):

@@ -1,0 +1,11 @@
+{
+  "status": "stopped_for_implementation_defect",
+  "reason": "First-trace audit found that the planner sent an expected modality value in its observer question.",
+  "completed_cases": 2,
+  "generation_calls_recorded": 33,
+  "correctness_labels_opened": false,
+  "scientific_performance_conclusion": "none",
+  "raw_records_preserved_on_server": true,
+  "successor": "e0_20261107_v2",
+  "successor_shares_original_deadline_and_storage_budget": true
+}

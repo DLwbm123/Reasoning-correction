@@ -35,6 +35,11 @@ def parse_json(text):
 def validate(role, result):
     field = {'initial': 'claims', 'plan': 'tests', 'observe': 'observations', 'bind': 'verdicts',
              'summarize': 'facts', 'repair': 'claims'}[role]
+    if role == 'repair' and 'claims' not in result:
+        # Answer accuracy and explanation schema compliance are distinct outcomes.
+        # No missing explanation or its kind/evidence is fabricated.
+        result['claims'] = []
+        result['_schema_warning'] = 'missing claims list; explanation unavailable'
     if not isinstance(result.get(field), list):
         raise ValueError('missing list field ' + field)
     if role in {'initial', 'repair'} and result.get('answer') not in ['A', 'B', 'C', 'D']:
@@ -108,6 +113,8 @@ class Backend:
                 result = parse_json(raw)
                 validate(role, result)
                 record['parsed'] = True
+                if result.get('_schema_warning'):
+                    record['schema_warning'] = result['_schema_warning']
             except (ValueError, TypeError, KeyError) as exc:
                 result = None
                 record.update(parsed=False, parse_error=str(exc))
@@ -203,7 +210,7 @@ def main():
             break
         if (output / (row['case_id'] + '.json')).exists():
             raise RuntimeError('Unexpected existing case: new experiments must not silently overwrite/re-run')
-        if disk_bytes(ROOT) >= 40_000_000_000:
+        if disk_bytes(ROOT.parent) >= 40_000_000_000:
             status = 'storage_budget_stop'
             break
         try:
