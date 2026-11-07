@@ -1,0 +1,16 @@
+{
+  "status": "bounded_recovery_started",
+  "initial_failure": "image preprocessing rejects 19x17 source below factor28",
+  "source_answers_all_invalid_confirmed": true,
+  "completed_prefix_records_not_replayed": 272,
+  "candidate_collection_repeated": false,
+  "new_labels_read_before_repair": false,
+  "missing_invalid_row_prediction": "null; never a model posterior",
+  "unit_checks_passed": 13,
+  "original_started_epoch": 1794085765.927624,
+  "original_deadline_epoch": 1794107365.927624,
+  "deadline_reset": false,
+  "initial_failure_logs_preserved": true,
+  "initial_scoring_allocator_peak_missing_disclosed": true,
+  "postfreeze_execution_deviation_disclosed": true
+}

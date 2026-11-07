@@ -1,5 +1,5 @@
 {
-  "git_commit": "e49cec10fac263bca8530cfaf6973562dc8d71d6",
+  "git_commit": "2d735b6e84c5cc471baf6d75dd3f4965073cb7d9",
   "code_files": [
     "evidence_score.py",
     "run_evidence_score.py",
@@ -25,5 +25,13 @@
     "test_risk_control.py"
   ],
   "new_models_trained": 0,
-  "frozen_predictor_seed_count": 6
+  "frozen_predictor_seed_count": 6,
+  "initial_code_commit": "e49cec10fac263bca8530cfaf6973562dc8d71d6",
+  "bounded_recovery": {
+    "prefix_records": 272,
+    "completed_records_replayed": 0,
+    "original_clock_preserved": true,
+    "new_labels_read_before_fix": false,
+    "nonactionable_missing_predictions": "null; no model posterior"
+  }
 }
