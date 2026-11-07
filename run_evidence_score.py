@@ -7,6 +7,18 @@ import time
 from evidence_score import SCORE_KEYS, score_payload, check_letter_tokens
 
 
+def non_actionable_failure(case):
+    return bool(case.get("pipeline_error")) and case.get("initial", {}).get("answer") not in list("ABCD") and all(
+        case.get("answers", {}).get(b, {}).get("answer") not in list("ABCD") for b in ["selective", "reset"])
+
+
+def validate_prefix(rows, records, expected):
+    if not 0 <= expected <= len(rows) or len(records) != expected or any(r["case_id"] != row["case_id"] for r, row in zip(records, rows)):
+        raise ValueError("Recovery prefix identity/count mismatch")
+    if any(r["status"] != "completed" or len(r["calls"]) != 2 for r in records):
+        raise ValueError("Recovery prefix must contain complete two-call records")
+
+
 def main():
     import torch
     from PIL import Image
@@ -16,20 +28,31 @@ def main():
     phase = "old" if old else "new"
     source = Path((root/"shared_root.txt").read_text().strip()) if old else root
     target = root/"outputs"/("scores_"+phase+".jsonl")
-    if target.exists():
+    resume = os.environ.get("SCORE_RESUME_PREFIX_COUNT")
+    if target.exists() and resume is None:
         raise RuntimeError("No automatic repeat of score calls")
+    if (root/"outputs"/("scores_"+phase+"_done.json")).exists():
+        raise RuntimeError("Completed scoring cannot be repeated")
     rows = [json.loads(s) for s in (source/"inputs/manifest.jsonl").read_text().splitlines()]
     if old:
         split = json.loads((source/"inputs/splits.private.json").read_text())
         rows = [r for r in rows if split[r["group_id"]] in {"train", "dev", "calibration"}]
     assert len(rows) == (1400 if old else int(os.environ.get("SCORE_NEW_CASES", "200")))
+    records = [json.loads(s) for s in target.read_text().splitlines()] if target.exists() else []
+    prefix = len(records)
+    if resume is not None: validate_prefix(rows, records, int(resume))
     backend = base.Backend()
-    records = []
     start = time.time()
-    for row in rows:
+    for row in rows[prefix:]:
         cid = row["case_id"]
         case = json.loads((source/"outputs/cases"/(cid+".json")).read_text())
         assert case["case_id"] == cid and case["group_id"] == row["group_id"]
+        if os.environ.get("SCORE_ALLOW_NONACTIONABLE_UNAVAILABLE") == "1" and non_actionable_failure(case):
+            result = {"case_id":cid,"status":"unavailable_non_actionable","calls":[],
+                      "reason":"Preserved pipeline failure; initial and both candidates have invalid answer format"}
+            with target.open("a") as f: f.write(json.dumps(result)+"\n")
+            records.append(result)
+            continue
         path = Path(row["image"])
         if path.is_absolute() or ".." in path.parts:
             raise ValueError("Unsafe registered image path")
@@ -65,11 +88,15 @@ def main():
             f.write(json.dumps(result, ensure_ascii=False)+"\n")
         records.append(result)
         (root/"outputs/progress.json").write_text(json.dumps({"stage": "scores_"+phase,
-            "completed_cases": len(records), "planned_cases": len(rows), "forward_calls": 2*len(records),
+            "completed_cases": len(records), "planned_cases": len(rows), "forward_calls": sum(c["forwards"] for r in records for c in r["calls"]),
             "updated_epoch": time.time()}))
         if len(records) % 20 == 0:
             print("SCORED_CASES", phase, len(records), flush=True)
-    summary = {"phase": phase, "cases": len(records), "forward_calls": 2*len(records),
+    summary = {"phase": phase, "cases": len(records), "forward_calls": sum(c["forwards"] for r in records for c in r["calls"]),
+        "resume_prefix_records": prefix, "unavailable_non_actionable_cases":sum(r["status"] == "unavailable_non_actionable" for r in records),
+        "all_forward_seconds":sum(c["seconds"] for r in records for c in r["calls"]),
+        "seconds_scope":"current process wall time; original clock includes failed segment",
+        "peak_scope":"current process only; prior failed scoring allocator peak unavailable" if prefix else "current process",
         "seconds": time.time()-start, "generation_calls": 0, "input_tokens": sum(c["input_tokens"] for r in records for c in r["calls"]),
         "visual_tokens": sum(c["visual_tokens"] for r in records for c in r["calls"]),
         "peak_allocated_bytes": torch.cuda.max_memory_allocated(), "peak_reserved_bytes": torch.cuda.max_memory_reserved(),

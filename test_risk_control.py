@@ -4,10 +4,25 @@ import tempfile
 import json
 from pathlib import Path
 from unittest.mock import patch
-from risk_control import upper_bound, select_policy, apply_policy
+from risk_control import upper_bound, select_policy, apply_policy, format_masked_decisions
 
 
 class RiskChecks(unittest.TestCase):
+    def test_unavailable_invalid_rows_preserve_case_without_posterior(self):
+        rows=[{"case_id":"x","valid":False,"c0":0,"ca":0,"initial_answer":None,"candidate_answer":None}]*2
+        cases=format_masked_decisions(rows,[None,None],1,0)
+        self.assertEqual(len(cases),1);self.assertFalse(cases[0]["accepted"])
+        self.assertEqual(cases[0]["ca"],0)
+        with self.assertRaises(ValueError):format_masked_decisions([dict(rows[0],valid=True)],[None],1,0)
+
+    def test_recovery_requires_exact_prefix_and_nonactionable_failure(self):
+        from run_evidence_score import validate_prefix, non_actionable_failure
+        rows=[{"case_id":"x"},{"case_id":"y"}]
+        validate_prefix(rows,[{"case_id":"x","status":"completed","calls":[{},{}]}],1)
+        with self.assertRaises(ValueError):validate_prefix(rows,[{"case_id":"y","status":"completed","calls":[{},{}]}],1)
+        self.assertTrue(non_actionable_failure({"pipeline_error":"source failure"}))
+        self.assertFalse(non_actionable_failure({"pipeline_error":"source failure","answers":{"selective":{"answer":"A"}}}))
+
     def test_one_sided_zero_event_and_multiplicity(self):
         self.assertAlmostEqual(upper_bound(0, 93), 1-.05**(1/93))
         self.assertGreater(upper_bound(0, 305, .05/24), .02)

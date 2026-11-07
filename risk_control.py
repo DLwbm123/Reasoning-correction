@@ -5,6 +5,19 @@ from train_gate_baseline import decisions, metrics
 GRID = [(penalty, threshold) for penalty in [1, 2, 4] for threshold in [0, .05, .1, .2]]
 
 
+def format_masked_decisions(rows, probabilities, penalty, threshold):
+    if len(rows) != len(probabilities): raise ValueError("Probability denominator mismatch")
+    safe = []
+    for row, p in zip(rows, probabilities):
+        if p is None:
+            if row["valid"]: raise ValueError("Missing prediction for a selectable candidate")
+            # Arithmetic placeholder, never a posterior; invalid rows cannot be accepted.
+            safe.append([0.,0.,0.,0.])
+        else: safe.append(p)
+    if len(safe) != len(rows): raise ValueError("Probability denominator mismatch")
+    return decisions(rows, safe, penalty, threshold)
+
+
 def upper_bound(k, n, alpha=.05):
     if not 0 <= k <= n or not 0 < alpha < 1:
         raise ValueError("Invalid binomial bound arguments")
@@ -16,7 +29,7 @@ def upper_bound(k, n, alpha=.05):
 
 def apply_policy(rows, probabilities, policy):
     if not policy.get("keep_only"):
-        return decisions(rows, probabilities, policy["lambda"], policy["delta"])
+        return format_masked_decisions(rows, probabilities, policy["lambda"], policy["delta"])
     grouped = {}
     for row in rows:
         grouped.setdefault(row["case_id"], {"c0": row["c0"], "ca": row["c0"],
@@ -27,7 +40,7 @@ def apply_policy(rows, probabilities, policy):
 def select_policy(rows, probabilities, *, exact=False):
     best, table = None, []
     for penalty, threshold in GRID:
-        cases = decisions(rows, probabilities, penalty, threshold)
+        cases = format_masked_decisions(rows, probabilities, penalty, threshold)
         m = metrics(cases)
         upper = upper_bound(m["CW"], m["initial_correct"], .05/24)
         eligible = upper <= .02 if exact else (m["initial_correct"] > 0 and m["harm_given_initial_correct"] <= .02)

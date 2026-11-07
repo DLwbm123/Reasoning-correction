@@ -27,7 +27,12 @@ def probabilities(root, rows, scores):
     torch.set_num_threads(4)
     from support_gate import score_net
     prior = Path((root/"predictor_root.txt").read_text().strip())
-    x = torch.tensor([auxiliary(scores[r["case_id"]], r["initial_answer"], r["candidate_answer"]) for r in rows], dtype=torch.float32)
+    scored_indices = [i for i,r in enumerate(rows) if scores[r["case_id"]]["status"] == "completed"]
+    for i,r in enumerate(rows):
+        if i not in scored_indices:
+            assert scores[r["case_id"]]["status"] == "unavailable_non_actionable" and not r["valid"]
+    if not scored_indices: return {config:[None]*len(rows) for config in ["ce","ce_rank"]}
+    x = torch.tensor([auxiliary(scores[rows[i]["case_id"]], rows[i]["initial_answer"], rows[i]["candidate_answer"]) for i in scored_indices], dtype=torch.float32)
     result = {}
     for config in ["ce", "ce_rank"]:
         values = []
@@ -37,7 +42,8 @@ def probabilities(root, rows, scores):
             net = score_net(10).eval(); net.load_state_dict(ck["state_dict"]); net.requires_grad_(False)
             with torch.inference_mode():
                 values.append((net((x-ck["mean"])/ck["std"])/ck["temperature"]).softmax(-1))
-        result[config] = torch.stack(values).mean(0).tolist()
+        result[config] = [None]*len(rows)
+        for i,value in zip(scored_indices,torch.stack(values).mean(0).tolist()): result[config][i] = value
     return result
 
 
@@ -80,7 +86,9 @@ def predict(root):
     sc = {r["case_id"]: r for r in read_lines(root/"outputs/scores_new.jsonl")}
     assert done["cases"] == len(sc) == 1000
     rows = label_free_rows(root)
-    save(root, "predictions.private.json", {"rows": rows, "probabilities": probabilities(root, rows, sc),
+    p = probabilities(root, rows, sc)
+    save(root, "predictions.private.json", {"rows": rows, "probabilities": p,
+        "unscored_invalid_candidate_rows":sum(v is None for v in p["ce"]),
         "finished_epoch": time.time(), "new_labels_read": False})
     print("LABEL_FREE_PREDICTIONS_COMPLETE", len(rows), flush=True)
 
@@ -144,7 +152,10 @@ def evaluate(root):
             if name in ["selective","reset"]:
                 chosen = next(r for r in pair if r["branch"] == name)
             elif name.startswith("fixed_"):
-                index = choose_by_support(pair,sc[cid][name.removeprefix("fixed_")]["logp"])
+                if sc[cid]["status"] == "unavailable_non_actionable":
+                    assert all(not r["valid"] for r in pair)
+                    index = None
+                else: index = choose_by_support(pair,sc[cid][name.removeprefix("fixed_")]["logp"])
                 chosen = pair[index] if index is not None else None
             ca = max([base["c0"]]+[r["ca"] for r in pair]) if name == "pool_oracle_upper_bound" else chosen["ca"] if chosen else base["c0"]
             cases.append({"c0":base["c0"],"ca":ca,"accepted":chosen is not None,
