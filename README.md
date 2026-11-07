@@ -29,8 +29,10 @@ versus 43% KEEP and 44.5% always-repair. No stable gate gain was established.
 All G2 GPU work has ended. The [G3 result](runs/action_gate_20261107_v1/REPORT_ZH.md) is complete:
 conditional heads averaged 41.83% versus 42% KEEP and 43–43.33% frozen-head rule controls.
 This branch did not improve the baseline. All G3 jobs have exited. The
-[next frozen protocol](runs/evidence_audit_20261108_v1/PREREG.md) targets the original missing
-candidate evidence-audit module; it is not a launch receipt or expert validation.
+[evidence-audit protocol](runs/evidence_audit_20261108_v1/PREREG.md) targets the original missing
+candidate evidence-audit module. Its [launch receipt](runs/evidence_audit_20261108_v1/LAUNCH.json)
+records the running 32-article, 64-request text-only preflight on physical GPU 6. The full extension
+and gate training require the frozen engineering gates to pass; no audit correctness or gain is established.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
@@ -54,7 +56,7 @@ See the [full result and limitations](runs/e0_20261107_v2/REPORT_ZH.md).
 Twelve initial-format failures materially confound apparent improvement; primary results are preserved.
 Runtime progress and results are under the experiment's NAS outputs, not implied by unit tests.
 
-Not implemented/run: learned gate, expert oracle observations, crop tools, independent expert process audit,
+Not implemented/run: expert oracle observations, crop tools, independent expert process audit,
 clinical evaluation, final held-out generalization study, or exhaustive image near-duplicate auditing.
 This pilot does not establish the full method's effectiveness or clinical safety.
 

@@ -1,0 +1,12 @@
+{
+  "git_commit": "6608f23d3b7c387013d68b7e350d71707dbc7b4a",
+  "code_files": [
+    "evidence_audit.py",
+    "run_audit_preflight.py",
+    "gate_supervise.py",
+    "run_e0.py",
+    "mechanism.py",
+    "prompts_e0.json",
+    "prompts_audit.json"
+  ]
+}
