@@ -1,0 +1,94 @@
+{
+  "n": 24,
+  "n_planned": 24,
+  "complete": true,
+  "scope": "synthetic, answer-revealing modality annotation diagnostic; not natural errors or medical performance",
+  "conditions": {
+    "none_noE": {
+      "correct": 20,
+      "accuracy": 0.8333333333333334
+    },
+    "none_E": {
+      "correct": 24,
+      "accuracy": 1.0
+    },
+    "quoted_supported_noE": {
+      "correct": 23,
+      "accuracy": 0.9583333333333334
+    },
+    "quoted_supported_E": {
+      "correct": 24,
+      "accuracy": 1.0
+    },
+    "quoted_contradicted_noE": {
+      "correct": 17,
+      "accuracy": 0.7083333333333334
+    },
+    "quoted_contradicted_E": {
+      "correct": 24,
+      "accuracy": 1.0
+    },
+    "assistant_supported_noE": {
+      "correct": 24,
+      "accuracy": 1.0
+    },
+    "assistant_supported_E": {
+      "correct": 24,
+      "accuracy": 1.0
+    },
+    "assistant_contradicted_noE": {
+      "correct": 22,
+      "accuracy": 0.9166666666666666
+    },
+    "assistant_contradicted_E": {
+      "correct": 24,
+      "accuracy": 1.0
+    }
+  },
+  "paired_differences": {
+    "none_noE minus assistant_contradicted_noE": {
+      "difference": -0.08333333333333333,
+      "95ci": [
+        -0.20833333333333334,
+        0.0
+      ]
+    },
+    "none_E minus assistant_contradicted_E": {
+      "difference": 0.0,
+      "95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "assistant_contradicted_E minus assistant_contradicted_noE": {
+      "difference": 0.08333333333333333,
+      "95ci": [
+        0.0,
+        0.20833333333333334
+      ]
+    },
+    "assistant_supported_E minus assistant_contradicted_E": {
+      "difference": 0.0,
+      "95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "quoted_contradicted_E minus assistant_contradicted_E": {
+      "difference": 0.0,
+      "95ci": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "cost": {
+    "generation_calls": 240,
+    "failed_calls": 0,
+    "output_tokens": 2000,
+    "input_tokens": 142096,
+    "visual_tokens": 104720,
+    "forward_calls": 2000,
+    "sum_generation_seconds": 149.6280107498169
+  }
+}

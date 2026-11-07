@@ -56,6 +56,23 @@ def used_bytes():
     return total
 
 
+def capture_process_display(pid):
+    """Persist the actual live CLI and its GPU executable, not reconstructed launch strings."""
+    ids=','.join(str(x) for x in [pid,os.getpid(),os.getppid()])
+    ps = subprocess.check_output(['ps','-p',ids,'-o','pid,ppid,args='],text=True)
+    gpu = subprocess.check_output(['nvidia-smi','--query-compute-apps=pid,process_name,used_gpu_memory',
+                                   '--format=csv,noheader'],text=True)
+    own = [line for line in gpu.splitlines() if line.split(',',1)[0].strip()==str(pid)]
+    forbidden=['wangbomin','reasoning-correction','clear-med']
+    if any(word in (ps+'\n'+'\n'.join(own)).lower() for word in forbidden):
+        raise RuntimeError('Non-neutral process display detected')
+    if own:
+        (R/'outputs/process_display.json').write_text(json.dumps({'pid':pid,'ps':ps,
+            'nvidia_smi_own_process':own,'epoch':time.time()},indent=2))
+        return True
+    return False
+
+
 def main():
     global child
     (R/'outputs/supervisor.json').write_text(json.dumps({'status':'waiting_for_weights','pid':os.getpid(),'deadline_epoch':DEADLINE}))
@@ -71,7 +88,10 @@ def main():
         (R/'outputs/inference_pid.txt').write_text(str(child.pid))
         (R/'outputs/supervisor.json').write_text(json.dumps({'status':'inference_running','pid':os.getpid(),'child_pid':child.pid,'deadline_epoch':DEADLINE}))
         last_disk_check = 0
+        display_saved = False
         while child.poll() is None:
+            if not display_saved:
+                display_saved = capture_process_display(child.pid)
             if time.time() > DEADLINE - 120:
                 stop_child()
                 raise RuntimeError('Hard experiment deadline')

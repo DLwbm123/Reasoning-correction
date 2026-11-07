@@ -6,7 +6,11 @@ See the active [v2 frozen protocol](runs/e0_20261107_v2/PREREG.md).
 E0 and the [32-case evidence-interface feasibility diagnosis](runs/e0_interface_20261107_v1/REPORT_ZH.md) are complete.
 D1 registered 42/42 observations with zero initial-format failures, but Selective/Reset/Summary/Random-drop
 gave identical answers in all 32 cases. The current context-state mechanism remains unsupported.
-It changes initial answer formatting and per-test observation execution, not the completed E0 result.
+D1 changed initial answer formatting and per-test observation execution, not the completed E0 result.
+The [24-image annotation/history positive control](runs/oracle_replay_20261107_v1/REPORT_ZH.md) is also
+complete: all answer-revealing oracle conditions reached 24/24, leaving no state-reconstruction gap
+on that narrow synthetic task. No large gate/RL training is started; the next phase is evidence/data
+feasibility auditing for a substantive multi-fact intervention, not more modality-task repetitions.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
