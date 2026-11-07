@@ -3,6 +3,8 @@ __pycache__/
 runs/*/inputs
 runs/*/outputs/
 runs/*/cache/
+runs/*/code/
+runs/*/launch.private.json
 *.log
 .DS_Store
 private_analysis/

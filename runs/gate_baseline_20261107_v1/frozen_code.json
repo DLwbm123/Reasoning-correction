@@ -1,0 +1,9 @@
+{
+  "git_commit": "8cebf444b32c900d39413e43500c0d0daf4d0385",
+  "code_files": [
+    "prepare_gate.py",
+    "encode_gate.py",
+    "train_gate_baseline.py",
+    "gate_supervise.py"
+  ]
+}

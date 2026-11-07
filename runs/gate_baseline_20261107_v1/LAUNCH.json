@@ -1,0 +1,19 @@
+{
+  "run_id": "gate_baseline_20261107_v1",
+  "server_alias": "pro5000",
+  "physical_gpu": 6,
+  "status_at_check": "features_running",
+  "frozen_code_commit": "8cebf44",
+  "source_cases": 200,
+  "candidate_rows": 400,
+  "planned_training_models": 6,
+  "started_epoch": 1794041202.2548218,
+  "deadline_epoch": 1794052002.2548218,
+  "total_budget_seconds": 10800,
+  "deadline_Asia_Shanghai": "2026-11-07T19:46:42.254822+08:00",
+  "new_weight_copy": false,
+  "heartbeat_automation_id": "automation-2",
+  "completed_feature_rows_at_check": 60,
+  "live_process_neutrality_verified": true,
+  "meaningful_local_tests_passed": 4
+}
