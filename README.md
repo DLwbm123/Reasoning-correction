@@ -9,8 +9,12 @@ gave identical answers in all 32 cases. The current context-state mechanism rema
 D1 changed initial answer formatting and per-test observation execution, not the completed E0 result.
 The [24-image annotation/history positive control](runs/oracle_replay_20261107_v1/REPORT_ZH.md) is also
 complete: all answer-revealing oracle conditions reached 24/24, leaving no state-reconstruction gap
-on that narrow synthetic task. No large gate/RL training is started; the next phase is evidence/data
-feasibility auditing for a substantive multi-fact intervention, not more modality-task repetitions.
+on that narrow synthetic task. No large gate/RL training is started.
+The [training-data feasibility audit](runs/data_audit_20261107_v1/REPORT_ZH.md) is complete: original
+ClinHallu image mapping was validated, known held-out image groups were excluded, and a private
+16-case packet was reviewed preliminarily. Original SLAKE masks provide a limited multi-label source;
+these annotations and model-generated traces are not new expert adjudications.
+Next is [substantive multi-fact state-mechanism design](NEXT_METHOD_SCOPE.md), not more modality-task repetitions.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

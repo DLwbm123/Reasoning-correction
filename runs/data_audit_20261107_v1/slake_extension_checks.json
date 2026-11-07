@@ -1,0 +1,19 @@
+{
+  "english_train_images": 450,
+  "opaque_repeated_channel_masks_decoded": 328,
+  "fewer_than_two_registered_labels": 108,
+  "unsupported_mask_or_size_mismatch": 122,
+  "eligible_multi_label_mask_images": 220,
+  "eligible_modality_counts": {
+    "MRI": 98,
+    "CT": 122
+  },
+  "selected_original_slake_cases": 8,
+  "selected_modality_counts": {
+    "CT": 2,
+    "MRI": 6
+  },
+  "total_private_audit_cases": 16,
+  "extension_seed": 2026110706,
+  "not_a_VGMED_restoration": true
+}

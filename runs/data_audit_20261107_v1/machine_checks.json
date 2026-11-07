@@ -1,0 +1,79 @@
+{
+  "vqa-rad": {
+    "gold_train_rows": 1221,
+    "source_train_rows": 1793,
+    "unique_train_image_groups": 313,
+    "heldout_rows_images_only": 451,
+    "unique_heldout_image_groups": 203,
+    "shared_image_groups": 202,
+    "exact_decoded_pixel_identity_only": true,
+    "question_match": 1221,
+    "answer_match": 1221,
+    "image_name_match": 1221,
+    "fully_linked": 1221,
+    "eligible_train_reference_rows": 507,
+    "excluded_shared_heldout_image": 714,
+    "selected_private_cases": 4,
+    "selected_strata": {
+      "yes_no": 2,
+      "open_ended": 2
+    },
+    "reference_type": "model-generated, format/answer-consistency filtered; not per-case expert oracle"
+  },
+  "pathvqa": {
+    "gold_train_rows": 10187,
+    "source_train_rows": 19654,
+    "unique_train_image_groups": 2599,
+    "heldout_rows_images_only": 12978,
+    "unique_heldout_image_groups": 1690,
+    "shared_image_groups": 1,
+    "exact_decoded_pixel_identity_only": true,
+    "question_match": 10187,
+    "answer_match": 10187,
+    "image_name_match": 10187,
+    "fully_linked": 10187,
+    "eligible_train_reference_rows": 10186,
+    "excluded_shared_heldout_image": 1,
+    "selected_private_cases": 4,
+    "selected_strata": {
+      "yes_no": 2,
+      "open_ended": 2
+    },
+    "reference_type": "model-generated, format/answer-consistency filtered; not per-case expert oracle"
+  },
+  "vgmed": {
+    "tables": {
+      "attribute": {
+        "rows": 13962,
+        "rows_with_available_image": 13962,
+        "slake_rows_outside_english_train": 417,
+        "english_train_slake_rows": 971,
+        "english_train_rows_with_box": 0,
+        "english_train_rows_with_mask": 0,
+        "source_prefix_rows": {
+          "SAMed2D_v1": 11265,
+          "endoscopy_polydb": 1064,
+          "x_ray_lungs": 245,
+          "Slake1.0": 1388
+        }
+      },
+      "localization": {
+        "rows": 13962,
+        "rows_with_available_image": 13962,
+        "slake_rows_outside_english_train": 417,
+        "english_train_slake_rows": 971,
+        "english_train_rows_with_box": 0,
+        "english_train_rows_with_mask": 0,
+        "source_prefix_rows": {
+          "SAMed2D_v1": 11265,
+          "endoscopy_polydb": 1064,
+          "x_ray_lungs": 245,
+          "Slake1.0": 1388
+        }
+      }
+    },
+    "english_train_allowed_images": 450,
+    "selected_private_cases": 0,
+    "note": "Path availability is not annotation truth; heldout questions/labels not inspected."
+  }
+}

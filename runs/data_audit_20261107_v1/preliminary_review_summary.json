@@ -1,0 +1,31 @@
+{
+  "private_cases": 16,
+  "clinhallu_cases": 8,
+  "original_slake_cases": 8,
+  "new_expert_adjudications": 0,
+  "all_selected_cases_exclude_known_heldout_image_groups": true,
+  "clinhallu_nonanswer_candidates_require_adjudication": 2,
+  "clinhallu_conditional_morphology_candidate": 1,
+  "mask_label_regions": 21,
+  "regions_with_detection_comparison": 20,
+  "exact_detection_union_mask_extent_matches": 11,
+  "within_one_pixel_matches": 12,
+  "more_than_one_pixel_disagreements": 8,
+  "regions_without_matching_detection_label": 1,
+  "max_observed_extent_difference_pixels": 19.0,
+  "scope": "source registration, label geometry and preliminary semantic audit; not expert clinical validation",
+  "training_reference_checks": {
+    "vqa-rad": {
+      "rows": 1221,
+      "literal_reasoning_answer_differs_from_dataset_answer": 359,
+      "question_image_groups_with_conflicting_reference_answers": 0,
+      "interpretation": "Literal differences are not semantic error labels; conflicts need adjudication before training."
+    },
+    "pathvqa": {
+      "rows": 10187,
+      "literal_reasoning_answer_differs_from_dataset_answer": 2779,
+      "question_image_groups_with_conflicting_reference_answers": 0,
+      "interpretation": "Literal differences are not semantic error labels; conflicts need adjudication before training."
+    }
+  }
+}
