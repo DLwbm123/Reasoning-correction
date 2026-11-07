@@ -1,0 +1,380 @@
+{
+  "status": "completed",
+  "models": [
+    {
+      "config": "ce",
+      "seed": 2026110711,
+      "epochs": 16,
+      "best_epoch": 1,
+      "best_dev_ce": 1.4309560060501099,
+      "temperature": 3,
+      "trainable_parameters": 1844740,
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 20,
+          "initial_correct": 10,
+          "final_correct": 10,
+          "initial_accuracy": 0.5,
+          "accuracy": 0.5,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "diagnostic_eval": {
+        "n": 40,
+        "initial_correct": 14,
+        "final_correct": 14,
+        "initial_accuracy": 0.35,
+        "accuracy": 0.35,
+        "delta_accuracy": 0.0,
+        "WC": 0,
+        "CW": 0,
+        "repair_rate": 0.0,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.0,
+        "acceptance_coverage": 0.0,
+        "delta_accuracy_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "config": "ce",
+      "seed": 2026110712,
+      "epochs": 16,
+      "best_epoch": 1,
+      "best_dev_ce": 1.781530737876892,
+      "temperature": 3,
+      "trainable_parameters": 1844740,
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 20,
+          "initial_correct": 10,
+          "final_correct": 10,
+          "initial_accuracy": 0.5,
+          "accuracy": 0.5,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "diagnostic_eval": {
+        "n": 40,
+        "initial_correct": 14,
+        "final_correct": 14,
+        "initial_accuracy": 0.35,
+        "accuracy": 0.35,
+        "delta_accuracy": 0.0,
+        "WC": 0,
+        "CW": 0,
+        "repair_rate": 0.0,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.0,
+        "acceptance_coverage": 0.0,
+        "delta_accuracy_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "config": "ce",
+      "seed": 2026110713,
+      "epochs": 17,
+      "best_epoch": 2,
+      "best_dev_ce": 2.0608887672424316,
+      "temperature": 3,
+      "trainable_parameters": 1844740,
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 20,
+          "initial_correct": 10,
+          "final_correct": 10,
+          "initial_accuracy": 0.5,
+          "accuracy": 0.5,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "diagnostic_eval": {
+        "n": 40,
+        "initial_correct": 14,
+        "final_correct": 14,
+        "initial_accuracy": 0.35,
+        "accuracy": 0.35,
+        "delta_accuracy": 0.0,
+        "WC": 0,
+        "CW": 0,
+        "repair_rate": 0.0,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.0,
+        "acceptance_coverage": 0.0,
+        "delta_accuracy_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110711,
+      "epochs": 16,
+      "best_epoch": 1,
+      "best_dev_ce": 1.4185899496078491,
+      "temperature": 3,
+      "trainable_parameters": 1844740,
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 20,
+          "initial_correct": 10,
+          "final_correct": 10,
+          "initial_accuracy": 0.5,
+          "accuracy": 0.5,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "diagnostic_eval": {
+        "n": 40,
+        "initial_correct": 14,
+        "final_correct": 14,
+        "initial_accuracy": 0.35,
+        "accuracy": 0.35,
+        "delta_accuracy": 0.0,
+        "WC": 0,
+        "CW": 0,
+        "repair_rate": 0.0,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.0,
+        "acceptance_coverage": 0.0,
+        "delta_accuracy_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110712,
+      "epochs": 16,
+      "best_epoch": 1,
+      "best_dev_ce": 1.7865253686904907,
+      "temperature": 3,
+      "trainable_parameters": 1844740,
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 20,
+          "initial_correct": 10,
+          "final_correct": 10,
+          "initial_accuracy": 0.5,
+          "accuracy": 0.5,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "diagnostic_eval": {
+        "n": 40,
+        "initial_correct": 14,
+        "final_correct": 14,
+        "initial_accuracy": 0.35,
+        "accuracy": 0.35,
+        "delta_accuracy": 0.0,
+        "WC": 0,
+        "CW": 0,
+        "repair_rate": 0.0,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.0,
+        "acceptance_coverage": 0.0,
+        "delta_accuracy_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "config": "ce_rank",
+      "seed": 2026110713,
+      "epochs": 17,
+      "best_epoch": 2,
+      "best_dev_ce": 2.0658609867095947,
+      "temperature": 3,
+      "trainable_parameters": 1844740,
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 20,
+          "initial_correct": 10,
+          "final_correct": 10,
+          "initial_accuracy": 0.5,
+          "accuracy": 0.5,
+          "delta_accuracy": 0.0,
+          "WC": 0,
+          "CW": 0,
+          "repair_rate": 0.0,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0,
+          "acceptance_coverage": 0.0
+        }
+      },
+      "diagnostic_eval": {
+        "n": 40,
+        "initial_correct": 14,
+        "final_correct": 14,
+        "initial_accuracy": 0.35,
+        "accuracy": 0.35,
+        "delta_accuracy": 0.0,
+        "WC": 0,
+        "CW": 0,
+        "repair_rate": 0.0,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.0,
+        "acceptance_coverage": 0.0,
+        "delta_accuracy_95ci": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  ],
+  "simple_baselines": {
+    "keep": {
+      "n": 40,
+      "initial_correct": 14,
+      "final_correct": 14,
+      "initial_accuracy": 0.35,
+      "accuracy": 0.35,
+      "delta_accuracy": 0.0,
+      "WC": 0,
+      "CW": 0,
+      "repair_rate": 0.0,
+      "harm_given_initial_correct": 0.0,
+      "edit_coverage": 0.0,
+      "acceptance_coverage": 0.0
+    },
+    "selective": {
+      "n": 40,
+      "initial_correct": 14,
+      "final_correct": 18,
+      "initial_accuracy": 0.35,
+      "accuracy": 0.45,
+      "delta_accuracy": 0.1,
+      "WC": 7,
+      "CW": 3,
+      "repair_rate": 0.2692307692307692,
+      "harm_given_initial_correct": 0.21428571428571427,
+      "edit_coverage": 0.35,
+      "acceptance_coverage": 1.0
+    },
+    "reset": {
+      "n": 40,
+      "initial_correct": 14,
+      "final_correct": 18,
+      "initial_accuracy": 0.35,
+      "accuracy": 0.45,
+      "delta_accuracy": 0.1,
+      "WC": 7,
+      "CW": 3,
+      "repair_rate": 0.2692307692307692,
+      "harm_given_initial_correct": 0.21428571428571427,
+      "edit_coverage": 0.325,
+      "acceptance_coverage": 1.0
+    },
+    "pool_oracle_upper_bound": {
+      "n": 40,
+      "initial_correct": 14,
+      "final_correct": 21,
+      "initial_accuracy": 0.35,
+      "accuracy": 0.525,
+      "delta_accuracy": 0.175,
+      "WC": 7,
+      "CW": 0,
+      "repair_rate": 0.2692307692307692,
+      "harm_given_initial_correct": 0.0
+    }
+  },
+  "class_order": [
+    "WW",
+    "WC",
+    "CW",
+    "CC"
+  ],
+  "split_candidate_counts": {
+    "train": 240,
+    "dev": 40,
+    "calibration": 40,
+    "diagnostic_eval": 80
+  },
+  "split_class_counts": {
+    "train": {
+      "3": 80,
+      "0": 115,
+      "2": 18,
+      "1": 27
+    },
+    "dev": {
+      "1": 6,
+      "3": 17,
+      "0": 16,
+      "2": 1
+    },
+    "calibration": {
+      "3": 14,
+      "0": 20,
+      "2": 6
+    },
+    "diagnostic_eval": {
+      "0": 38,
+      "1": 14,
+      "3": 22,
+      "2": 6
+    }
+  },
+  "all_pool_same_answer_cases": 196,
+  "invalid_candidate_rows": 0,
+  "missing_explanation_candidate_rows": 4,
+  "training_seconds": 3.3343513011932373,
+  "retrospective_development_only": true,
+  "independent_candidate_evidence_audit": false
+}

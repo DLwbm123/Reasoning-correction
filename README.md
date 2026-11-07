@@ -17,10 +17,12 @@ these annotations and model-generated traces are not new expert adjudications.
 The [multi-fact state design](STATE_REVISION_DESIGN.md) now has a small declared-support CPU prototype:
 six checks pass, including 256 evidence-state transitions. This is not model-performance evidence.
 The user's next instruction prioritizes running a trainable baseline without a novelty gate:
-[G1](runs/gate_baseline_20261107_v1/PREREG.md) is launched on physical GPU 6 of PRO5000.
-It reuses the frozen E0 candidate pool for retrospective development, extracts frozen image/text
-features, and trains four-class MLP gates. Independent clinical verification remains unavailable;
-this run is not a full-method or untouched-test evaluation. See its [launch snapshot](runs/gate_baseline_20261107_v1/LAUNCH.json).
+[G1](runs/gate_baseline_20261107_v1/REPORT_ZH.md) completed on physical GPU 6 of PRO5000.
+It reused the frozen E0 candidate pool, extracted frozen features, and trained six four-class MLPs.
+All calibrated gates chose KEEP on the 40-case retrospective diagnostic subset (35%, no improvement);
+the 20-case calibration subset contained no WC event. The training pipeline works, but a gate benefit
+is unsupported. No GPU job from G1 remains active. Independent clinical verification is unavailable;
+this is not a full-method or untouched-test evaluation.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
