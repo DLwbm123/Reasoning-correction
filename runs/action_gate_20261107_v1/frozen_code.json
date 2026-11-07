@@ -1,0 +1,18 @@
+{
+  "git_commit": "5ccf4056296afa1acd59b6bdaf5020326f2eb6c1",
+  "code_files": [
+    "action_gate.py",
+    "fit_action_gate.py",
+    "prepare_gate.py",
+    "encode_gate.py",
+    "train_gate_baseline.py",
+    "gate_supervise.py",
+    "pool_collect.py",
+    "pool_prepare_gate.py",
+    "run_e0.py",
+    "interface_run.py",
+    "mechanism.py",
+    "prompts_e0.json",
+    "prompts_interface.json"
+  ]
+}

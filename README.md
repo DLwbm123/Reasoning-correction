@@ -26,8 +26,10 @@ this is not a full-method or untouched-test evaluation.
 The [fresh-pool G2 result](runs/gate_pool_20261107_v1/REPORT_ZH.md) is complete:
 1,600 new article groups, six trained gates, 43.17% mean diagnostic accuracy per training configuration
 versus 43% KEEP and 44.5% always-repair. No stable gate gain was established.
-All G2 GPU work has ended. The [next conditional-gate protocol](runs/action_gate_20261107_v1/PREREG.md)
-is frozen for implementation; it is not a launch receipt.
+All G2 GPU work has ended. The [conditional-gate successor G3](runs/action_gate_20261107_v1/PREREG.md)
+has started on jiangsuiyang physical GPU 6: fit on shared old train/dev/cal resources, lock policies,
+then collect and evaluate 200 fresh diagnostic articles. See its
+[launch receipt](runs/action_gate_20261107_v1/LAUNCH.json); no G3 outcome is established yet.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

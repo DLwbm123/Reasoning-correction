@@ -1,0 +1,21 @@
+{
+  "run_id": "action_gate_20261107_v1",
+  "server_alias": "jiangsuiyang",
+  "physical_gpu": 6,
+  "status_at_verification": "fit_started",
+  "frozen_code_commit": "5ccf405",
+  "new_diagnostic_articles": 200,
+  "shared_train_dev_cal_cases": [
+    1000,
+    200,
+    200
+  ],
+  "local_meaningful_tests_passed": 9,
+  "generator_weights_frozen": true,
+  "old_heads_retrained": false,
+  "started_epoch": 1794067591.92733,
+  "deadline_epoch": 1794081991.92733,
+  "total_budget_seconds": 14400,
+  "deadline_Asia_Shanghai": "2026-11-08T04:06:31.927330+08:00",
+  "heartbeat_automation_id": "automation-2"
+}
