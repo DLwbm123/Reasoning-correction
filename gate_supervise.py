@@ -71,10 +71,12 @@ def main():
     # This launcher map and environment are frozen program configuration, never model output.
     for sig in [signal.SIGTERM, signal.SIGINT]:
         signal.signal(sig, handle)
-    for stage, entry in config.get("stages", [("features", "r.py"), ("training", "t.py")]):
+    stages = list(config.get("stages", [("features", "r.py"), ("training", "t.py")]))
+    for stage, entry in stages:
         if time.time() > DEADLINE-120:
             raise RuntimeError("Original experiment deadline")
         with (R/"outputs"/(stage+".log")).open("x") as log:
+            stage_deadline = config.get("absolute_stage_deadlines", {}).get(stage, DEADLINE)
             child = subprocess.Popen([str(N/"p"), "-u", str(N/entry)], env=env,
                 stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             write("supervisor.json", {"status": "running", "stage": stage, "supervisor_pid": os.getpid(),
@@ -83,7 +85,7 @@ def main():
             while child.poll() is None:
                 if not saved:
                     saved = capture()
-                if time.time() > DEADLINE-60:
+                if time.time() > min(DEADLINE-60, stage_deadline-30):
                     raise RuntimeError("Hard deadline guard")
                 if time.time()-disk_time > 60:
                     used = allocated(R)+allocated(N)
@@ -96,6 +98,25 @@ def main():
                 time.sleep(2)
             if child.returncode:
                 raise RuntimeError(stage + " exited " + str(child.returncode) + "; no automatic expensive rerun")
+        if stage == config.get("admission_stage"):
+            gate = json.loads((R/"outputs/preflight_summary.json").read_text())
+            if not gate["passed"]:
+                write("supervisor.json", {"status": "completed_preflight_failed", "finished_epoch": time.time(),
+                    "exit_code": 0, "full_extension_run": False, "reason": "Frozen engineering gate not met"})
+                return
+            write("supervisor.json", {"status": "preflight_passed_waiting_extension", "supervisor_pid": os.getpid(),
+                "deadline_epoch": DEADLINE, "updated_epoch": time.time()})
+            ready = R/"extension.json"
+            while not ready.exists():
+                if time.time() > DEADLINE-7200:
+                    raise RuntimeError("Extension not ready before reserved final-stage window")
+                time.sleep(10)
+            # Agent-written frozen configuration, never a model/tool-generated command.
+            extension = json.loads(ready.read_text())
+            for label, path in extension["stages"]:
+                if Path(path).name != path or not (N/path).is_file():
+                    raise RuntimeError("Invalid neutral extension entry")
+                stages.append((label, path))
     write("supervisor.json", {"status": "completed", "finished_epoch": time.time(), "exit_code": 0})
 
 

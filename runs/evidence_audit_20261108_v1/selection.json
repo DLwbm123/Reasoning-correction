@@ -1,0 +1,15 @@
+{
+  "train_article_candidates": 1000,
+  "selected_articles": 32,
+  "requests": 64,
+  "seed": 2026110803,
+  "correctness_labels_read": false,
+  "image_inputs": false,
+  "original_answer_in_audit_payload": false,
+  "format_retry_limit_selected": 0,
+  "clinical_expert_adjudications": 0,
+  "canonical_claim_source_formats": {
+    "string": 16,
+    "object": 60
+  }
+}

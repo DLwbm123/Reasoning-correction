@@ -1,0 +1,8 @@
+{
+  "status": "input_preparation_schema_error",
+  "error": "claims may be plain strings; object-only adapter failed",
+  "model_calls": 0,
+  "original_clock_preserved": true,
+  "samples_replaced": false,
+  "recorded_epoch": 1794073233.301911
+}
