@@ -1,6 +1,6 @@
 import math
 import unittest
-from evidence_score import auxiliary, score_payload, SCORE_KEYS
+from evidence_score import auxiliary, score_payload, SCORE_KEYS, choose_by_support
 
 
 class ScoreChecks(unittest.TestCase):
@@ -18,6 +18,16 @@ class ScoreChecks(unittest.TestCase):
         self.assertEqual(v[:4], [0., -1., 0., -2.])
         self.assertEqual(v[-2:], [0., 1.])
         self.assertTrue(all(math.isfinite(x) for x in v))
+
+    def test_fixed_policy_ignores_labels_ties_and_invalid(self):
+        pair = [{"initial_answer": "A", "candidate_answer": "B", "valid": True, "ca": 0},
+                {"initial_answer": "A", "candidate_answer": "C", "valid": True, "ca": 1}]
+        self.assertEqual(choose_by_support(pair, [-2., -1., -1., -3.]), 0)
+        pair[0]["ca"], pair[1]["ca"] = 1, 0
+        self.assertEqual(choose_by_support(pair, [-2., -1., -1., -3.]), 0)
+        self.assertIsNone(choose_by_support(pair, [-1., -1., -2., -3.]))
+        pair[0]["valid"] = False
+        self.assertEqual(choose_by_support(pair, [-2., -1., -1., -3.]), 1)
 
 
 if __name__ == "__main__": unittest.main()

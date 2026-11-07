@@ -7,7 +7,7 @@ import random
 import time
 
 from action_gate import old_data, make_net
-from evidence_score import auxiliary
+from evidence_score import auxiliary, choose_by_support
 from train_gate_baseline import rank_loss, calibrate, decisions, metrics
 
 
@@ -164,10 +164,8 @@ def evaluate(root):
             cases = []
             for pair in by_case.values():
                 b = pair[0]; logp = sc[b["case_id"]][context]["logp"]
-                options = [r for r in pair if r["valid"] and
-                    (b["initial_answer"] not in list("ABCD") or
-                     logp["ABCD".index(r["candidate_answer"])] > logp["ABCD".index(b["initial_answer"])])]
-                chosen = max(options, key=lambda r: logp["ABCD".index(r["candidate_answer"])]) if options else None
+                chosen_index = choose_by_support(pair, logp)
+                chosen = pair[chosen_index] if chosen_index is not None else None
                 cases.append({"c0": b["c0"], "ca": chosen["ca"] if chosen else b["c0"],
                     "edited": bool(chosen and chosen["candidate_answer"] != b["initial_answer"]), "accepted": chosen is not None})
             simple["fixed_margin_"+context] = metrics(cases)

@@ -32,3 +32,12 @@ def check_letter_tokens(tokenizer, prompt):
     if len(set(ids)) != 4:
         raise ValueError("Choice token IDs collide")
     return ids
+
+
+def choose_by_support(pair, logp):
+    """Fixed choice among given answers; labels never participate in selection."""
+    initial = pair[0]["initial_answer"]
+    options = [i for i, r in enumerate(pair) if r["valid"] and
+        (initial not in list("ABCD") or
+         logp["ABCD".index(r["candidate_answer"])] > logp["ABCD".index(initial)])]
+    return max(options, key=lambda i: logp["ABCD".index(pair[i]["candidate_answer"])]) if options else None
