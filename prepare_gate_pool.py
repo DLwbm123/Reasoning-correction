@@ -14,10 +14,15 @@ from prepare_data import SOURCE, VISUAL, EXCLUDE, article
 def main():
     code = Path(__file__).resolve().parent
     action = os.environ.get("PREPARE_ACTION_PROBE") == "1"
-    root = code/("runs/action_gate_20261107_v1" if action else "runs/gate_pool_20261107_v1")
+    evidence_score = os.environ.get("PREPARE_EVIDENCE_SCORE") == "1"
+    root = code/("runs/evidence_score_20261108_v1" if evidence_score else
+                 "runs/action_gate_20261107_v1" if action else "runs/gate_pool_20261107_v1")
+    action = action or evidence_score
     n = 200 if action else 1600
     seed = 2026110715 if action else 2026110708
     execution_seed = 2026110716 if action else 2026110709
+    if evidence_score:
+        seed, execution_seed = 2026110804, 2026110805
     budget = 4*3600 if action else 20*3600
     (root/"inputs/images").mkdir(parents=True, exist_ok=False)
     start = time.time()
@@ -30,6 +35,7 @@ def main():
     old_groups, old_pixels = set(), set()
     old_runs = ["e0_20261107_v2", "e0_interface_20261107_v1"]
     if action: old_runs.append("gate_pool_20261107_v1")
+    if evidence_score: old_runs.append("action_gate_20261107_v1")
     for name in old_runs:
         rows = [json.loads(x) for x in (code/"runs"/name/"inputs/manifest.jsonl").read_text().splitlines()]
         old_groups.update(r["group_id"] for r in rows)
@@ -55,7 +61,7 @@ def main():
             if fingerprint in pixels:
                 continue
             pixels.add(fingerprint); groups.add(group)
-            cid = ("h" if action else "g")+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
+            cid = ("j" if evidence_score else "h" if action else "g")+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
             (root/"inputs"/image).write_bytes(data)
             infer.append({"case_id": cid, "group_id": group, "question": row["Question"].strip(),
                 "choices": {x: row["Choice "+x].strip() for x in "ABCD"},
