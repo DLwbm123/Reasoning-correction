@@ -1,0 +1,37 @@
+{
+  "n": 32,
+  "requested_tests": 42,
+  "registered_tests": 42,
+  "registration_coverage": 1.0,
+  "initial_terminal_format_failures": 0,
+  "feasibility_targets": {
+    "observation_coverage_at_least_0.90": true,
+    "initial_failures_at_most_1": true
+  },
+  "all_selective_reset_answers_identical": true,
+  "all_selective_summary_answers_identical": true,
+  "all_selective_random_answers_identical": true,
+  "claims_count": 41,
+  "claim_kind": {
+    "visual": 34,
+    "knowledge": 6,
+    "reasoning": 1
+  },
+  "claims_with_parents": 7,
+  "retained_count": {
+    "0": 21,
+    "1": 9,
+    "2": 2
+  },
+  "verdict_status": {
+    "UNRESOLVED": 22,
+    "SUPPORTED": 18,
+    "CONTRADICTED": 1
+  },
+  "no_public_tests_cases": 4,
+  "no_evidence_cases": 4,
+  "failed_calls_by_role": {},
+  "format_retry_calls": 0,
+  "execution_binding_failures": 0,
+  "notes": "Coverage describes fields/provenance, not observation correctness. New source articles and software differ from E0; cross-run accuracy changes are not causal estimates."
+}

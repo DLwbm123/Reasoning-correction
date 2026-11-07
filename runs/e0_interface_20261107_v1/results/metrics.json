@@ -1,0 +1,139 @@
+{
+  "n_planned": 32,
+  "n_collected": 32,
+  "initial_accuracy": 0.46875,
+  "complete": true,
+  "unrun_cases": 0,
+  "denominator": "collected cases including all parsing and pipeline failures; incomplete runs are descriptive only",
+  "branches": {
+    "raw": {
+      "accuracy": 0.5,
+      "delta_accuracy": 0.03125,
+      "WC": 1,
+      "CW": 0,
+      "repair_rate": 0.058823529411764705,
+      "harm_given_initial_correct": 0.0,
+      "population_harm": 0.0,
+      "edit_coverage": 0.03125,
+      "harm_per_edit": 0.0,
+      "invalid": 0,
+      "delta_accuracy_95ci": [
+        0.0,
+        0.09375
+      ]
+    },
+    "selective": {
+      "accuracy": 0.46875,
+      "delta_accuracy": 0.0,
+      "WC": 2,
+      "CW": 2,
+      "repair_rate": 0.11764705882352941,
+      "harm_given_initial_correct": 0.13333333333333333,
+      "population_harm": 0.0625,
+      "edit_coverage": 0.15625,
+      "harm_per_edit": 0.4,
+      "invalid": 0,
+      "delta_accuracy_95ci": [
+        -0.125,
+        0.125
+      ]
+    },
+    "reset": {
+      "accuracy": 0.46875,
+      "delta_accuracy": 0.0,
+      "WC": 2,
+      "CW": 2,
+      "repair_rate": 0.11764705882352941,
+      "harm_given_initial_correct": 0.13333333333333333,
+      "population_harm": 0.0625,
+      "edit_coverage": 0.15625,
+      "harm_per_edit": 0.4,
+      "invalid": 0,
+      "delta_accuracy_95ci": [
+        -0.125,
+        0.125
+      ]
+    },
+    "random_drop": {
+      "accuracy": 0.46875,
+      "delta_accuracy": 0.0,
+      "WC": 2,
+      "CW": 2,
+      "repair_rate": 0.11764705882352941,
+      "harm_given_initial_correct": 0.13333333333333333,
+      "population_harm": 0.0625,
+      "edit_coverage": 0.15625,
+      "harm_per_edit": 0.4,
+      "invalid": 0,
+      "delta_accuracy_95ci": [
+        -0.125,
+        0.125
+      ]
+    },
+    "evidence_summary": {
+      "accuracy": 0.46875,
+      "delta_accuracy": 0.0,
+      "WC": 2,
+      "CW": 2,
+      "repair_rate": 0.11764705882352941,
+      "harm_given_initial_correct": 0.13333333333333333,
+      "population_harm": 0.0625,
+      "edit_coverage": 0.15625,
+      "harm_per_edit": 0.4,
+      "invalid": 0,
+      "delta_accuracy_95ci": [
+        -0.125,
+        0.125
+      ]
+    }
+  },
+  "mechanism": {
+    "trigger": 1,
+    "k_empty": 21,
+    "graph_changes_k": 0,
+    "adequate_evidence": 27,
+    "pipeline_error": 0
+  },
+  "paired_branch_comparisons": {
+    "selective minus raw": {
+      "delta": -0.03125,
+      "95ci": [
+        -0.125,
+        0.0625
+      ]
+    },
+    "selective minus reset": {
+      "delta": 0.0,
+      "95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "selective minus random_drop": {
+      "delta": 0.0,
+      "95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "selective minus evidence_summary": {
+      "delta": 0.0,
+      "95ci": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "cost": {
+    "generation_calls": 238,
+    "forward_calls": 16850,
+    "input_tokens": 159981,
+    "visual_tokens": 73747,
+    "output_tokens": 16850,
+    "sum_generation_seconds": 422.092812538147,
+    "per_call_latency_p50": 1.7268673181533813,
+    "per_call_latency_p95": 3.121398687362671,
+    "peak_gpu_allocated_bytes": 17141908480,
+    "peak_gpu_reserved_bytes": 20289945600
+  }
+}
