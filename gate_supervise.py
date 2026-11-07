@@ -79,7 +79,8 @@ def main():
             raise RuntimeError("Original experiment deadline")
         with (R/"outputs"/(stage+".log")).open("x") as log:
             stage_deadline = config.get("absolute_stage_deadlines", {}).get(stage, DEADLINE)
-            child = subprocess.Popen([str(N/"p"), "-u", str(N/entry)], env=env,
+            stage_env = dict(env, **config.get("stage_environment", {}).get(stage, {}))
+            child = subprocess.Popen([str(N/"p"), "-u", str(N/entry)], env=stage_env,
                 stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             write("supervisor.json", {"status": "running", "stage": stage, "supervisor_pid": os.getpid(),
                 "child_pid": child.pid, "deadline_epoch": DEADLINE, "updated_epoch": time.time()})
