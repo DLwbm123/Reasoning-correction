@@ -1,0 +1,24 @@
+{
+  "git_commit": "b2ced2421e90396086eacfaf13aec0b3523c1c8c",
+  "code_files": [
+    "evidence_score.py",
+    "run_evidence_score.py",
+    "support_gate.py",
+    "action_gate.py",
+    "train_gate_baseline.py",
+    "diagnose_gate_scores.py",
+    "run_e0.py",
+    "mechanism.py",
+    "interface_run.py",
+    "pool_collect.py",
+    "pool_prepare_gate.py",
+    "prepare_gate.py",
+    "encode_gate.py",
+    "gate_supervise.py",
+    "prompts_e0.json",
+    "prompts_interface.json",
+    "test_evidence_score.py",
+    "test_interface.py",
+    "test_pool_io.py"
+  ]
+}

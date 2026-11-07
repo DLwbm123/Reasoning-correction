@@ -1,0 +1,7 @@
+{
+  "local_and_remote_tests_passed": 6,
+  "actual_tokenizer_prefix_check_passed": true,
+  "actual_hybrid_parameter_check_passed": true,
+  "gpu_forward_calls_before_launch": 0,
+  "format_prompt_tuned_on_eval": false
+}

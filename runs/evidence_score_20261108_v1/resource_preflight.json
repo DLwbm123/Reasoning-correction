@@ -1,0 +1,14 @@
+{
+  "server_alias": "pro5000",
+  "physical_gpu": 6,
+  "free_memory_MiB": 72830,
+  "new_cases": 200,
+  "shared_cases": 1400,
+  "new_shared_article_overlap": 0,
+  "expected_peak_storage_bytes": 1000000000,
+  "baseline_added_bytes_before_preparation": 0,
+  "software_torch": "2.7.1+cu128",
+  "software_cuda": "12.8",
+  "historical_G2_torch": "2.2.1+cu121",
+  "historical_hidden_vectors_read_only": true
+}

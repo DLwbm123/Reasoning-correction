@@ -1,0 +1,18 @@
+{
+  "n": 200,
+  "unique_articles": 200,
+  "official_test_article_overlap": 0,
+  "old_article_overlap": 0,
+  "old_exact_encoded_image_overlap": 0,
+  "split_cases": {
+    "train": 0,
+    "dev": 0,
+    "calibration": 0,
+    "diagnostic_eval": 200
+  },
+  "sample_split_seed": 2026110804,
+  "execution_seed": 2026110805,
+  "selection_uses_model_outcomes": false,
+  "near_duplicate_or_patient_independence_claimed": false,
+  "eligible_rows_before_group_sampling": 119946
+}
