@@ -22,7 +22,7 @@ def main():
     if old:
         split = json.loads((source/"inputs/splits.private.json").read_text())
         rows = [r for r in rows if split[r["group_id"]] in {"train", "dev", "calibration"}]
-    assert len(rows) == (1400 if old else 200)
+    assert len(rows) == (1400 if old else int(os.environ.get("SCORE_NEW_CASES", "200")))
     backend = base.Backend()
     records = []
     start = time.time()

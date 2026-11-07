@@ -16,8 +16,11 @@ def main():
     action = os.environ.get("PREPARE_ACTION_PROBE") == "1"
     evidence_score = os.environ.get("PREPARE_EVIDENCE_SCORE") == "1"
     score_policy = os.environ.get("PREPARE_SCORE_POLICY") == "1"
+    risk_calibration = os.environ.get("PREPARE_RISK_CALIBRATION") == "1"
+    score_policy = score_policy or risk_calibration
     evidence_score = evidence_score or score_policy
-    root = code/("runs/score_policy_20261108_v1" if score_policy else
+    root = code/("runs/risk_calibration_20261108_v1" if risk_calibration else
+                 "runs/score_policy_20261108_v1" if score_policy else
                  "runs/evidence_score_20261108_v1" if evidence_score else
                  "runs/action_gate_20261107_v1" if action else "runs/gate_pool_20261107_v1")
     action = action or evidence_score
@@ -28,8 +31,11 @@ def main():
         seed, execution_seed = 2026110804, 2026110805
     if score_policy:
         seed, execution_seed = 2026110807, 2026110808
+    if risk_calibration:
+        seed, execution_seed, n = 2026110810, 2026110811, 1000
     budget = 4*3600 if action else 20*3600
     if score_policy: budget = 3*3600
+    if risk_calibration: budget = 6*3600
     (root/"inputs/images").mkdir(parents=True, exist_ok=False)
     start = time.time()
     (root/"started.json").write_text(json.dumps({"started_epoch": start,
@@ -43,6 +49,7 @@ def main():
     if action: old_runs.append("gate_pool_20261107_v1")
     if evidence_score: old_runs.append("action_gate_20261107_v1")
     if score_policy: old_runs.append("evidence_score_20261108_v1")
+    if risk_calibration: old_runs.append("score_policy_20261108_v1")
     for name in old_runs:
         rows = [json.loads(x) for x in (code/"runs"/name/"inputs/manifest.jsonl").read_text().splitlines()]
         old_groups.update(r["group_id"] for r in rows)
@@ -68,7 +75,7 @@ def main():
             if fingerprint in pixels:
                 continue
             pixels.add(fingerprint); groups.add(group)
-            cid = ("k" if score_policy else "j" if evidence_score else "h" if action else "g")+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
+            cid = ("m" if risk_calibration else "k" if score_policy else "j" if evidence_score else "h" if action else "g")+str(len(infer)).zfill(4); image = "images/"+cid+".jpg"
             (root/"inputs"/image).write_bytes(data)
             infer.append({"case_id": cid, "group_id": group, "question": row["Question"].strip(),
                 "choices": {x: row["Choice "+x].strip() for x in "ABCD"},
@@ -84,9 +91,16 @@ def main():
     splits = {g: "diagnostic_eval" for g in ordered} if action else {g: s for s, subset in [("train", ordered[:1000]), ("dev", ordered[1000:1200]),
              ("calibration", ordered[1200:1400]), ("diagnostic_eval", ordered[1400:])]
               for g in subset}
+    if risk_calibration:
+        splits = {g: "calibration" if i < 800 else "diagnostic_eval" for i, g in enumerate(ordered)}
     # Random case interleaving avoids a hard stop preferentially retaining train cases.
     random.Random(execution_seed).shuffle(infer)
-    for name, rows in [("manifest.jsonl", infer), ("labels.private.jsonl", labels)]:
+    files = [("manifest.jsonl", infer)]
+    if risk_calibration:
+        files += [("labels."+s+".private.jsonl", [r for r in labels if splits[r["group_id"]] == s])
+                  for s in ["calibration", "diagnostic_eval"]]
+    else: files.append(("labels.private.jsonl", labels))
+    for name, rows in files:
         (root/"inputs"/name).write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows)+"\n")
     (root/"inputs/splits.private.json").write_text(json.dumps(splits))
     summary = {"n": n, "unique_articles": len(groups), "official_test_article_overlap": len(groups&test_groups),
