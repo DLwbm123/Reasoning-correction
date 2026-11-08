@@ -1,0 +1,11 @@
+{
+  "text_screened_cases": 4,
+  "text_support_gap_candidates": 3,
+  "no_text_support_conflict_identified": 1,
+  "confirmed_reasoning_errors": 0,
+  "new_expert_adjudications": 0,
+  "clinical_premises_independently_adjudicated": 0,
+  "closed_references_displayed_for_text_screen": false,
+  "prevalence_estimate": false,
+  "unseen_evaluation": false
+}

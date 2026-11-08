@@ -1,0 +1,19 @@
+{
+  "status": "completed_with_failures",
+  "selected_articles": 100,
+  "source_split": "G2 train",
+  "blind_trace_packets": 79,
+  "failed_selected_cases": 21,
+  "model_kind_tagged_cases": 3,
+  "model_kind_tagged_items_including_related_branches": 3,
+  "cases_with_deterministic_aliases": 53,
+  "first_review_queue_cases": 3,
+  "new_error_adjudications": 0,
+  "new_expert_adjudications": 0,
+  "new_model_calls": 0,
+  "new_image_copies": 0,
+  "new_training": false,
+  "seed": 2026110821,
+  "unseen_evaluation": false,
+  "finished_epoch": 1794128584.1485078
+}

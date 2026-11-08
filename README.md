@@ -69,6 +69,12 @@ does not mean zero clinical accuracy, and does not establish a revision-preserva
 The subsequent [component/reference qualification](runs/component_qualification_20261108_v1/REPORT_ZH.md)
 locates existing LLaVA-Med/CLIP files without claiming runtime readiness, and identifies ReFiSco
 line-level expert edits as a candidate reference subject to its credentialed access requirements.
+Those credentials are not currently available, so that access branch is closed. A fixed
+[100-article natural trace development cohort](runs/reasoning_trace_cohort_20261108_v1/REPORT_ZH.md)
+has now been assembled from G2 training caches with separate closed-reference files.
+All four model-kind nominations received a text screen: three support-gap candidates and one
+without an identified text-support conflict; none is independently confirmed as a reasoning error.
+This is development material, with no new model calls or expert medical adjudication.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

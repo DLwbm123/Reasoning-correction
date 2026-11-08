@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "worker_seconds": 0.13040423393249512,
+  "finished_epoch": 1794128584.163185,
+  "original_deadline_epoch": 1794131125.113,
+  "timeout_seconds": 90,
+  "process_display_neutral": true
+}
