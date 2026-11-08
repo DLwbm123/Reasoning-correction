@@ -66,6 +66,9 @@ checks without reopening G9 admission. [G10](runs/view_binding_20261108_v1/PRERE
 64-call view-factor diagnostic for source-tag readout; [completed results](runs/view_binding_20261108_v1/REPORT_ZH.md)
 show 0/54 strict source-set matches in both conditions. This closes the ROI adaptation branch,
 does not mean zero clinical accuracy, and does not establish a revision-preservation denominator.
+The subsequent [component/reference qualification](runs/component_qualification_20261108_v1/REPORT_ZH.md)
+locates existing LLaVA-Med/CLIP files without claiming runtime readiness, and identifies ReFiSco
+line-level expert edits as a candidate reference subject to its credentialed access requirements.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
