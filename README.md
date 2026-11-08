@@ -43,14 +43,14 @@ All G6 jobs ended. The [G7 result](runs/score_policy_20261108_v1/REPORT_ZH.md) i
 direct score heads averaged 49.67/49.83% versus 49.5% KEEP, without stable gains; all six exceeded
 the old empirical calibration harm limit on new articles. The fixed no-evidence margin control
 reached 51.5% with 6.06% harm among initially correct cases, not a clinical safety result.
-The [next scope](NEXT_RISK_CALIBRATION_SCOPE.md) examines independent finite-sample risk calibration
-with frozen predictors. The [G8 protocol](runs/risk_calibration_20261108_v1/PREREG.md) and
-[launch receipt](runs/risk_calibration_20261108_v1/LAUNCH.json) record a running 800-calibration/
-200-diagnostic article experiment, with physically separated labels and no model retraining.
-A [bounded recovery](runs/risk_calibration_20261108_v1/RECOVERY.md) follows a tiny-source-image
-preprocessing failure: completed scores are retained, invalid non-actionable cases have no fabricated
-posterior, and the original deadline remains. This post-freeze execution deviation is explicit.
-No finite-sample or clinical risk result is established by the launch/recovery.
+The [G8 result](runs/risk_calibration_20261108_v1/REPORT_ZH.md) completed after a disclosed bounded
+recovery. With 800 new calibration articles, empirical CE/rank policies reached 43/44.5% versus 42.5%
+KEEP on 200 new diagnostic articles; superiority over old calibration was not established. The CP
+rules made zero diagnostic edits, giving 42.5%, and are not constant KEEP policies or clinical safety
+certificates. All G8 GPU work ended. A [calibration-source state-flow audit](runs/state_flow_audit_20261108_v1/REPORT_ZH.md)
+found no K change from graph closure despite 310 declared parent edges; eight private trace packets
+were prepared without new inference or expert truth. Subsequent work targets the original state
+intervention/independent validation gap, rather than further gate-head or calibration expansion.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

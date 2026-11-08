@@ -1,0 +1,199 @@
+{
+  "stage_order_valid": true,
+  "calibration_grid_admissible_counts": {
+    "ce_new_empirical": 9,
+    "ce_new_cp": 1,
+    "ce_rank_new_empirical": 10,
+    "ce_rank_new_cp": 1
+  },
+  "policy_classification": {
+    "ce_old_empirical": {
+      "lambda": 1,
+      "delta": 0.05,
+      "explicit_constant_keep": false,
+      "calibration_n": 200,
+      "calibration_initial_correct": 93,
+      "calibration_upper": null,
+      "diagnostic_zero_edits": false
+    },
+    "ce_new_empirical": {
+      "lambda": 1,
+      "delta": 0.1,
+      "explicit_constant_keep": false,
+      "calibration_n": 800,
+      "calibration_initial_correct": 344,
+      "calibration_upper": 0.04859181872171325,
+      "diagnostic_zero_edits": false
+    },
+    "ce_new_cp": {
+      "lambda": 4,
+      "delta": 0.2,
+      "explicit_constant_keep": false,
+      "calibration_n": 800,
+      "calibration_initial_correct": 344,
+      "calibration_upper": 0.017786963419052434,
+      "diagnostic_zero_edits": true
+    },
+    "ce_rank_old_empirical": {
+      "lambda": 1,
+      "delta": 0.05,
+      "explicit_constant_keep": false,
+      "calibration_n": 200,
+      "calibration_initial_correct": 93,
+      "calibration_upper": null,
+      "diagnostic_zero_edits": false
+    },
+    "ce_rank_new_empirical": {
+      "lambda": 2,
+      "delta": 0,
+      "explicit_constant_keep": false,
+      "calibration_n": 800,
+      "calibration_initial_correct": 344,
+      "calibration_upper": 0.039563431963596886,
+      "diagnostic_zero_edits": false
+    },
+    "ce_rank_new_cp": {
+      "lambda": 4,
+      "delta": 0.2,
+      "explicit_constant_keep": false,
+      "calibration_n": 800,
+      "calibration_initial_correct": 344,
+      "calibration_upper": 0.017786963419052434,
+      "diagnostic_zero_edits": true
+    }
+  },
+  "diagnostic_sensitivity": [
+    {
+      "method": "ce_old_empirical",
+      "delta_vs_keep": 0.005,
+      "paired_percentile_95ci": [
+        -0.025,
+        0.035
+      ],
+      "discordant_articles": 9,
+      "exact_two_sided_paired_sign_p": 1.0,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "ce_new_empirical",
+      "delta_vs_keep": 0.005,
+      "paired_percentile_95ci": [
+        -0.01,
+        0.025
+      ],
+      "discordant_articles": 3,
+      "exact_two_sided_paired_sign_p": 1.0,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "ce_new_cp",
+      "delta_vs_keep": 0.0,
+      "paired_percentile_95ci": [
+        0.0,
+        0.0
+      ],
+      "discordant_articles": 0,
+      "exact_two_sided_paired_sign_p": 1.0,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "ce_rank_old_empirical",
+      "delta_vs_keep": 0.005,
+      "paired_percentile_95ci": [
+        -0.025,
+        0.035
+      ],
+      "discordant_articles": 9,
+      "exact_two_sided_paired_sign_p": 1.0,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "ce_rank_new_empirical",
+      "delta_vs_keep": 0.02,
+      "paired_percentile_95ci": [
+        0.005,
+        0.04
+      ],
+      "discordant_articles": 4,
+      "exact_two_sided_paired_sign_p": 0.125,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "ce_rank_new_cp",
+      "delta_vs_keep": 0.0,
+      "paired_percentile_95ci": [
+        0.0,
+        0.0
+      ],
+      "discordant_articles": 0,
+      "exact_two_sided_paired_sign_p": 1.0,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "keep",
+      "delta_vs_keep": 0.0,
+      "paired_percentile_95ci": [
+        0.0,
+        0.0
+      ],
+      "discordant_articles": 0,
+      "exact_two_sided_paired_sign_p": 1.0,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "selective",
+      "delta_vs_keep": -0.02,
+      "paired_percentile_95ci": [
+        -0.07,
+        0.03
+      ],
+      "discordant_articles": 26,
+      "exact_two_sided_paired_sign_p": 0.557197093963623,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "reset",
+      "delta_vs_keep": -0.025,
+      "paired_percentile_95ci": [
+        -0.075,
+        0.025
+      ],
+      "discordant_articles": 27,
+      "exact_two_sided_paired_sign_p": 0.44206833839416504,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "fixed_without_evidence",
+      "delta_vs_keep": 0.005,
+      "paired_percentile_95ci": [
+        -0.025,
+        0.04
+      ],
+      "discordant_articles": 11,
+      "exact_two_sided_paired_sign_p": 1.0,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    },
+    {
+      "method": "fixed_with_evidence",
+      "delta_vs_keep": -0.02,
+      "paired_percentile_95ci": [
+        -0.06,
+        0.02
+      ],
+      "discordant_articles": 18,
+      "exact_two_sided_paired_sign_p": 0.480682373046875,
+      "interpretation": "Descriptive, unadjusted; percentile bootstrap can be unstable with few discordant pairs"
+    }
+  ],
+  "score_status_counts": {
+    "completed": 999,
+    "unavailable_non_actionable": 1
+  },
+  "actual_score_forwards": 1998,
+  "completed_prefix_not_replayed": 272,
+  "unscored_invalid_rows": 2,
+  "postfreeze_recovery_disclosed": true,
+  "failed_score_process_allocator_peak_available": false,
+  "new_model_training": false,
+  "scope": "Fixed G8 only; no refitting, threshold changes or clinical risk certification"
+}

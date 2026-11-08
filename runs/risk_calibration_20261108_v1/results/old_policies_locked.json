@@ -1,0 +1,49 @@
+{
+  "locked_epoch": 1794085901.5319831,
+  "policies": {
+    "ce": {
+      "lambda": 1,
+      "delta": 0.05,
+      "keep_only": false,
+      "calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 97,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.485,
+        "delta_accuracy": 0.02,
+        "WC": 4,
+        "CW": 0,
+        "repair_rate": 0.037383177570093455,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.06,
+        "acceptance_coverage": 0.065
+      }
+    },
+    "ce_rank": {
+      "lambda": 1,
+      "delta": 0.05,
+      "keep_only": false,
+      "calibration_metrics": {
+        "n": 200,
+        "initial_correct": 93,
+        "final_correct": 95,
+        "initial_accuracy": 0.465,
+        "accuracy": 0.475,
+        "delta_accuracy": 0.01,
+        "WC": 2,
+        "CW": 0,
+        "repair_rate": 0.018691588785046728,
+        "harm_given_initial_correct": 0.0,
+        "edit_coverage": 0.04,
+        "acceptance_coverage": 0.045
+      }
+    }
+  },
+  "ensemble_seeds": [
+    2026110711,
+    2026110712,
+    2026110713
+  ],
+  "new_calibration_or_evaluation_labels_read": false
+}

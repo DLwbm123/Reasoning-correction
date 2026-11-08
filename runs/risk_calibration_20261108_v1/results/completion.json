@@ -1,0 +1,18 @@
+{
+  "status": "completed_after_disclosed_bounded_recovery",
+  "exit_code": 0,
+  "started_epoch": 1794085765.927624,
+  "finished_epoch": 1794095074.488198,
+  "elapsed_seconds": 9308.560574054718,
+  "actual_added_bytes": 158449664,
+  "candidate_cases": 1000,
+  "calibration_articles": 800,
+  "diagnostic_articles": 200,
+  "scored_cases": 999,
+  "unavailable_nonactionable_cases": 1,
+  "actual_score_forwards": 1998,
+  "replayed_score_prefix_cases": 0,
+  "new_models_trained": 0,
+  "private_scores_probabilities_outputs_retrieved": true,
+  "remote_artifacts_preserved": true
+}

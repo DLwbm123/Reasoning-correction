@@ -1,0 +1,50 @@
+{
+  "scope": "G8 calibration only, post-completion, no new inference or expert labels",
+  "source_articles": 800,
+  "counts": {
+    "cases": 800,
+    "claims": 1086,
+    "claims_with_parents": 246,
+    "parent_edges": 310,
+    "supported_non_fact_kind_claims": 46,
+    "cases_with_parent_edges": 128,
+    "graph_changes_k_cases": 0
+  },
+  "claim_kind_counts": {
+    "visual": 929,
+    "knowledge": 135,
+    "reasoning": 19,
+    "context": 3
+  },
+  "program_verdict_counts": {
+    "SUPPORTED": 375,
+    "UNRESOLVED": 662,
+    "CONTRADICTED": 27
+  },
+  "empty_k_reasons_ordered_mutually_exclusive": {
+    "no_program_supported_claims": 324,
+    "no_adequate_evidence": 199,
+    "pipeline_failure": 1,
+    "supported_only_excluded_kinds": 3
+  },
+  "selective_outcome_strata_counts": {
+    "WW": 422,
+    "CW": 38,
+    "CC": 306,
+    "WC": 34
+  },
+  "private_packet_cases": 8,
+  "private_packet_strata": {
+    "WW": 2,
+    "WC": 2,
+    "CW": 2,
+    "CC": 2
+  },
+  "private_packet_json_bytes": 53132,
+  "selection_seed": 2026110813,
+  "new_expert_adjudications": 0,
+  "new_model_calls": 0,
+  "new_training": false,
+  "seconds": 0.1149897575378418,
+  "limitation": "Bindings/adequacy/support graph are model/program records, not independent medical truth"
+}

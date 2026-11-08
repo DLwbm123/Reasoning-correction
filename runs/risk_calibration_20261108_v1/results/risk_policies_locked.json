@@ -1,0 +1,146 @@
+{
+  "locked_epoch": 1794095070.1069965,
+  "policies": {
+    "ce_old_empirical": {
+      "config": "ce",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 97,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.485,
+          "delta_accuracy": 0.02,
+          "WC": 4,
+          "CW": 0,
+          "repair_rate": 0.037383177570093455,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.06,
+          "acceptance_coverage": 0.065
+        }
+      }
+    },
+    "ce_new_empirical": {
+      "config": "ce",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.1,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 800,
+          "initial_correct": 344,
+          "final_correct": 351,
+          "initial_accuracy": 0.43,
+          "accuracy": 0.43875,
+          "delta_accuracy": 0.00875,
+          "WC": 13,
+          "CW": 6,
+          "repair_rate": 0.02850877192982456,
+          "harm_given_initial_correct": 0.01744186046511628,
+          "edit_coverage": 0.03625,
+          "acceptance_coverage": 0.03625
+        },
+        "calibration_upper": 0.04859181872171325
+      }
+    },
+    "ce_new_cp": {
+      "config": "ce",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 800,
+          "initial_correct": 344,
+          "final_correct": 346,
+          "initial_accuracy": 0.43,
+          "accuracy": 0.4325,
+          "delta_accuracy": 0.0025,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.0043859649122807015,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.0025,
+          "acceptance_coverage": 0.0025
+        },
+        "calibration_upper": 0.017786963419052434
+      }
+    },
+    "ce_rank_old_empirical": {
+      "config": "ce_rank",
+      "policy": {
+        "lambda": 1,
+        "delta": 0.05,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 200,
+          "initial_correct": 93,
+          "final_correct": 95,
+          "initial_accuracy": 0.465,
+          "accuracy": 0.475,
+          "delta_accuracy": 0.01,
+          "WC": 2,
+          "CW": 0,
+          "repair_rate": 0.018691588785046728,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.04,
+          "acceptance_coverage": 0.045
+        }
+      }
+    },
+    "ce_rank_new_empirical": {
+      "config": "ce_rank",
+      "policy": {
+        "lambda": 2,
+        "delta": 0,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 800,
+          "initial_correct": 344,
+          "final_correct": 353,
+          "initial_accuracy": 0.43,
+          "accuracy": 0.44125,
+          "delta_accuracy": 0.01125,
+          "WC": 13,
+          "CW": 4,
+          "repair_rate": 0.02850877192982456,
+          "harm_given_initial_correct": 0.011627906976744186,
+          "edit_coverage": 0.03125,
+          "acceptance_coverage": 0.03125
+        },
+        "calibration_upper": 0.039563431963596886
+      }
+    },
+    "ce_rank_new_cp": {
+      "config": "ce_rank",
+      "policy": {
+        "lambda": 4,
+        "delta": 0.2,
+        "keep_only": false,
+        "calibration_metrics": {
+          "n": 800,
+          "initial_correct": 344,
+          "final_correct": 345,
+          "initial_accuracy": 0.43,
+          "accuracy": 0.43125,
+          "delta_accuracy": 0.00125,
+          "WC": 1,
+          "CW": 0,
+          "repair_rate": 0.0021929824561403508,
+          "harm_given_initial_correct": 0.0,
+          "edit_coverage": 0.00125,
+          "acceptance_coverage": 0.00125
+        },
+        "calibration_upper": 0.017786963419052434
+      }
+    }
+  },
+  "calibration_articles": 800,
+  "simultaneous_rules": 24,
+  "per_rule_alpha": 0.0020833333333333333,
+  "family_error_budget": 0.05,
+  "evaluation_labels_read": false
+}

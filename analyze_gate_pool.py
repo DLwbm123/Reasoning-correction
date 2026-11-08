@@ -16,7 +16,11 @@ def main():
     if done["status"] != "completed":
         raise ValueError("No final outcome analysis while collecting")
     manifest = [json.loads(x) for x in (root/"inputs/manifest.jsonl").read_text().splitlines()]
-    labels = {x["case_id"]: x for x in map(json.loads, (root/"inputs/labels.private.jsonl").read_text().splitlines())}
+    label_file = root/"inputs/labels.private.jsonl"
+    label_files = [label_file] if label_file.exists() else [root/"inputs"/("labels."+s+".private.jsonl")
+                                                          for s in ["calibration","diagnostic_eval"]]
+    # Analysis starts only after completion; never create a combined inference label file.
+    labels = {x["case_id"]: x for p in label_files for x in map(json.loads,p.read_text().splitlines())}
     split = json.loads((root/"inputs/splits.private.json").read_text())
     counters, statuses, strata = Counter(), Counter(), {}
     for row in manifest:
@@ -36,6 +40,13 @@ def main():
         statuses.update(e["assessability"] for e in x.get("evidence", []))
         for answer in x.get("answers", {}).values():
             counters["candidate_schema_warning_rows"] += bool(answer.get("_schema_warning"))
+        for branch in ["selective","reset"]:
+            answer = x.get("answers", {}).get(branch, {})
+            counters["candidate_invalid_rows"] += answer.get("answer") not in list("ABCD")
+            counters["candidate_empty_explanation_rows"] += not bool(answer.get("claims"))
+        a = x.get("answers", {}).get("selective", {}).get("answer")
+        b = x.get("answers", {}).get("reset", {}).get("answer")
+        counters["same_valid_candidate_answer_cases"] += a in list("ABCD") and a == b
         if split[row["group_id"]] == "diagnostic_eval":
             c0 = initial.get("answer") == labels[cid]["reference_letter"]
             for branch in ["selective", "reset"]:

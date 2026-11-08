@@ -1,0 +1,54 @@
+{
+  "collection": {
+    "cases": 1000,
+    "pipeline_error_cases": 1,
+    "initial_invalid_cases": 1,
+    "k_empty_cases": 668,
+    "graph_changes_k_cases": 0,
+    "trigger_cases": 30,
+    "requested_observations": 1321,
+    "registered_observations": 1292,
+    "cases_with_adequate_observation": 746,
+    "candidate_schema_warning_rows": 0,
+    "candidate_invalid_rows": 2,
+    "candidate_empty_explanation_rows": 12,
+    "same_valid_candidate_answer_cases": 970
+  },
+  "observation_status_counts": {
+    "adequate": 1113,
+    "limited": 172,
+    "unavailable": 7
+  },
+  "paired_branch_vs_keep": {
+    "selective": {
+      "delta_accuracy": -0.02,
+      "paired_95ci": [
+        -0.07,
+        0.035
+      ]
+    },
+    "reset": {
+      "delta_accuracy": -0.025,
+      "paired_95ci": [
+        -0.08,
+        0.03
+      ]
+    }
+  },
+  "generation_cost": {
+    "generation_calls": 5654,
+    "unparsed_generation_calls": 9,
+    "retry_calls": 5,
+    "input_tokens": 3694181,
+    "output_tokens": 422594,
+    "visual_tokens": 1771379,
+    "forwards": 422594,
+    "peak_memory_allocated": 17196192768,
+    "peak_memory_reserved": 22930259968,
+    "generation_seconds_sum": 7715.345456123352,
+    "call_latency_p50": 1.3251559734344482,
+    "call_latency_p95": 2.674680471420288
+  },
+  "original_start_to_completed_seconds": 9308.560574054718,
+  "analysis_scope": "post-completion aggregate counts; no policy/model changes"
+}
