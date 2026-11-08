@@ -63,7 +63,9 @@ No revision benefit or clinical accuracy conclusion follows. The post-hoc leaf e
 change admission or impute summaries/graphs; full private failures are retained. All G9 jobs ended.
 A separate [lossless field transport](runs/fact_transport_20261108_v1/REPORT_ZH.md) passes eight synthetic
 checks without reopening G9 admission. [G10](runs/view_binding_20261108_v1/PREREG.md) freezes a 16-new-patient,
-64-call view-factor diagnostic for source-tag readout; it does not evaluate clinical revision benefit.
+64-call view-factor diagnostic for source-tag readout; [completed results](runs/view_binding_20261108_v1/REPORT_ZH.md)
+show 0/54 strict source-set matches in both conditions. This closes the ROI adaptation branch,
+does not mean zero clinical accuracy, and does not establish a revision-preservation denominator.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

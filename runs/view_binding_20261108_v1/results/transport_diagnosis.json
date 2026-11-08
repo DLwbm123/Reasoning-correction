@@ -1,0 +1,19 @@
+{
+  "duplicate_full": {
+    "distinct_proposed_finding_sets": 8,
+    "most_common_proposed_set_count": 14,
+    "envelope_rejection_reasons": {
+      "unexpected_fact_fields": 2
+    },
+    "unique_raw_outputs": 26
+  },
+  "full_plus_crop": {
+    "distinct_proposed_finding_sets": 8,
+    "most_common_proposed_set_count": 13,
+    "envelope_rejection_reasons": {
+      "unexpected_fact_fields": 4
+    },
+    "unique_raw_outputs": 27
+  },
+  "source_distinct_finding_sets": 19
+}

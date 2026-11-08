@@ -1,0 +1,23 @@
+{
+  "frozen_code_commit": "a3d9fc8",
+  "public_protocol_http": 200,
+  "source_cases": 16,
+  "source_patients": 16,
+  "overlap_g9_patients": 0,
+  "source_finding_slots": 32,
+  "source_location_slots": 22,
+  "native_images": 16,
+  "native_image_bytes": 160087566,
+  "remote_checks": 5,
+  "remote_checks_passed": true,
+  "rendered_full_images": 16,
+  "rendered_crops": 32,
+  "first_full_and_native_crop_visually_inspected": true,
+  "visual_check_is_clinical_adjudication": false,
+  "planned_calls": 64,
+  "retries": 0,
+  "trained_models": 0,
+  "original_start_epoch": 1794105920.925,
+  "collection_deadline_epoch": 1794113120.925,
+  "deadline_epoch": 1794116720.925
+}

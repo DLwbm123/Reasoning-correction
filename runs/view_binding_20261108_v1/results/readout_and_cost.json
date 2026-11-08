@@ -1,0 +1,66 @@
+{
+  "duplicate_full": {
+    "fields": {
+      "finding": {
+        "requested": 32,
+        "extracted_tag_lists": 30,
+        "source_scored": 32,
+        "source_exact": 0,
+        "proposed_strings": 33,
+        "out_of_vocabulary_strings": 0
+      },
+      "location": {
+        "requested": 32,
+        "extracted_tag_lists": 30,
+        "source_scored": 22,
+        "source_exact": 0,
+        "proposed_strings": 38,
+        "out_of_vocabulary_strings": 2
+      }
+    },
+    "calls": 32,
+    "response_envelopes_rejected": 2,
+    "output_cap_hits": 0,
+    "cost": {
+      "input_tokens": 78129,
+      "output_tokens": 1566,
+      "visual_tokens": 23528,
+      "forwards": 1566,
+      "seconds": 37.732144594192505
+    },
+    "peak_allocated_bytes": 17578100224,
+    "peak_reserved_bytes": 20281556992
+  },
+  "full_plus_crop": {
+    "fields": {
+      "finding": {
+        "requested": 32,
+        "extracted_tag_lists": 28,
+        "source_scored": 32,
+        "source_exact": 0,
+        "proposed_strings": 31,
+        "out_of_vocabulary_strings": 0
+      },
+      "location": {
+        "requested": 32,
+        "extracted_tag_lists": 28,
+        "source_scored": 22,
+        "source_exact": 0,
+        "proposed_strings": 32,
+        "out_of_vocabulary_strings": 2
+      }
+    },
+    "calls": 32,
+    "response_envelopes_rejected": 4,
+    "output_cap_hits": 0,
+    "cost": {
+      "input_tokens": 75834,
+      "output_tokens": 1586,
+      "visual_tokens": 21233,
+      "forwards": 1586,
+      "seconds": 38.21982550621033
+    },
+    "peak_allocated_bytes": 17578100224,
+    "peak_reserved_bytes": 20281556992
+  }
+}

@@ -6,6 +6,7 @@ runs/*/cache/
 runs/*/code/
 runs/*/launch.private.json
 runs/*/pipeline.json
+runs/*/model_path.txt
 *.log
 .DS_Store
 private_analysis/

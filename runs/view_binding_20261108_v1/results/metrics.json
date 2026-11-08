@@ -1,0 +1,38 @@
+{
+  "conditions": {
+    "duplicate_full": {
+      "source_scored_slots": 54,
+      "source_exact_slots": 0,
+      "requested_slots": 64,
+      "extracted_tag_slots": 60,
+      "source_matched_patients_with_mixture": 0,
+      "source_exact_fraction": 0.0
+    },
+    "full_plus_crop": {
+      "source_scored_slots": 54,
+      "source_exact_slots": 0,
+      "requested_slots": 64,
+      "extracted_tag_slots": 56,
+      "source_matched_patients_with_mixture": 0,
+      "source_exact_fraction": 0.0
+    }
+  },
+  "paired_patient_mean_difference": 0.0,
+  "descriptive_percentile95": [
+    0.0,
+    0.0
+  ],
+  "clinical_accuracy_established": false,
+  "revision_effect_tested": false,
+  "labels_opened_epoch": 1794107195.2510703,
+  "predictions_locked_epoch": 1794107194.2463884,
+  "cost": {
+    "calls": 64,
+    "input_tokens": 153963,
+    "output_tokens": 3152,
+    "visual_tokens": 44761,
+    "forwards": 3152,
+    "generation_seconds": 75.95197010040283
+  },
+  "finished_epoch": 1794107195.2638435
+}
