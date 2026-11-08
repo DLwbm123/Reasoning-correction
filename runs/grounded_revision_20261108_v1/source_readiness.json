@@ -1,0 +1,32 @@
+{
+  "source": "existing local PadChest-GR",
+  "selected_current_training_studies": 32,
+  "selected_distinct_patients": 32,
+  "selected_finding_entries": 64,
+  "inspected_training_report_objects": null,
+  "selection_seed": 2026110814,
+  "heldout_finding_objects_decoded": 0,
+  "selected_patient_overlap_official_heldout": 0,
+  "images_extracted": 32,
+  "new_original_image_bytes": 258259126,
+  "original_archive_parts": 37,
+  "existing_archive_bytes_readonly": 38531867282,
+  "assembled_archive_bytes": 0,
+  "model_calls": 0,
+  "new_expert_adjudications": 0,
+  "png_bit_depths": [
+    16
+  ],
+  "png_color_types": [
+    0
+  ],
+  "full_pixel_decodes": 0,
+  "source_temporal_findings_selected": 0,
+  "status": "source_pool_ready_not_inference_started",
+  "finished_epoch": 1794102255.2609448,
+  "finding_vocabulary_size": 129,
+  "location_vocabulary_size": 91,
+  "source_finding_entries_with_location_labels": 56,
+  "source_finding_entries_without_location_labels": 8,
+  "source_finding_entries_multi_label": 2
+}

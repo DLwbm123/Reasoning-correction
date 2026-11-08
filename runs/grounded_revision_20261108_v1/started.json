@@ -1,0 +1,6 @@
+{
+  "started_epoch": 1794101630.193,
+  "deadline_epoch": 1794123230.193,
+  "collection_deadline_epoch": 1794116030.193,
+  "first_preparation_scope": "source-readiness; future G9 stages share clock"
+}

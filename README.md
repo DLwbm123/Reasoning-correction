@@ -55,6 +55,11 @@ The [assertion revision interface](runs/assertion_interface_20261108_v1/REPORT_Z
 original assertion identity and validates explicit patch transactions; ten local binding checks pass.
 Every model relation remains an unreviewed proposal. The serialized completion adapter is tested,
 but real-model/image execution and independent semantic admission have not been performed.
+A [32-patient PadChest-GR source pool](runs/grounded_revision_20261108_v1/READINESS_REPORT_ZH.md)
+is now frozen from official training studies, with 64 boxed finding entries, deferred source updates,
+and separate evaluation labels. The original 16-bit PNGs are extracted; full pixel decoding and
+model execution are pending. This source supports limited clinical finding/location agreement,
+not independently adjudicated causal reasoning or free-report semantic truth.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
