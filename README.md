@@ -51,6 +51,10 @@ certificates. All G8 GPU work ended. A [calibration-source state-flow audit](run
 found no K change from graph closure despite 310 declared parent edges; eight private trace packets
 were prepared without new inference or expert truth. Subsequent work targets the original state
 intervention/independent validation gap, rather than further gate-head or calibration expansion.
+The [assertion revision interface](runs/assertion_interface_20261108_v1/REPORT_ZH.md) now preserves
+original assertion identity and validates explicit patch transactions; ten local binding checks pass.
+Every model relation remains an unreviewed proposal. The serialized completion adapter is tested,
+but real-model/image execution and independent semantic admission have not been performed.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 
