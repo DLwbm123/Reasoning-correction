@@ -1,0 +1,7 @@
+{
+  "conservative_started_epoch": 1794127525.113,
+  "deadline_epoch": 1794131125.113,
+  "worker_timeout_seconds": 90,
+  "storage_stop_bytes": 20000000,
+  "scope": "one fixed CPU development-trace extraction; not a new GPU validation"
+}
