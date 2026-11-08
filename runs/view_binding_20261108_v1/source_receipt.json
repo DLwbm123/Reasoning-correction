@@ -1,0 +1,13 @@
+{
+  "cases": 16,
+  "patients": 16,
+  "overlap_g9_patients": 0,
+  "source_finding_entries": 32,
+  "source_location_entries_scored": 22,
+  "selection_seed": 2026110818,
+  "new_native_image_bytes": 160087566,
+  "vocabulary_reused_unchanged": true,
+  "model_outcomes_used_to_select": false,
+  "model_calls": 0,
+  "finished_epoch": 1794106752.617961
+}
