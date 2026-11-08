@@ -1,0 +1,8 @@
+{
+  "calls": 160,
+  "forwards": 13495,
+  "input_tokens": 451154,
+  "output_tokens": 13495,
+  "visual_tokens": 118795,
+  "generation_seconds": 304.1674451828003
+}

@@ -56,10 +56,11 @@ original assertion identity and validates explicit patch transactions; ten local
 Every model relation remains an unreviewed proposal. The serialized completion adapter is tested,
 but real-model/image execution and independent semantic admission have not been performed.
 A [32-patient PadChest-GR source pool](runs/grounded_revision_20261108_v1/READINESS_REPORT_ZH.md)
-is now frozen from official training studies, with 64 boxed finding entries, deferred source updates,
-and separate evaluation labels. The original 16-bit PNGs are extracted; full pixel decoding and
-model execution are pending. This source supports limited clinical finding/location agreement,
-not independently adjudicated causal reasoning or free-report semantic truth.
+was frozen from official training studies, with 64 boxed finding entries, deferred source updates,
+and separate evaluation labels. [G9 completed](runs/grounded_revision_20261108_v1/REPORT_ZH.md)
+32 image decodes and 160 actual calls, but no initial report met its frozen whole-output schema.
+No revision benefit or clinical accuracy conclusion follows. The post-hoc leaf extraction did not
+change admission or impute summaries/graphs; full private failures are retained. All G9 jobs ended.
 The [hardware timing check](runs/throughput_20261107_v1/REPORT_ZH.md) found comparable throughput in
 the currently shared environments; no migration speedup or hardware-only attribution is claimed.
 

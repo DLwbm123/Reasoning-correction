@@ -1,0 +1,28 @@
+{
+  "frozen_code_commit": "2c2c296",
+  "status": "completed_with_output_protocol_failure",
+  "supervisor_exit_code": 0,
+  "rendered_images": 32,
+  "actual_model_calls": 160,
+  "model_format_retries": 0,
+  "physical_gpu": 6,
+  "neutral_live_cli_and_gpu_verified": true,
+  "first_call_keys": [
+    "case_id",
+    "ontology",
+    "regions",
+    "view_id"
+  ],
+  "first_call_visual_tokens": 756,
+  "local_related_checks_passed": 9,
+  "started_epoch": 1794101630.193,
+  "gpu_background_launch_epoch": 1794104647.8348026,
+  "finished_epoch": 1794104975.1820626,
+  "elapsed_from_first_preparation_seconds": 3344.9890625476837,
+  "background_elapsed_seconds": 327.34725999832153,
+  "registered_remote_allocated_bytes_at_measurement": 549531648,
+  "peak_torch_allocated_bytes": 17784620544,
+  "peak_torch_reserved_bytes": 28317843456,
+  "private_outputs_retrieved": true,
+  "private_outputs_remote_retained": true
+}

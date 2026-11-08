@@ -1,0 +1,65 @@
+{
+  "frozen_run_status": "completed_with_output_protocol_failure",
+  "frozen_initial_schema_valid": 0,
+  "original_cases": 32,
+  "stage_structure_diagnostic": {
+    "initial": {
+      "calls": 32,
+      "at_output_cap": 0,
+      "outer_fence_removed_for_diagnosis_only": 12,
+      "tag_cells": 128,
+      "empty_list_cells": 0,
+      "nonempty_list_cells": 128,
+      "nonempty_in_vocab_cells": 125
+    },
+    "full_recompute": {
+      "calls": 32,
+      "at_output_cap": 0,
+      "outer_fence_removed_for_diagnosis_only": 32,
+      "tag_cells": 128,
+      "empty_list_cells": 50,
+      "nonempty_list_cells": 78,
+      "nonempty_in_vocab_cells": 78
+    },
+    "evidence_summary": {
+      "calls": 32,
+      "at_output_cap": 0,
+      "outer_fence_removed_for_diagnosis_only": 32,
+      "tag_cells": 128,
+      "empty_list_cells": 61,
+      "nonempty_list_cells": 67,
+      "nonempty_in_vocab_cells": 67
+    },
+    "local_edit": {
+      "calls": 32,
+      "at_output_cap": 0,
+      "outer_fence_removed_for_diagnosis_only": 31,
+      "tag_cells": 128,
+      "empty_list_cells": 46,
+      "nonempty_list_cells": 82,
+      "nonempty_in_vocab_cells": 82
+    },
+    "old_quarantine": {
+      "calls": 32,
+      "at_output_cap": 0,
+      "outer_fence_removed_for_diagnosis_only": 10,
+      "tag_cells": 128,
+      "empty_list_cells": 46,
+      "nonempty_list_cells": 82,
+      "nonempty_in_vocab_cells": 82
+    }
+  },
+  "initial_leaf_source_diagnostic": {
+    "source_scored_slots": 120,
+    "source_exact_slots": 4,
+    "source_mismatch_slots": 116,
+    "patients": 32,
+    "patients_with_mixed_source_agreement": 3
+  },
+  "diagnostic_changes_frozen_admission": false,
+  "diagnostic_model_calls": 0,
+  "answer_or_parents_imputed": false,
+  "clinical_truth_of_open_text_established": false,
+  "primary_preservation_denominator": 0,
+  "paired_effect_inference": "unavailable due to no valid initial ledgers"
+}

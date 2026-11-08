@@ -1,0 +1,12 @@
+{
+  "commit": "2c2c296",
+  "assertion_interface_commit": "033b921",
+  "planned_cases": 32,
+  "planned_methods": 6,
+  "max_model_calls": 224,
+  "format_retries": 0,
+  "started_epoch": 1794101630.193,
+  "collection_deadline_epoch": 1794116030.193,
+  "deadline_epoch": 1794123230.193,
+  "code_frozen_before_actual_pixel_decode_and_model_calls": true
+}
