@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "selected_cases": 12,
+  "screened_cases": 12,
+  "missing_cases": 0,
+  "category_case_counts": {
+    "text_conflict": 0,
+    "support_gap_candidate": 5,
+    "answer_mapping_candidate": 2,
+    "no_text_support_conflict_identified": 4,
+    "insufficient_trace": 2
+  },
+  "categories_can_overlap": true,
+  "unique_cases_with_gap_or_mapping_candidate": 6,
+  "confirmed_reasoning_errors": 0,
+  "new_expert_adjudications": 0,
+  "new_model_calls": 0,
+  "new_training": false,
+  "closed_reference_displayed": false,
+  "source": "fixed G2 train development cohort",
+  "unseen_evaluation": false,
+  "finished_epoch": 1794129440.691613,
+  "original_deadline_epoch": 1794131125.113
+}
